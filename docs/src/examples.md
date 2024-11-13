@@ -8,26 +8,17 @@ properties of methylammonium lead-iodide perovskite.
 The 'Feynman' units used internally set the LO phonon reduced frequency
 omega=1, hbar=1 and mass-of-electron=1. 
 
-## Loading the Module
+## Load the Module
 
 ```julia
 using PolaronMobility 
 ```
 
-If you are running the module from outside the Julia package directory (i.e.
-you have cloned the repository elsewhere to more easily work on the codes), you
-can supplement the `LOAD_PATH`.
-
-```julia
-push!(LOAD_PATH,"../src/") # load module from local directory
-```
-
 ## α/alpha parameter 
 
-The Frohlich electron-phonon coupling parameter can be characterised by
-a dimensionless coupling, alpha (`α`). 
-This gives the long-range ('non analytic') contribution from electrodynamic
-coupling into infrared active phonon modes.
+The Frohlich electron-phonon interaction is fully characterised by
+the dimensionless alpha (`α`) coupling parameter. 
+This gives the long-range dielectric contribution into infrared active phonon modes (the same interaction that causes the non-analytic contribution to phonon frequencies).
 
 ```math
 \alpha = 

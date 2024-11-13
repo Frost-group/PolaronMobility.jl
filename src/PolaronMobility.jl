@@ -1,8 +1,8 @@
 """
 PolaronMobility.jl - https://github.com/jarvist/PolaronMobility.jl
-  Codes by Jarvist Moore Frost, 2017-2023; Bradley A.A. Martin 2020-2023
+  Codes by Jarvist Moore Frost, 2017-2024; Bradley A.A. Martin 2020-2024
   PolaronMobility.jl is a Julia package which calculates the temperature-dependent polaron
-  mobility for a material. It implements the Feynman variational approach with
+  mobility for a material. We implement the Feynman variational approach with
   Osaka/Hellwarth free-energy for the polaron system.  
 """
 module PolaronMobility
