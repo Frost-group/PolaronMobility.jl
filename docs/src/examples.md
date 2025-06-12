@@ -36,9 +36,9 @@ values.
 The call signature is: ϵ-optical, ϵ-static, phonon-frequency (THz),
 effective-mass (in mass-of-electron units).
 
-```
-α=frohlichalpha(7.1, 10.4, 5.08, 0.095)
-println("CdTe  α=",α," Stone 0.39 / Devreese 0.29")
+```julia
+α = frohlichalpha(7.1, 10.4, 5.08, 0.095)
+println("CdTe  α=", α, " Stone 0.39 / Devreese 0.29")
 #@test α ≈ 0.3 atol=0.1
 ```
 
@@ -52,11 +52,11 @@ athermal Feynman model. These values are often reproduced in the textbooks
 (e.g. Feynman & Hibbs, Emended Edition, p. 319). 
 For instance, Schultz gets for `α=5`, `v=4.02`, `w=2.13` and `E=-5.4401`. 
 
-```
-julia> v,w=feynmanvw(5.0)
-(4.0343437574170915, 2.1400182510339403)
-julia> F(v,w,5.0)
--5.440144454909065
+```julia
+v, w = feynmanvw(5.0)
+A, B, C, F = frohlich_energy(v, w, 5.0, 1.0)  # α=5.0, ω=1.0
+println("v=", v, ", w=", w)
+println("A=", A, ", B=", B, ", C=", C, ", F=", F)
 ```
 
 ## Single temperature phonon properties
@@ -65,21 +65,34 @@ Let us calculate the room-temperature (300 K) character of the electron-polaron
 in methylammonium lead iodide perovskite (MAPI). 
 The parameters we use are as in `Frost2017PRB`.
 
-The call signature to `polaronmobility` is: 
-Temperature range, ϵ-optical, ϵ-static, phonon-frequency (Hz), effective-mass
-(in mass-of-electron units). 
+ Our current workflow is:
+1. Instantiate a material struct
+2. Calculate the polaron properties for that material at a given temperature
 
-For electrons in MAPI, these are ϵ=4.5/24.1, f=2.25 THz, me=0.12 electron
-masses. 
+For electrons in MAPI with the Frohlich Hamiltonian, the system is described ϵ=4.5/24.1, f=2.25 THz, me=0.12 electron masses (`Frost2017PRB`). 
 
-
-```
-MAPIe=polaronmobility(300, 4.5, 24.1, 2.25, 0.12)
+```julia
+MAPIe = material(4.5, 24.1, 0.12, 2.25)
+MAPIe_polaron = frohlichpolaron(MAPIe, 300; verbose = true)
 ```
 
 This will think for a bit (as Julia just-in-time compiles the required
 functions), and then spits out a considerable amount of information to
 `STDOUT`. 
+
+You can access the mobility value directly:
+
+```julia
+println(MAPIe_polaron.μ)
+```
+
+Or, to add units:
+
+```julia
+using Unitful
+addunits!(MAPIe_polaron)
+println(MAPIe_polaron.μ)
+```
 
 ```
 Polaron mobility for system ε_Inf=4.5, ε_S=24.1, freq=2.25e12, 
@@ -93,13 +106,13 @@ T: 300.000000 β: 2.41e+20 βred: 0.36 ħω  = 9.31 meV		Converged? : true
 	 Schultz1959(2.4): rf= 0.528075 (int units) = 2.68001e-09 m [SI]
  Polaron Free Energy: A= -6.448918 B= 7.355627 C= 2.912080 F= -3.818788	 = -35.534786 meV
  Polaron Mobility theories:
-	μ(FHIP)= 0.082053 m^2/Vs 	= 820.53 cm^2/Vs
-	μ(Kadanoff,via Devreese2016)= 0.019690 m^2/Vs 	= 196.90 cm^2/Vs
+	μFHIP= 0.082053 m^2/Vs 	= 820.53 cm^2/Vs
+	μK= 0.019690 m^2/Vs 	= 196.90 cm^2/Vs
 		Eqm. Phonon. pop. Nbar: 2.308150 
 		Gamma0 = 5.42813e+13 rad/s = 8.63914e+12 /s  
 		Tau=1/Gamma0 = 1.15752e-13 = 0.115752 ps
 		Energy Loss = 1.28798e-08 J/s = 80.3893 meV/ps
-	μ(Hellwarth1999)= 0.013642 m^2/Vs 	= 136.42 cm^2/Vs
+	μH= 0.013642 m^2/Vs 	= 136.42 cm^2/Vs
 ```
 
 The output is a little ad-hoc, and specific values are perhaps best understood
@@ -207,19 +220,20 @@ Hellwarth (61) Omega (freq): 500.08501275972833
 ## Temperature-dependent behaviour
 
 Getting temperature-dependent behaviour is a matter of sending a temperature
-range to the `polaronmobility` function.
+range to the `frohlichpolaron` function, after creating a material struct.
 
 ```julia
-MAPIe=polaronmobility(10:10:1000, 4.5, 24.1, 2.25, 0.12)
+MAPIe = material(4.5, 24.1, 0.12, 2.25)
+MAPIe_polaron = frohlichpolaron(MAPIe, 10:10:1000)
 ```
 
 ## Plotting
 
-For publication, `savepolaron` outputs a column-delimited text file for post-production plotting
-(with gnuplot) or similar.
+For publication, you can save the polaron data for post-production plotting
+using the provided save function:
 
 ```julia
-savepolaron("MAPI-electron",MAPIe)
+save_frohlich_polaron(MAPIe_polaron, "MAPI-electron")
 ```
 
 Example `gnuplot` scripts can be found in
@@ -235,20 +249,20 @@ It has been separated off into its own submodule (`PlotPolaron`), so that the
 `Plots.jl` dependency does not slow down loading of `PolaronMobility.jl`.
 
 To use it, we therefore need to inform Julia where to find PlotPolaron.
-A suitable initialisation script was kindly supplied by @wkearn:
+A suitable initialisation script is:
 
 ```julia
 using PolaronMobility, Plots
 gr()
-include(Pkg.dir("PolaronMobility","src","PlotPolaron.jl"))
-using PlotPolaron
+include(joinpath(dirname(pathof(PolaronMobility)), "..", "PlotPolaron.jl"))
+using .PlotPolaron
 ```
 
-As with savepolaron, the call signature is output-file-string and then the
+As with save_frohlich_polaron, the call signature is output-file-string and then the
 polaron object which you have calculated.
 
 ```julia
-plotpolaron("MAPI-electron",MAPIe)
+plotpolaron("MAPI-electron", MAPIe_polaron)
 ```
 This will attempt to make fairly sensible defaults, and plot a lot of different
 data of sufficient quality for talk slides.
