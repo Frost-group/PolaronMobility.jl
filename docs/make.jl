@@ -4,5 +4,5 @@ using PolaronMobility, Documenter
 
 makedocs(sitename="PolaronMobility.jl documentation")
 
-deploydocs(repo="github.com/jarvist/PolaronMobility.jl.git",)
+deploydocs(repo="github.com/Frost-group/PolaronMobility.jl.git",)
 

@@ -3,11 +3,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![made-with-julia](https://img.shields.io/badge/Made%20with-Julia-ff69bf.svg)](https://julialang.org)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.00566/status.svg)](https://doi.org/10.21105/joss.00566)
-[![docs-latest](https://img.shields.io/badge/docs-latest-blue.svg)](https://jarvist.github.io/PolaronMobility.jl/)
+[![docs-latest](https://img.shields.io/badge/docs-latest-blue.svg)](https://Frost-group.github.io/PolaronMobility.jl/)
 
 
-[![Build status](https://github.com/jarvist/PolaronMobility.jl/workflows/CI/badge.svg)](https://github.com/jarvist/PolaronMobility.jl/actions)
-[![codecov.io](http://codecov.io/github/jarvist/PolaronMobility.jl/coverage.svg?branch=main)](http://codecov.io/github/jarvist/PolaronMobility.jl?branch=main)
+[![Build status](https://github.com/Frost-group/PolaronMobility.jl/workflows/CI/badge.svg)](https://github.com/Frost-group/PolaronMobility.jl/actions)
+[![codecov.io](http://codecov.io/github/Frost-group/PolaronMobility.jl/coverage.svg?branch=main)](http://codecov.io/github/Frost-group/PolaronMobility.jl?branch=main)
 
 `PolaronMobility.jl` is a Julia package which calculates the
 temperature-dependent polaron mobility for a material. 
@@ -36,7 +36,7 @@ method.
 They offer a convenient basis for writing codes that build on these variational
 solutions. 
 
-More [extensive documentation](https://jarvist.github.io/PolaronMobility.jl/),
+More [extensive documentation](https://Frost-group.github.io/PolaronMobility.jl/),
 is perhaps easiest to read and understand alongside the first paper:
 [ArXiv:1704.05404](https://arxiv.org/abs/1704.05404)
 / [Frost2017PRB](https://doi.org/10.1103/PhysRevB.96.195202).
@@ -54,7 +54,7 @@ julia> import Pkg; Pkg.add("PolaronMobility")
 
 There is an [example notebook](JuliaBox-Example.ipynb) which can be run interactively on the (free) MyBinder notebook server. This is the fastest way to calculate a few polaron parameters, if you do not have Julia installed locally.
 
-1) Click on [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jarvist/PolaronMobility.jl/master?filepath=JuliaBox-Example.ipynb)
+1) Click on [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Frost-group/PolaronMobility.jl/master?filepath=JuliaBox-Example.ipynb)
 2) That's it!
 
 (Currently plotting does not work, as the Docker image is not built with the (heavy weight) Plots dependency, and I'm not sure how I can do this just for MyBinder, without requiring it generally for PolaronMobility.jl. If this is problematic for you, please open an issue and I'll try to fix it!)
@@ -488,7 +488,7 @@ Complex conductivity           | σ = 0.0+0.0im
 To do the same for a Holstein polaron use `save_holstein_polaron` and `load_holstein_polaron`.
 
 Further details in the
-[documentation](https://jarvist.github.io/PolaronMobility.jl/).
+[documentation](https://Frost-group.github.io/PolaronMobility.jl/).
 
 ## Research outputs
 
@@ -507,7 +507,7 @@ Contributions to the code (extending that which is calculated), or additional
 physical systems / examples, are very welcome. 
 
 If you have questions about the software, scientific questions, or find errors,
-please create a [GitHub issue](https://github.com/jarvist/PolaronMobility.jl/issues). 
+please create a [GitHub issue](https://github.com/Frost-group/PolaronMobility.jl/issues). 
 
 ## Reference
 

@@ -58,7 +58,7 @@ Contributions to the code (extending that which is calculated), or additional
 physical systems / examples, are very welcome. 
 
 If you have questions about the software, scientific questions, or find errors,
-please create a [GitHub issue](https://github.com/jarvist/PolaronMobility.jl/issues). 
+please create a [GitHub issue](https://github.com/Frost-group/PolaronMobility.jl/issues). 
 
 If you find this package (or snippets, such as the entered and tested
 free-energy expressions) useful for your work, please cite the paper 
