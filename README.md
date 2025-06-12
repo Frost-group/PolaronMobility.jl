@@ -54,7 +54,7 @@ julia> import Pkg; Pkg.add("PolaronMobility")
 
 There is an [example notebook](JuliaBox-Example.ipynb) which can be run interactively on the (free) MyBinder notebook server. This is the fastest way to calculate a few polaron parameters, if you do not have Julia installed locally.
 
-1) Click on [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Frost-group/PolaronMobility.jl/master?filepath=JuliaBox-Example.ipynb)
+1) Click on [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Frost-group/PolaronMobility.jl/main?filepath=JuliaBox-Example.ipynb)
 2) That's it!
 
 (Currently plotting does not work, as the Docker image is not built with the (heavy weight) Plots dependency, and I'm not sure how I can do this just for MyBinder, without requiring it generally for PolaronMobility.jl. If this is problematic for you, please open an issue and I'll try to fix it!)

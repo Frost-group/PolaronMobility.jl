@@ -237,8 +237,8 @@ save_frohlich_polaron(MAPIe_polaron, "MAPI-electron")
 ```
 
 Example `gnuplot` scripts can be found in
-[Examples](https://github.com/Frost-group/PolaronMobility.jl/tree/master/examples/) and
-[HalidePerovskites](http://github.com/Frost-group/PolaronMobility.jl/tree/master/HalidePerovskites/).
+[Examples](https://github.com/Frost-group/PolaronMobility.jl/tree/main/examples/) and
+[HalidePerovskites](http://github.com/Frost-group/PolaronMobility.jl/tree/main/HalidePerovskites/).
 
 ## Built in plotting
 
@@ -268,10 +268,10 @@ This will attempt to make fairly sensible defaults, and plot a lot of different
 data of sufficient quality for talk slides.
 
 Much for the functionality has been unrolled into the [Jupyter Notebook
-example](https://github.com/Frost-group/PolaronMobility.jl/blob/master/JuliaBox-Example.ipynb),
+example](https://github.com/Frost-group/PolaronMobility.jl/blob/main/JuliaBox-Example.ipynb),
 which should also be interactively-runnable from (https://juliabox.com). See
 the repository
-[README.md](https://github.com/Frost-group/PolaronMobility.jl/blob/master/README.md#juliabox)
+[README.md](https://github.com/Frost-group/PolaronMobility.jl/blob/main/README.md#juliabox)
 for the latest information.
 
 Here is a figure showing typical temperature-dependent behaviour of the
@@ -282,6 +282,6 @@ three-different polaron mobility approximations, for MAPI.
 ## Further examples
 
 More complete examples are provided in 
-[Examples](https://github.com/Frost-group/PolaronMobility.jl/tree/master/examples/) and
-[HalidePerovskites](http://github.com/Frost-group/PolaronMobility.jl/tree/master/HalidePerovskites/).
+[Examples](https://github.com/Frost-group/PolaronMobility.jl/tree/main/examples/) and
+[HalidePerovskites](http://github.com/Frost-group/PolaronMobility.jl/tree/main/HalidePerovskites/).
 
