@@ -102,6 +102,9 @@ function polaronmobility(Trange, ε_Inf, ε_S, freq, effectivemass; verbose::Boo
         @printf("\n\t Schultz1959(2.4): rf= %g (int units) = %g m [SI]",rf,rfsi )
         append!(p.rfsi,rfsi)
 
+        mott = 1e-6 * ( 2 * (2 * rfsi)^3)^-1
+        @printf("\n\t Mott critereon (cm^-3): %g",mott)
+
         if (verbose)
         scale=sqrt(2*mb*ω) # Note we're using mb;
         #band effective-mass in SI units (i.e. meff*melectron)
