@@ -326,7 +326,7 @@ function frohlichpolaron(αrange, Trange, Ωrange; ω=1, ωeff=1, mb=1, v_guesse
         end
 
         # Calculate and store polaron radii. Approximates the polaron wavefunction as a Gaussian and relates the size to the standard deviation. Eqn. (2.4) in Schultz1959. Athermal.
-        R_gs = sqrt.(3 ./ 2 .* M_reduced_gs .* v_gs)
+        R_gs = sqrt.(3 ./ (2 .* M_reduced_gs .* v_gs))
         p["R0"][d, j, :] .= R_gs ./ sqrt(ωeff)
 
         # Print athermal polaron radius.
@@ -429,7 +429,7 @@ function frohlichpolaron(αrange, Trange, Ωrange; ω=1, ωeff=1, mb=1, v_guesse
                 end
 
                 # Calculate and store polaron radii.
-                R = sqrt.(3 ./ 2 .* M_reduced .* v)
+                R = sqrt.(3 ./ (2 .* M_reduced .* v))
                 p["R"][i, d, j, :] .= R ./ sqrt(ωeff)
             
                 # Print polaron radius.
