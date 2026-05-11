@@ -1,0 +1,109 @@
+# Jarvist Moore Frost, October 2017
+# This commandfile is essentially a work-around for GNUPlot's lack of subroutines
+# Instead you source this file, and it will save PDF + PNG tweaked versions of the figures
+
+# set the filename root in the variable prefix
+#     prefix="MyLovelyFigure"
+# Then load this file:
+#     load "gnuplot-render.gpt"
+# To generate MyLovelyFigure{.png,-BW.pdf,-COLOUR.pdf} etc.
+
+# Point types - via
+# http://triclinic.org/2015/04/publication-quality-plots-with-gnuplot/
+# 0   dot
+# 1   + - cross
+# 2   x - saltire
+# 3   * - cross and saltire
+# 4   open square
+# 5   closed square
+# 6   open circle
+# 7   closed circle
+# 8   open upward-pointing triangle
+# 9   closed upward-pointing triangle
+# 10  open downward-pointing triangle
+# 11  closed downward-pointing triangle
+# 12  open diamond
+# 13  closed diamond
+
+#####
+# line styles for ColorBrewer Set1
+# for use with qualitative/categorical data
+# provides 8 easy-to-name colors
+# compatible with gnuplot >=4.2
+# author: Anna Schneider
+
+# line styles
+# Edited by JMF to more reflect Janert's choice of point type below for
+# publication-ready figures. (Well, Physical Review at least!)
+set linetype 1 pi -1 pt 1 lc rgb '#E41A1C' dt solid # red
+set linetype 2 pi -1 pt 6 lc rgb '#377EB8' dt solid # blue
+set linetype 3 pi -1 pt 2 lc rgb '#4DAF4A' dt solid # green
+set linetype 4 pi -1 pt 4 lc rgb '#984EA3' dt solid # purple
+set linetype 5 pi -1 pt 1 lc rgb '#FF7F00' dt solid # orange
+set linetype 6 pi -1 pt 6 lc rgb '#FFFF33' dt solid # yellow
+set linetype 7 pi -1 pt 2 lc rgb '#A65628' dt solid # brown
+set linetype 8 pi -1 pt 4 lc rgb '#F781BF' dt solid # pink
+#####
+set pointintervalbox 1.75
+
+##### Gnuplotting xyborder.cfg
+#set style line 101 lc rgb '#808080' lt 1 lw 1
+#set border 3 front ls 101
+#set tics nomirror out scale 0.75
+#set format '%g'
+#####
+
+##### Gnuplotting grid.cfg
+# Add light grid to plot
+# AUTHOR: Hagen Wierstorf
+#set style line 102 lc rgb '#808080' lt 0 lw 1
+#set grid back ls 102
+#####
+
+# OK - colourful PNG suitable for talks (~full screen slide).
+
+#set key # key!
+
+set terminal pngcairo size 1024,768 enhanced font 'Helvetica,24'
+set output prefix.'.png'
+set pointsize 1.0
+replot
+
+# Colour PDF for swanky journals
+
+set terminal pdfcairo size 3in,2in enhanced font 'Helvetica,12'
+set output prefix.'-COLOUR.pdf'
+
+unset key
+set pointsize 0.3
+
+replot
+
+# PDF - Keep it oldskool and B&W, for journals.
+
+unset key
+
+set terminal pdfcairo size 3in,2in enhanced font 'Helvetica,12'
+set output prefix.'-BW.pdf'
+
+# Via Janert's Gnuplot in Action 2nd Edition; style3.gp
+# Black and White traditional Physical-review ish.
+set linetype 1 pi -1 pt 1 lc black dt solid
+set linetype 2 pi -1 pt 6 lc black dt (8,6)
+set linetype 3 pi -1 pt 2 lc black dt (4,3)
+set linetype 4 pi -1 pt 4 lc black dt (3,6)
+set linetype 5 pi -1 pt 1 lc black dt (12,5,2,5,2,5)
+set linetype 6 pi -1 pt 6 lc black dt (16,8)
+set linetype 7 pi -1 pt 2 lc black dt (20,6,2,6)
+set linetype 8 pi -1 pt 4 lc black dt (30,10)
+set pointsize 0.3
+set pointintervalbox 1.75
+set termoption font "Helvetica,12"
+set termoption fontscale 0.5
+
+replot
+
+set terminal dumb
+set output
+
+# Nb: Perhaps not all options reset!

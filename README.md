@@ -1,535 +1,758 @@
 # PolaronMobility.jl
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![made-with-julia](https://img.shields.io/badge/Made%20with-Julia-ff69bf.svg)](https://julialang.org)
-[![DOI](http://joss.theoj.org/papers/10.21105/joss.00566/status.svg)](https://doi.org/10.21105/joss.00566)
-[![docs-latest](https://img.shields.io/badge/docs-latest-blue.svg)](https://Frost-group.github.io/PolaronMobility.jl/)
+`PolaronMobility.jl` is a compact Julia package for variational polaron calculations, DC mobility estimates, and frequency-dependent response. The core is dimensionless and model-agnostic: build a `VariationalProblem(model, trial)`, solve the variational objective, then evaluate model-specific observables on temperature and frequency grids.
 
+Implemented pipelines:
 
-[![Build status](https://github.com/Frost-group/PolaronMobility.jl/workflows/CI/badge.svg)](https://github.com/Frost-group/PolaronMobility.jl/actions)
-[![codecov.io](http://codecov.io/github/Frost-group/PolaronMobility.jl/coverage.svg?branch=main)](http://codecov.io/github/Frost-group/PolaronMobility.jl?branch=main)
+- `FrohlichModel + GaussianFeynmanTrial` for continuum Fröhlich polarons.
+- `FrohlichModel + MultiGaussianTrial` for finite-mode Martin/Frost-style Gaussian variational trials.
+- `FrohlichModel + ProfileGaussianTrial` for general profile-function Gaussian variational trials.
+- `FrohlichModel + NonlocalGaussianTrial` for experimental finite-basis nonlocal Gaussian kernels that are not validated energy bounds.
+- `HolsteinModel + PoissonTrial` for lattice Holstein polarons with a continuous-time hopping-rate CTMC trial.
+- `PeierlsModel + PoissonTrial` for bond-coupled Peierls lattice polarons.
+- `CompositePolaronModel + PoissonTrial` for compatible lattice influence functionals, currently Holstein plus Peierls.
 
-`PolaronMobility.jl` is a Julia package which calculates the
-temperature-dependent polaron mobility for a material. 
+For continuum Fröhlich models, the production path follows the Feynman/FHIP/Hellwarth Gaussian-trial literature. For lattice Holstein, Peierls, and Holstein-Peierls models, the production path uses a CTMC variational bridge free energy and a CTMC first-return transport kernel dressed by exact phonon sidebands.
 
-This is based on the Feynman variational solution to the Polaron problem. 
-The electron-phonon coupling is treated as an effective α (alpha) Frohlich
-Hamiltonian dimensionless parameter. 
-The band structure is treated with an effective mass theory. 
-The variational problem is solved numerically for finite-temperature free
-energies. 
-(The original 1960s work, and thus textbook solutions, often use asymptotic approximations to the integrals, with a more simple athermal action.)   
-The mobility is calculated in three ways:
-1) numerically by integrating the polaron self-energy along the imaginary axis (`Hellwarth1999`)
-2) using Kadanoff's Boltzmann equation approximation (`Kadanoff1963`)
-3) using the FHIP low-temperature asymptotic solution (`FHIP`)
+## Core Pipeline
 
-These three methods are in approximately descending order of accuracy. 
+All implemented pipelines use the same public shape:
 
-We provide parameters for various metal-halide Perovskites, and other
-interesting systems.
+```julia
+using PolaronMobility
 
-The motivation for developing these codes was to enable polaron mobility
-calculations on arbitrary materials. 
-They also provide the only extant implementation of Feynman's variational
-method.  
-They offer a convenient basis for writing codes that build on these variational
-solutions. 
+problem = frohlich_feynman_problem(coupling = 3.0)
+result = solve(problem; temperatures = [0.0, 1.0], frequencies = [0.0, 1.0])
 
-More [extensive documentation](https://Frost-group.github.io/PolaronMobility.jl/),
-is perhaps easiest to read and understand alongside the first paper:
-[ArXiv:1704.05404](https://arxiv.org/abs/1704.05404)
-/ [Frost2017PRB](https://doi.org/10.1103/PhysRevB.96.195202).
+problem_h = holstein_poisson_problem(coupling = 1.5)
+result_h = solve(problem_h; temperatures = [0.25, 1.0], frequencies = [0.0, 1.0])
 
-
-## Installation
-
-To install, type the following at the Julia (>1.0) REPL:
-
-```
-julia> import Pkg; Pkg.add("PolaronMobility")
+problem_p = peierls_poisson_problem(coupling = 0.5)
+result_p = solve(problem_p; temperatures = [0.25, 1.0], frequencies = [0.0, 1.0])
 ```
 
-## Cloud notebook
+Every full result exposes:
 
-There is an [example notebook](JuliaBox-Example.ipynb) which can be run interactively on the (free) MyBinder notebook server. This is the fastest way to calculate a few polaron parameters, if you do not have Julia installed locally.
-
-1) Click on [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Frost-group/PolaronMobility.jl/main?filepath=JuliaBox-Example.ipynb)
-2) That's it!
-
-(Currently plotting does not work, as the Docker image is not built with the (heavy weight) Plots dependency, and I'm not sure how I can do this just for MyBinder, without requiring it generally for PolaronMobility.jl. If this is problematic for you, please open an issue and I'll try to fix it!)
-
-## Using
-
-As an example:
-
-```
-julia> using PolaronMobility
-julia> MAPIe = material(4.5, 24.1, 0.12, 2.25)
-julia> MAPIe_polaron = frohlichpolaron(MAPIe, 300; verbose = true)
+```julia
+result.problem
+result.temperatures
+result.frequencies
+result.solutions
+result.mobilities
+result.responses
 ```
 
-Will calculate the polaron mobility for methyl-ammonium lead halide perovskite
-(ϵ_optical = 4.5, ϵ_static = 24.1, effective_mass = 0.12 electron-masses, f = 2.25 THz) at 300 K. 
+Fröhlich results also expose `result.zero_temperature`, even if zero temperature was not included in the requested grid.
 
-An abbreviated output should look like:
-```
-------------------------------------------
-           Material Information           
-------------------------------------------
-Optic dielectric   | ϵo = 4.5
-Static dielectric  | ϵs = 24.1
-Ionic dielectric   | ϵi = 19.6
-Band mass          | mb = 0.12
-Fröhlich coupling  | α = 2.39394
-Phonon frequencies | f = 2.25
-Eff Phonon freq    | feff = 2.25
-IR activities      | ir = 1
-Unit cell volume   | V = 1
--------------------------------------------
+The generic variational objective is decomposed as:
 
------------------------------------------------------------------------
-                         Polaron Information:                          
------------------------------------------------------------------------
-Phonon frequencies             | ωeff = 2.25 | ω = 2.25
-Fröhlich coupling              | αeff = 2.39394 | α = 2.39394
-Number of spatial dimensions   | d = 3
-Small α→0 energy               | Fs = -2.46469
-Large α→∞ energy               | Fl = -3.43751
-Small α→0 fictitious mass      | Ms = 0.542264
-Large α→∞ fictitious mass      | Ml = 0.0666023
-Small α→0 polaron radius       | Rs = 1.67917
-Large α→∞ polaron radius       | Rl = 9.00108
-Large α→∞ FC peak freq.        | ΩFC = 0.810764
------------------------------------------------------------------------
-                     Zero Temperature Information:                     
------------------------------------------------------------------------
-Variational parameter          | v0 = 3.30877
-Variational parameter          | w0 = 2.66327
-Energy                         | E0 = -5.56947
-Electron energy                | A0 = -2.17859
-Interaction energy             | B0 = 5.78198
-Trial energy                   | C0 = 1.96608
-Fictitious spring constant     | κ0 = 3.855
-Fictitious mass                | M0 = 0.543495
-Fictitious mass (asymptotic)   | M0a = 1.24237
-Reduced mass                   | M0r = 0.35212
-Polaron radius                 | R0 = 0.817278
------------------------------------------------------------------------
-                    Finite Temperature Information:                    
------------------------------------------------------------------------
-Temperatures                   | T = 300
-Reduced thermodynamic          | β = 0.159975
-Variational parameter          | v = 19.8612
-Variational parameter          | w = 16.9599
-Free energy                    | F = -8.59191
-Electron energy                | A = -14.5096
-Interaction energy             | B = 16.5498
-Trial energy                   | C = 6.55175
-Fictitious spring constant     | κ = 106.831
-Fictitious mass                | M = 0.371408
-Fictitious mass (asymptotic)   | Ma = 1.17107
-Reduced mass                   | Mr = 0.270822
-Polaron radius                 | R = 0.0722548
------------------------------------------------------------------------
-                      DC Mobility Information:                         
------------------------------------------------------------------------
-Finite temperature mobility    | μ = 0.487357
-FHIP low-temp. mobility        | μFHIP = 2.93118
-Devreese low-temp. mobility    | μD = 0.703373
-Kadanoff low-temp. mobility    | μK = 0.703373
-Hellwarth mobility             | μH = 1.09655
-Hellwarth mobility (b=0)       | μH0 = 1.09824
-Kadanoff relaxation time       | τ = 0.964611
------------------------------------------------------------------------
+```julia
+objective(problem, parameters, beta) =
+    free_energy(problem.trial, parameters, beta) +
+    entropy_cost(problem.trial, parameters, beta) +
+    interaction_free_energy(problem.model, problem.trial, parameters, beta)
 ```
 
-The `frohlichpolaron` method returns a `Frohlich` struct type. To access a value we can call the variable from the table above.
-For example, to get the mobility for MAPIe we do: 
-```
-julia> MAPIe_polaron.μ
-0.48735686547867546
-```
+Use `solve_variational(problem, beta)` for a single inverse-temperature optimization.
 
-This package makes use of Unitful.jl to convert these values into unitful polaron types.
-For example, to add units to the above MAPIe polaron:
-```
-julia> using Unitful
-julia> addunits!(MAPIe_polaron)
-julia> MAPIe_polaron.μ
-0.48735686547867546 μ₀
-```
+## Fröhlich
 
-All the values above are given in "polaron" units. We can convert to a specific unit using Unitful.
-For example, to obtain the MAPIe polaron ground-state energy (meV), room-temperature free energy (meV) and mobility (cm^2/V/s):
-```
-julia> MAPIe_polaron.F0 |> u"meV"
--23.03349215713356 meV
+For dimensionless inputs:
 
-julia> MAPIe_polaron.F |> u"meV"
--35.5332946810453 meV
+```julia
+problem = frohlich_feynman_problem(
+    coupling = 3.0,
+    phonon_frequency = 1.0,
+    dimension = 3,
+)
 
-julia> MAPIe_polaron.μ |> u"cm^2/V/s"
-136.42332082324646 cm² s⁻¹ V⁻¹
+result = solve(problem; temperatures = [0.0, 0.5, 1.0], frequencies = [0.0, 2.0])
+
+v = feynman_v(result.zero_temperature)
+w = feynman_w(result.zero_temperature)
+mobility = result.mobilities[2].mobility
+conductivity = result.responses[2, 2].conductivity
 ```
 
-The `frohlichpolaron` method can generally accept a range of α electron-phonon coupling parameters, a range of temperatures for finite temperature properties such as free energy and mobility, and range of Electric Field frequencies for calculating dynamical properties such as the complex conductivity.
-For example:
-```
-julia> frohlich_polaron = frohlichpolaron(1:12, 1:400, 0:0.1:10)
-```
-will calculate all properties for α's 1 to 12, temperature 1K to 400K and Electric field frequencies 0 to 10 THz. 
+`solve_frohlich(alpha; ...)` is a convenience wrapper around `frohlich_feynman_problem(...)` and `solve(...)`.
 
-It is also possible to change the number of spatial dimensions for the polaron using `dims = #` or as an array/range `dims = [2, 3]`. 
-For example:
-```
-julia> frohlich_polaron = frohlichpolaron(1:12, 1:400, 0:0.1:10; dims = 2)
-julia> frohlich_polaron = frohlichpolaron(1:12, 1:400, 0:0.1:10; dims = [2, 3])
-```
+For material inputs, `material_to_problem` builds the same generic Fröhlich problem, and `solve` interprets temperatures as Kelvin and frequencies as THz:
 
-Note that the Frohlich polaron does not exist in 1D.
+```julia
+material = FrohlichMaterial(4.5, 24.1, 0.12, 2.25)
+problem = material_to_problem(material)
+result = solve(problem; temperatures = [0.0, 300.0], frequencies = [0.0, 3.0])
 
-TIP: If the `frohlichpolaron` errors or you interrupt the calculation whilst you have `verbose = true`, use `print("\e[?25h")` to return your cursor.
-
-## Multiple phonon modes
-
-To calculate polaron properties for a material with multiple phonon modes the code requires a vector of phonon frequencies (at the gamma point), a vector of corresponding infrared activities for each phonon mode, and the unitcell volume of the material. The code uses this additional information to calculate the ionic dielectric contributions to the static dielectric function.
-For example, for MAPIe:
-```
-julia> volume = (6.29e-10)^3
-julia> m_eff = 0.12
-julia> ϵ_static = 24.1
-julia> ϵ_optic = 4.5
-julia> phonon_freqs = [4.016471586720514, 3.887605410774121, 3.5313112232401513, 2.755392921480459, 2.4380741812443247, 2.2490917637719408, 2.079632190634424, 2.0336707697261187, 1.5673011873879714, 1.0188379384951798, 1.0022960504442775, 0.9970130778462072, 0.9201781906386209, 0.800604081794174, 0.5738689505255512]
-julia> ir_activities = [0.08168931020200264, 0.006311654262282101, 0.05353548710183397, 0.021303020776321225, 0.23162784335484837, 0.2622203718355982, 0.23382298607799906, 0.0623239656843172, 0.0367465760261409, 0.0126328938653956, 0.006817361620021601, 0.0103757951973341, 0.01095811116040592, 0.0016830270365341532, 0.00646428491253749]
-
-julia> MAPIe = material(ϵ_optic, ϵ_static, m_eff, phonon_freqs, ir_activities, volume)
-
-Hellwarth B Scheme... (athermal)
-Hellwarth (58) summation: 0.03803673767058733
-Hellwarth (59) summation (total ir activity ^2): 0.19283002835623678
-Hellwarth (59) W_e (total ir activity ): 0.4391241605243747
-Hellwarth (61) Omega (freq): 2.251571287857919
-------------------------------------------
-           Material Information           
-------------------------------------------
-Optic dielectric   | ϵo = 4.5
-Static dielectric  | ϵs = 24.1
-Ionic dielectric   | ϵi = [0.299962, 0.0247382, 0.254308, 0.166213, 2.30827, 3.07073, 3.20261, 0.892655, 0.886139, 0.720913, 0.401989, 0.618315, 0.766623, 0.155541, 1.16275]
-Band mass          | mb = 0.12
-Fröhlich coupling  | α = [0.0340093, 0.0028509, 0.03075, 0.0227523, 0.335905, 0.465256, 0.50462, 0.142232, 0.160835, 0.162287, 0.0912368, 0.140706, 0.181593, 0.0394994, 0.348765]
-Phonon frequencies | f = [4.01647, 3.88761, 3.53131, 2.75539, 2.43807, 2.24909, 2.07963, 2.03367, 1.5673, 1.01884, 1.0023, 0.997013, 0.920178, 0.800604, 0.573869]
-Eff Phonon freq    | feff = 2.25157
-IR activities      | ir = [0.0816893, 0.00631165, 0.0535355, 0.021303, 0.231628, 0.26222, 0.233823, 0.062324, 0.0367466, 0.0126329, 0.00681736, 0.0103758, 0.0109581, 0.00168303, 0.00646428]
-Unit cell volume   | V = 2.48858e-28
--------------------------------------------
+unitful = material_units(result)
+unitful.mobility[2]
+unitful.frequency[2]
 ```
 
-We can then put this into the `frohlichpolaron` function as before.
-For example here we would get:
-```
-julia> MAPIe_polaron = frohlichpolaron(MAPIe, 300; verbose = true)
+All Fröhlich Gaussian trial families can be selected from a material-derived problem:
 
------------------------------------------------------------------------
-                         Polaron Information:                          
------------------------------------------------------------------------
-Phonon frequencies             | ωeff = 2.25157 | ω = [4.01647, 3.88761, 3.53131, 2.75539, 2.43807, 2.24909, 2.07963, 2.03367, 1.5673, 1.01884, 1.0023, 0.997013, 0.920178, 0.800604, 0.573869]
-Fröhlich coupling              | αeff = 2.6633 | α = [0.0340093, 0.0028509, 0.03075, 0.0227523, 0.335905, 0.465256, 0.50462, 0.142232, 0.160835, 0.162287, 0.0912368, 0.140706, 0.181593, 0.0394994, 0.348765]
-Number of spatial dimensions   | d = 3
-Small α→0 energy               | Fs = -2.75087
-Large α→∞ energy               | Fl = -3.58205
-Small α→0 fictitious mass      | Ms = 0.621212
-Large α→∞ fictitious mass      | Ml = 0.102027
-Small α→0 polaron radius       | Rs = 1.592
-Large α→∞ polaron radius       | Rl = 10.0138
-Large α→∞ FC peak freq.        | ΩFC = 1.00348
------------------------------------------------------------------------
-                     Zero Temperature Information:                     
------------------------------------------------------------------------
-Variational parameter          | v0 = 3.29227
-Variational parameter          | w0 = 2.67919
-Energy                         | E0 = -4.71904
-Electron energy                | A0 = -1.83134
-Interaction energy             | B0 = 4.88955
-Trial energy                   | C0 = 1.66083
-Fictitious spring constant     | κ0 = 3.66096
-Fictitious mass                | M0 = 0.510019
-Fictitious mass (asymptotic)   | M0a = 1.22883
-Reduced mass                   | M0r = 0.337757
-Polaron radius                 | R0 = 0.858447
------------------------------------------------------------------------
-                    Finite Temperature Information:                    
------------------------------------------------------------------------
-Temperatures                   | T = 300
-Reduced thermodynamic          | β = [0.159975, 0.159975, 0.159975, 0.159975, 0.159975, 0.159975, 0.159975, 0.159975, 0.159975, 0.159975, 0.159975, 0.159975, 0.159975, 0.159975, 0.159975]
-Variational parameter          | v = 35.1921
-Variational parameter          | w = 32.4542
-Free energy                    | F = -10.3578
-Electron energy                | A = -11.5987
-Interaction energy             | B = 15.4728
-Trial energy                   | C = 6.48363
-Fictitious spring constant     | κ = 185.207
-Fictitious mass                | M = 0.175839
-Fictitious mass (asymptotic)   | Ma = 1.08436
-Reduced mass                   | Mr = 0.149544
-Polaron radius                 | R = 0.0554786
------------------------------------------------------------------------
-                      DC Mobility Information:                         
------------------------------------------------------------------------
-Finite temperature mobility    | μ = 0.572962
-FHIP low-temp. mobility        | μFHIP = 4.71425
-Devreese low-temp. mobility    | μD = 0.0673372
-Kadanoff low-temp. mobility    | μK = 0.0673372
-Hellwarth mobility             | μH = 0.0360092
-Hellwarth mobility (b=0)       | μH0 = 0.0359907
-Kadanoff relaxation time       | τ = 0.0572674
------------------------------------------------------------------------
+```julia
+material_to_problem(material; trial = :feynman)
+material_to_problem(material; trial = :multi_gaussian, modes = 2)
+material_to_problem(material; trial = :profile_gaussian, matsubara_terms = 256)
+material_to_problem(material; trial = :nonlocal_gaussian)
 ```
 
-Using Unitful we then get the following energies and mobility:
-```
-julia> MAPIe_polaron.F0 |> u"meV"
--19.516365044323575 meV
+Holstein material inputs use a sibling `HolsteinMaterial` type. For Rubrene, the convenience constructor encodes the local Holstein parameters from Ordejón et al., Phys. Rev. B 96, 035202 (2017), Table II:
 
-julia> MAPIe_polaron.F |> u"meV"
--42.83622939936868 meV
+```julia
+rubrene = rubrene_holstein_material(
+    direction = :high_mobility,
+    lattice_constant_angstrom = 7.2, # optional, needed for unitful mobility
+)
+problem = material_to_problem(rubrene)
+result = solve(problem; temperatures = [300.0], frequencies = [0.0, 10.0])
 
-julia> MAPIe_polaron.μ |> u"cm^2/V/s"
-160.38638000423998 cm² s⁻¹ V⁻¹
-```
-
-## Multiple variational parameters
-
-The base trial action used in the Feynman-Jensen variational path integral approximation has only two variational parameters called `v` and `w`.
-This can be generalised to more variational parameters `v1`, `w1`, `v2`, `w2` etc where `v1 > w1 > v2 > w2 > ...`.
-Including more variational paramaters can produce better variational results, improving the upper-bound on the polaron free energy.
-
-To use this functionality, you have to provide an initial vector of guesses for the variational parameters.
-For example for the single effective phonon mode MAPIe:
-```
-julia> MAPIe_polaron = frohlichpolaron(MAPIe; v_guesses = [4, 3], w_guesses = [3.5, 2.5], verbose = true)
-
------------------------------------------------------------------------
-               Polaron Information: [1 / 1 (100.0 %)]
------------------------------------------------------------------------
-Phonon frequencies             | ωeff = 2.25 | ω = 2.25
-Fröhlich coupling              | αeff = 2.39394 | α = 2.3939410167951287
-Small α→0 energy               | Fs = -2.46469
-Large α→∞ energy               | Fl = -3.43751
-Small α→0 fictitious mass      | Ms = 0.542264
-Large α→∞ fictitious mass      | Ml = 0.0666023
-Small α→0 polaron radius       | Rs = 1.67917
-Large α→∞ polaron radius       | Rl = 9.00108
-Large α→∞ FC peak freq.        | ΩFC = 0.810764
-Number of dimensions [1 / 1]   | d = 3
------------------------------------------------------------------------
-                   Zero Temperature Information:                       
------------------------------------------------------------------------
-Variational parameter          | v0 = [2.28596, 12.4981]
-Variational parameter          | w0 = [1.86037, 12.1284]
-Energy                         | E0 = -5.57292
-Electron energy                | A0 = -2.684
-Interaction energy             | B0 = 5.78926
-Trial energy                   | C0 = 2.46766
-Fictitious spring constant     | κ0 = [1.76463, 9.1037]
-Fictitious mass                | M0 = [0.509867, 0.0618885]
-Fictitious mass (asymptotic)   | M0a = [1.22877, 1.03048]
-Reduced mass                   | M0r = [0.33769, 0.0582815]
-Polaron radius                 | R0 = [1.48402, 0.672612]
------------------------------------------------------------------------
+unitful = material_units(result)
+unitful.mobility[1]
+lambda_holstein(rubrene)
 ```
 
-which gives a (polaron units) ground-state energy of `-5.57292` compared to the previous prediction `-5.56947`.
+This maps `J = 134.0 meV`, `E_H = 106.8 meV`, and `ω_H = 1208.9 cm^-1` to the reduced Holstein model `hopping = J/(hν)`, `phonon_frequency = 1`, and `coupling = sqrt(E_H/(hν))`.
 
-Note that whilst the code is capable of finite temperatures, more variational parameters and multiple modes all at once - the resultant energy landscape is difficult to optimise on and find converged results and requires well informed initial guesses to arrive at a correct solution.
+Fröhlich kernels are literature-pinned by tests, including:
 
-## The Holstein polaron model
+- `frohlich_energy`
+- `frohlich_memory_function`
+- `frohlich_complex_impedance`
+- `frohlich_complex_conductivity`
+- `frohlich_mobility`
+- `fhip_low_temperature_mobility`
+- `kadanoff_low_temperature_mobility`
+- `hellwarth_mobility`
 
-To calculate properties for a small Holstein-like polaron, use the `holstenpolaron()` function. It accepts all the same arguements as for the previous case with Frohlich, but will use the Holstein model instead and store the information in the `Holstein` type.
+The material coupling helper is `frohlich_alpha(...)`.
 
-For example:
-```
-julia> holstein_polaron = holsteinpolaron(1:3, [0, 300], [0, 1]; dims = [1, 2, 3], verbose = true)
+### Multi-Mode Gaussian Trials
 
------------------------------------------------------------------------
-                         Polaron Information:                          
------------------------------------------------------------------------
-Phonon frequencies             | ωeff = 1 | ω = 1
-Holstein coupling              | αeff = [1, 2, 3] | α = [1, 2, 3]
-Number of spatial dimensions   | d = 3
------------------------------------------------------------------------
-                     Zero Temperature Information:                     
------------------------------------------------------------------------
-Variational parameter          | v0 = [4.06018, 4.80557, 7.07573]
-Variational parameter          | w0 = [3.30811, 1.51507, 1.16092]
-Total energy                   | F0 = [-7.3982, -9.21291, -12.1558]
-Electron energy                | A0 = [-1.1281, -4.93576, -8.87222]
-Interaction energy             | B0 = [1.50268, 4.90273, 9.86404]
-Trial energy                   | C0 = [1.02362, 3.24593, 5.16394]
-Fictitious spring constant     | κ0 = [5.54143, 20.7981, 48.7182]
-Fictitious mass                | M0 = [0.506361, 9.06064, 36.1484]
-Fictitious mass (asymptotic)   | M0a = [1.22734, 3.17185, 6.09495]
-Reduced mass                   | M0r = [0.336149, 0.900603, 0.973081]
-Polaron radius                 | R0 = [0.629813, 0.182562, 0.0945703]
------------------------------------------------------------------------
-                    Finite Temperature Information:                    
------------------------------------------------------------------------
-Temperatures                   | T = [0, 300]
-Reduced thermodynamic          | β = [Inf, 0.00333333]
-Variational parameter          | v = [4.06018 4.80557 7.07573; 6.76201 8.98156 10.7774]
-Variational parameter          | w = [3.30811 1.51507 1.16092; 3.75187 3.22804 2.85246]
-Free energy                    | F = [-7.3982 -9.21291 -12.1558; -1751.64 -1757.63 -1763.61]
-Electron energy                | A = [-1.1281 -4.93576 -8.87222; 1739.64 1739.63 1739.61]
-Interaction energy             | B = [1.50268 4.90273 9.86404; 5.98483 11.9697 17.9545]
-Trial energy                   | C = [1.02362 3.24593 5.16394; 0.0131867 0.0292696 0.0450057]
-Fictitious spring constant     | κ = [5.54143 20.7981 48.7182; 31.6483 70.2482 108.016]
-Fictitious mass                | M = [0.506361 9.06064 36.1484; 2.2483 6.7415 13.2754]
-Fictitious mass (asymptotic)   | Ma = [1.22734 3.17185 6.09495; 1.80231 2.78236 3.77828]
-Reduced mass                   | Mr = [0.336149 0.900603 0.973081; 0.692147 0.870826 0.929949]
-Polaron radius                 | R = [0.629813 0.182562 0.0945703; 0.142314 0.0738927 0.0526417]
------------------------------------------------------------------------
-                      DC Mobility Information:                         
------------------------------------------------------------------------
-Finite temperature mobility    | μ = [Inf Inf Inf; 440.224 199.198 95.5733]
------------------------------------------------------------------------
-                  Frequency Response Information:                      
------------------------------------------------------------------------
-Electric field frequency       | Ω = [0, 1]
-Memory function                | χ = [Inf+0.0im Inf+0.0im; -2.90365+5.53403im -3.85738e-5+0.00226794im;;; Inf+0.0im Inf+0.0im; -185.241+292.499im -0.000229113+0.00496805im;;; Inf+0.0im Inf+0.0im; -767.896+2281.86im -0.00127186+0.0101249im]
-Complex impedance              | z = [0.0+Inf*im 0.0+Inf*im; 5.53403+1.90365im 0.00226794-0.999961im;;; 0.0+Inf*im 0.0+Inf*im; 292.499+184.241im 0.00496805-0.999771im;;; 0.0+Inf*im 0.0+Inf*im; 2281.86+766.896im 0.0101249-0.998728im]
-Complex conductivity           | σ = [0.0+0.0im 0.0+0.0im; 0.16158-0.0555821im 0.0022681+1.00003im;;; 0.0+0.0im 0.0+0.0im; 0.00244768-0.00154176im 0.00497021+1.0002im;;; 0.0+0.0im 0.0+0.0im; 0.000393763-0.000132337im 0.0101496+1.00117im]
------------------------------------------------------------------------
+`GaussianFeynmanTrial` remains the default, literature-pinned one-mode Fröhlich trial. For exploratory finite-mode Gaussian variational calculations, use:
+
+```julia
+problem = frohlich_multi_gaussian_problem(
+    coupling = 3.0,
+    phonon_frequency = 1.0,
+    modes = 2,
+)
+
+result = solve(problem; temperatures = [0.0, 0.5], frequencies = [0.0, 1.0])
+
+multi_gaussian_v(result.zero_temperature)
+multi_gaussian_w(result.zero_temperature)
 ```
 
-Using `addunits!(holstein_polaron)` will then add the specific Holstien polaron units (energy in terms of the electron hopping energy instead of phonon energy as for the Frohlich model) which can then be transformed into other SI units using Unitful.
+Parameters are ordered as `w1, delta1, w2, delta2, ...`, with `v_i = w_i + delta_i`. For `modes = 1`, the finite-mode kernels reduce to the current Feynman formulas and are tested against the one-mode implementation. For more than one fictitious mode, this is a Martin/Frost-style finite-mode extension: useful for variational exploration, but not yet as extensively literature-pinned as the one-mode Fröhlich kernels.
 
-## General electron-phonon matrices and k-space integration
+### General Profile Gaussian Trials
 
-TBC
+For functional Gaussian trial-action work, use `ProfileGaussianTrial`:
 
-## Saving and loading polaron data
+```julia
+problem = frohlich_profile_gaussian_problem(
+    coupling = 1.0,
+    basis_frequencies = [0.5, 1.0, 2.0, 4.0],
+    matsubara_terms = 512,
+)
 
-The `Frohlich` and `Holstein` polaron types can be saved as `.jld` files and loaded back into Julia.
-For example:
-
-```
-julia> save_frohlich_polaron(MAPIe_polaron, "MAPIe_polaron")
-Saving polaron data to MAPIe_polaron.jld ...
-... Polaron data saved.
-```
-
-```
-julia> MAPIe_polaron = load_frohlich_polaron("MAPIe_polaron.jld")
-Loading polaron data from MAPIe_polaron.jld ...
-... Polaron loaded.
------------------------------------------------------------------------
-                         Polaron Information:                          
------------------------------------------------------------------------
-Phonon frequencies             | ωeff = 2.25 | ω = 2.25
-Fröhlich coupling              | αeff = 2.39394 | α = 2.39394
-Number of spatial dimensions   | d = 3
-Small α→0 energy               | Fs = -2.46469
-Large α→∞ energy               | Fl = -3.43751
-Small α→0 fictitious mass      | Ms = 0.542264
-Large α→∞ fictitious mass      | Ml = 0.0666023
-Small α→0 polaron radius       | Rs = 1.67917
-Large α→∞ polaron radius       | Rl = 9.00108
-Large α→∞ FC peak freq.        | ΩFC = 0.810764
------------------------------------------------------------------------
-                     Zero Temperature Information:                     
------------------------------------------------------------------------
-Variational parameter          | v0 = 3.30877
-Variational parameter          | w0 = 2.66327
-Energy                         | E0 = -5.56947
-Electron energy                | A0 = -2.17859
-Interaction energy             | B0 = 5.78198
-Trial energy                   | C0 = 1.96608
-Fictitious spring constant     | κ0 = 3.855
-Fictitious mass                | M0 = 0.543495
-Fictitious mass (asymptotic)   | M0a = 1.24237
-Reduced mass                   | M0r = 0.35212
-Polaron radius                 | R0 = 0.817278
------------------------------------------------------------------------
-                    Finite Temperature Information:                    
------------------------------------------------------------------------
-Temperatures                   | T = 300
-Reduced thermodynamic          | β = 0.159975
-Variational parameter          | v = 19.8612
-Variational parameter          | w = 16.9599
-Free energy                    | F = -8.59191
-Electron energy                | A = -14.5096
-Interaction energy             | B = 16.5498
-Trial energy                   | C = 6.55175
-Fictitious spring constant     | κ = 106.831
-Fictitious mass                | M = 0.371408
-Fictitious mass (asymptotic)   | Ma = 1.17107
-Reduced mass                   | Mr = 0.270822
-Polaron radius                 | R = 0.0722548
------------------------------------------------------------------------
-                      DC Mobility Information:                         
------------------------------------------------------------------------
-Finite temperature mobility    | μ = 0.487357
-FHIP low-temp. mobility        | μFHIP = 2.93118
-Devreese low-temp. mobility    | μD = 0.703373
-Kadanoff low-temp. mobility    | μK = 0.703373
-Hellwarth mobility             | μH = 1.09655
-Hellwarth mobility (b=0)       | μH0 = 1.09824
-Kadanoff relaxation time       | τ = 0.964611
------------------------------------------------------------------------
-                  Frequency Response Information:                      
------------------------------------------------------------------------
-Electric field frequency       | Ω = 0
-Memory function                | χ = Inf+0.0im
-Complex impedance              | z = 0.0+Inf*im
-Complex conductivity           | σ = 0.0+0.0im
------------------------------------------------------------------------
+result = solve(problem; temperatures = [0.0, 0.5], frequencies = [0.0, 1.0])
 ```
 
-To do the same for a Holstein polaron use `save_holstein_polaron` and `load_holstein_polaron`.
+The optimized parameters are amplitudes in a positive profile
 
-Further details in the
-[documentation](https://Frost-group.github.io/PolaronMobility.jl/).
-
-## Research outputs
-
-The central output of this model are temperature-dependent polaron mobilities: 
-
-![MAPI Polaron mobility, plotted vs experimental data](mobility-calculated-experimental.png)
-
-From the variational solution, you have characterised the polarons in your
-system. 
-This gives access to the effective mass renormalisations (phonon drag), polaron
-binding energies, effective electron-phonon coupling parameters, etc.
-
-## Community guidelines
-
-Contributions to the code (extending that which is calculated), or additional
-physical systems / examples, are very welcome. 
-
-If you have questions about the software, scientific questions, or find errors,
-please create a [GitHub issue](https://github.com/Frost-group/PolaronMobility.jl/issues). 
-
-## Reference
-
-If you find this package (or snippets, such as the entered and tested
-free-energy expressions) useful for your work, please cite the paper 
-[Frost2017PRB](https://doi.org/10.1103/PhysRevB.96.195202). 
-
+```math
+\Gamma(\omega) = \sum_i \frac{a_i\nu_i^2}{\omega^2+\nu_i^2}.
 ```
-@article{Frost2017,
-  doi = {10.1103/physrevb.96.195202},
-  url = {https://doi.org/10.1103/physrevb.96.195202},
-  year  = {2017},
-  month = {nov},
-  publisher = {American Physical Society ({APS})},
-  volume = {96},
-  number = {19},
-  author = {Jarvist Moore Frost},
-  title = {Calculating polaron mobility in halide perovskites},
-  journal = {Physical Review B}
+
+This is the main Adamowski/Gerlach/Leschke-style general Gaussian functional entry point. The one-mode Feynman trial remains the most thoroughly literature-pinned production path.
+
+The profile family contains Feynman's trial exactly. If the one-mode Feynman solution has parameters `v,w`, then
+
+```math
+\Gamma_F(\omega) = \frac{v^2-w^2}{\omega^2+w^2}
+```
+
+is represented by `basis_frequencies = [w]` and `a1 = (v^2-w^2)/w^2`. The test suite checks that this embedding reproduces the Feynman displacement kernel, entropy correction, interaction, and total objective. General profile calculations should improve energies only modestly unless the basis has been carefully validated.
+
+### Experimental Nonlocal Gaussian Kernels
+
+For general functional experiments inspired by nonlocal Gaussian trial-action approaches, the package also exposes a finite-basis kernel scaffold:
+
+```julia
+problem = frohlich_nonlocal_gaussian_problem(
+    coupling = 1.0,
+    basis_frequencies = [1.0, 2.0, 4.0],
+    regularization = 1e-3,
+)
+
+result = solve(
+    problem;
+    temperatures = [0.0, 0.5],
+    frequencies = [0.0, 1.0],
+)
+```
+
+The optimized parameters are amplitudes `a1, a2, ...` in a positive nonlocal memory-kernel basis. This path is explicitly experimental: the interaction and response use the generic Gaussian mean-square-displacement kernel, while the entropy contribution is a configurable quadratic regularizer rather than the profile-functional log-determinant action. A lower nonlocal pseudo-objective is not evidence of a better variational upper bound; use `ProfileGaussianTrial` for energy comparisons.
+
+## Holstein, Peierls, And Composite Lattice Models
+
+The lattice implementation follows the same public solve pipeline as the continuum Fröhlich implementation, but the underlying theory is different. The lattice trial is a continuous-time Markov chain (CTMC) with variational nearest-neighbor hopping rate `κ`. The free-energy side uses a Feynman-Jensen/relative-entropy CTMC bridge objective. The transport side uses the optimized `κ` in a first-return current-blip kernel dressed by exact Holstein and/or Peierls phonon sidebands.
+
+```julia
+problem = holstein_poisson_problem(
+    hopping = 1.0,
+    phonon_frequency = 1.0,
+    coupling = 1.5,
+    dimension = 1,
+)
+
+result = solve(problem; temperatures = [0.25, 0.5, 1.0], frequencies = [0.0, 1.0])
+
+rate = result.solutions[1].rate
+einstein = result.mobilities[1].mobility_einstein
+projected_mobility = result.mobilities[1].mobility
+mobility_factor = result.mobilities[1].mobility_factor
+complex_mobility = result.responses[2, 1].mobility
+```
+
+`solve_holstein(...)` is the convenience wrapper.
+
+### CTMC Trial And General Dimension Kernels
+
+For a \(d\)-dimensional hypercubic lattice, the CTMC propagator factorizes as
+
+```math
+P_{\mathbf r}^{(d)}(t)
+=
+e^{-2d\kappa t}
+\prod_{\mu=1}^{d}
+I_{r_\mu}(2\kappa t).
+```
+
+The return probability is
+
+```math
+P_0^{(d)}(t)
+=
+e^{-2d\kappa t} I_0(2\kappa t)^d.
+```
+
+For numerical work the package uses scaled modified Bessel functions, `ive(n, x) = exp(-x) I_n(x)`, so the return factor is evaluated as
+
+```math
+P_0^{(d)}(t)
+=
+\operatorname{ive}_0(2\kappa t)^d.
+```
+
+The nearest-neighbor first-return kernel used for lattice transport is
+
+```math
+\widehat f_{a\to0}^{(d)}(s)
+=
+\frac{G_a^{(d)}(s)}{G_0^{(d)}(s)}.
+```
+
+Equivalently, using the lattice resolvent identity,
+
+```math
+\widehat f_{a\to0}^{(d)}(s)
+=
+\frac{
+s+2d\kappa-\frac{1}{G_0^{(d)}(s)}
+}{
+2d\kappa
+},
+```
+
+with
+
+```math
+G_0^{(d)}(s)
+=
+\int_0^\infty
+e^{-st}\operatorname{ive}_0(2\kappa t)^d\,dt.
+```
+
+For \(d=1\), this reduces to the closed form
+
+```math
+\widehat f_{1\to0}^{(1)}(s)
+=
+\frac{s+2\kappa-\sqrt{s(s+4\kappa)}}{2\kappa}.
+```
+
+For \(d=2\), one may also use the square-lattice elliptic-integral form
+
+```math
+G_0^{(2)}(s)
+=
+\frac{2}{\pi(s+4\kappa)}
+K\!\left[\left(\frac{4\kappa}{s+4\kappa}\right)^2\right].
+```
+
+For \(d=3\), the cubic-lattice Green's function is reduced to a single
+finite-interval integral over the same square-lattice kernel,
+
+```math
+G_0^{(3)}(s)
+=
+\frac{1}{\pi}
+\int_0^\pi
+G_0^{(2)}\!\left(s+2\kappa(1-\cos q)\right)\,dq.
+```
+
+The package uses these `d = 2, 3` reductions directly. So higher-dimensional
+Holstein and Peierls calculations do not evaluate the retarded Green's
+function by repeated `0..∞` oscillatory quadrature unless a user goes beyond
+the standard hypercubic `d = 1, 2, 3` kernels.
+
+### Holstein Free Energy
+
+The Holstein influence is a retarded site-occupation self-interaction. The zero-temperature CTMC variational energy in general dimension is
+
+```math
+E_H^{(d)}(\kappa)
+=
+-2d\kappa
++
+2d\kappa\log\frac{\kappa}{J}
+-
+g^2
+\int_0^\infty
+e^{-\omega_H t}
+\operatorname{ive}_0(2\kappa t)^d
+\,dt.
+```
+
+At finite \(\beta\), the package uses the corresponding periodic CTMC bridge form,
+
+```math
+F_H(\kappa,\beta)
+=
+-\frac{g^2}{2}
+\int_0^\beta
+D_\beta(u;\omega_H)
+\frac{
+P_0^{(d)}(u)P_0^{(d)}(\beta-u)
+}{
+P_0^{(d)}(\beta)
 }
+\,du,
 ```
 
-These codes use the `Optim.jl` optimisation library to do the essential calculation of the Feynman variational theory. 
-[![DOI](http://joss.theoj.org/papers/10.21105/joss.00615/status.svg)](https://doi.org/10.21105/joss.00615)
+plus the CTMC free energy and hopping relative-entropy terms.
 
+This bridge form is the finite-temperature lattice analogue of the \(T=0\) return-probability average. It samples the full equilibrium electron path space under the CTMC trial, rather than forcing the path into closed blips.
+
+### Peierls Free Energy
+
+The reduced Peierls Hamiltonian is
+
+```math
+H_P =
+-J\sum_{\langle ij\rangle} B_{ij}
++ \omega_P\sum_b a_b^\dagger a_b
++ g_P\sum_b B_b(a_b+a_b^\dagger),
+\qquad
+B_{ij}=c_i^\dagger c_j+c_j^\dagger c_i .
+```
+
+The Peierls influence is a retarded bond-order self-interaction. The general-`d` bond correlator is
+
+```math
+C_B^{(d)}(t)
+=
+2d
+\left[
+\operatorname{ive}_0(2\kappa t)
++
+\operatorname{ive}_1(2\kappa t)
+\right]
+\operatorname{ive}_0(2\kappa t)^{d-1}.
+```
+
+The zero-temperature Peierls CTMC energy is
+
+```math
+E_P^{(d)}(\kappa)
+=
+-2d\kappa
++
+2d\kappa\log\frac{\kappa}{J}
+-
+g_P^2
+\int_0^\infty
+e^{-\omega_Pt}
+C_B^{(d)}(t)
+\,dt.
+```
+
+At finite \(\beta\), the package uses the corresponding periodic bond-order bridge. In one dimension this is equivalent to the bridge expression in terms of \(q_0,q_1\):
+
+```math
+F_P(\kappa,\beta)=
+-\frac{g_P^2}{2}
+\int_0^\beta
+D_\beta(u;\omega_P)
+2d
+\frac{q_0(u)q_0(\beta-u)+q_1(u)q_1(\beta-u)}
+{q_0(\beta)}
+\,du .
+```
+
+### Holstein-Peierls Free Energy
+
+Compatible lattice models can be combined on one Poisson/CTMC path space. For independent site and bond phonons, the influence functionals add:
+
+```math
+E_{HP}^{(d)}(\kappa)
+=
+-2d\kappa
++
+2d\kappa\log\frac{\kappa}{J}
+-
+g_H^2
+\int_0^\infty e^{-\omega_Ht}
+\operatorname{ive}_0(2\kappa t)^d\,dt
+-
+g_P^2
+\int_0^\infty e^{-\omega_Pt}
+C_B^{(d)}(t)\,dt.
+```
+
+Setting `coupling = 0` for one component recovers the other component.
+
+### Lattice Mobility And Frequency Response
+
+Lattice transport is computed from the CTMC first-return kernel and exact sideband weights. In reduced units, the DC mobility has the form
+
+```math
+\mu_{\rm dc}^{(d)}(T)
+=
+\beta\kappa_\star
+\operatorname{Re}
+\sum_m
+w_m(T)
+\widehat f_{a\to0}^{(d)}
+\left(\epsilon-i\nu_m\right).
+```
+
+Here:
+
+- `κ_star` is the optimized CTMC hopping rate.
+- `w_m(T), ν_m` are Holstein, Peierls, or Holstein-Peierls sideband weights and frequencies.
+- `epsilon` is a small positive broadening used to evaluate the retarded kernel.
+- for finite temperature, `mobility_factor = μ / μ_E`, with `μ_E = βκ_star`,
+  stores the dimensionless projected transport factor.
+
+At finite temperature, the package reports reduced per-carrier response as
+
+```math
+\mu(\Omega)=\sigma(\Omega)=\beta\kappa_\star K(\Omega).
+```
+
+At zero temperature, the DC mobility still diverges, but the finite-frequency
+optical response is reported in the reduced current-current normalization
+
+```math
+\mu(\Omega)=\sigma(\Omega)=K(\Omega), \qquad \Omega \neq 0,\; T=0,
+```
+
+so the response remains finite and no artificial `NaN` values appear in the
+Holstein or Peierls optical spectra.
+
+This response is not a continuum FHIP formula and it is not the older lattice
+"memory-function" wording that appeared in earlier iterations of the package.
+It is a lattice CTMC first-return sideband ansatz. The analogy to FHIP is only
+organizational: an optimized trial dynamics supplies the effective motion,
+while the current blip or current vertex is dressed by the appropriate exact
+Holstein cloud and/or Peierls vertex factor.
+
+### Holstein Sidebands
+
+For Holstein coupling, a current blip changes the equilibrium displacement of the two local oscillators involved in a hop. The exact real-time cloud factor is
+
+```math
+C_H(t)
+=
+\exp[-S_H(2N_H+1)]
+\exp[
+S_H(N_H+1)e^{i\omega_Ht}
++
+S_HN_He^{-i\omega_Ht}
+],
+```
+
+where
+
+```math
+S_H=2\frac{g_H^2}{\omega_H^2},
+\qquad
+N_H=\frac{1}{e^{\beta\omega_H}-1}.
+```
+
+At \(T=0\), this reduces to the Franck-Condon series
+
+```math
+C_H(t)
+=
+e^{-S_H}
+\sum_{\ell=0}^{\infty}
+\frac{S_H^\ell}{\ell!}
+e^{i\ell\omega_Ht}.
+```
+
+At finite temperature, the sideband integer is the difference of two Poisson variables with means \(S_H(N_H+1)\) and \(S_HN_H\).
+
+### Peierls Sidebands
+
+For linear Peierls coupling, the phonon coordinate appears directly in the current/hopping vertex. The normalized Peierls vertex factor is
+
+```math
+\mathcal C_P(t)
+=
+\frac{
+J^2
++
+g_P^2(N_P+1)e^{-i\omega_Pt}
++
+g_P^2N_Pe^{i\omega_Pt}
+}{
+J^2+g_P^2(2N_P+1)
+},
+```
+
+with
+
+```math
+N_P=\frac{1}{e^{\beta\omega_P}-1}.
+```
+
+Thus Peierls coupling produces a zero-phonon current channel and phonon-assisted channels at \(\pm\omega_P\), rather than an exponentiated Franck-Condon ladder at leading vertex level.
+
+### Holstein-Peierls Sidebands
+
+For independent site and bond phonons, the transport cloud is the product
+
+```math
+C_{HP}(t)=C_H(t)\mathcal C_P(t).
+```
+
+The sideband list is therefore the convolution of the Holstein Franck-Condon sidebands with the Peierls vertex sidebands.
+
+For transport-focused studies, the package also provides dedicated guide-style
+sweeps:
+
+```julia
+rows = holstein_peierls_transport_sweep(
+    problem;
+    temperatures = 0.05:0.05:0.5,
+    frequencies = [0.0, 0.25, 0.5],
+    kappa_source = :zero_temperature,
+)
+```
+
+These helpers reuse one frozen `T = 0` optimized rate by default, cache
+repeated first-return evaluations over reused frequency shifts, and return flat
+rows containing `mobility`, `mobility_einstein`, `mobility_factor`,
+`conductivity_real`, `conductivity_imag`, and sideband normalization
+diagnostics.
+
+### Lattice Examples
+
+For rubrene Holstein parameters from Ordejón Table II:
+
+```julia
+rubrene_h = rubrene_holstein_material(lattice_constant_angstrom = 7.2)
+problem_h = material_to_problem(rubrene_h)
+lambda_holstein(rubrene_h)
+result_h = solve(problem_h; temperatures = [300.0], frequencies = [0.0, 10.0])
+unitful_h = material_units(result_h)
+unitful_h.mobility[1]
+```
+
+Peierls support is a standalone bond-coupled lattice model:
+
+```julia
+problem = peierls_poisson_problem(
+    hopping = 1.0,
+    phonon_frequency = 0.8,
+    coupling = 0.35,
+    dimension = 1,
+)
+
+result = solve(problem; temperatures = [0.5, 1.0], frequencies = [0.0, 0.5])
+rate = result.solutions[1].rate
+```
+
+For rubrene Peierls parameters from Ordejón Table II:
+
+```julia
+rubrene_p = rubrene_peierls_material(lattice_constant_angstrom = 7.2)
+problem_p = material_to_problem(rubrene_p)
+lambda_peierls(rubrene_p)
+result_p = solve(problem_p; temperatures = [300.0], frequencies = [0.0, 10.0])
+unitful_p = material_units(result_p)
+unitful_p.mobility[1]
+```
+
+This maps `J = 134.0 meV`, `E_P = 21.9 meV`, and `ω_P = 117.9 cm^-1` to `coupling = sqrt(E_P/(hν_P))`.
+
+Compatible lattice models can be combined on one CTMC path space:
+
+```julia
+holstein = holstein_poisson_problem(hopping = 1.0, phonon_frequency = 1.0, coupling = 0.4)
+peierls = peierls_poisson_problem(hopping = 1.0, phonon_frequency = 0.8, coupling = 0.35)
+
+problem = VariationalProblem(
+    combine_models(holstein.model, peierls.model),
+    PoissonTrial(bare_hopping = 1.0),
+)
+result = solve(problem; temperatures = [1.0], frequencies = [0.0, 0.5])
+```
+
+For rubrene, `rubrene_holstein_peierls_problem(...)` builds both materials, converts them to a shared Holstein phonon reference frequency, combines the models, and uses one `PoissonTrial`.
+
+```julia
+problem_hp = rubrene_holstein_peierls_problem(lattice_constant_angstrom = 7.2)
+result_hp = solve(problem_hp; temperatures = [300.0], frequencies = [0.0, 10.0])
+unitful_hp = material_units(result_hp)
+unitful_hp.mobility[1]
+```
+
+Composing incompatible path spaces, such as Fröhlich Gaussian plus Holstein Poisson, throws `ArgumentError`.
+
+## Limiting Regimes
+
+The examples and tests include coded checks for simple limits:
+
+- Fröhlich weak coupling has `E ≈ -α`, while strong coupling drives `w -> ω` and `v ∼ 4α²/(9π)`.
+- Fröhlich high-temperature Hellwarth mobility decreases as thermal phonon occupation grows; adiabaticity is interpreted through the reduced phonon scale.
+- Holstein zero coupling returns `κ = J`; weak coupling gives the bare-rate interaction correction; stronger coupling suppresses `κ` and approaches a localized shift `-g²/ω0` plus exponentially narrowed transport.
+- Holstein high temperature broadens the finite-temperature sideband distribution and modifies the CTMC-projected mobility through the \(\beta\kappa_\star\) prefactor and thermal sideband weights.
+- Peierls zero coupling recovers the bare Poisson walk or the other composite component; weak Peierls corrections scale as `-g_P²`.
+- Peierls antiadiabatic phonons produce short bond memory, while adiabatic phonons produce long-lived bond modulation and dynamic-disorder-like behavior.
+- Holstein-Peierls sidebands are a convolution of the Holstein Franck-Condon ladder and the Peierls current-vertex channels.
+
+## Theory And Literature Guide
+
+The Fröhlich implementation follows the historical path-integral arc: Fröhlich's continuum Hamiltonian, Feynman's all-coupling Gaussian variational solution, Schultz's early self-energy/mass/mobility comparisons, Osaka's finite-temperature free energy, FHIP mobility, Devreese optical absorption and memory-function work, Hellwarth and Biaggio's multimode effective-frequency treatment, Frost's 2017 first-principles halide-perovskite workflow, and Martin and Frost's 2022 multimode extension.
+
+The general Gaussian profile trial follows the broader functional-integral viewpoint associated with Adamowski, Gerlach, and Leschke. In the current package this is implemented as a finite positive profile basis with an analytic rational-kernel displacement decomposition.
+
+The Holstein and Peierls implementations follow the lattice-polaron worldline tradition of Holstein, De Raedt, Lagendijk, Kornilovitch, and collaborators. In this package, the lattice free energy is approximated by lightweight CTMC bridge variational kernels, while lattice mobility and optical response are approximated by CTMC first-return kernels dressed by exact Holstein clouds and/or Peierls current-vertex sidebands. This is a compact deterministic alternative to continuous-time quantum Monte Carlo, not a replacement for full numerically exact lattice-polaron simulation.
+
+## Optimizer Options
+
+`OptimizerOptions` contains only generic numerical controls:
+
+```julia
+options = OptimizerOptions(
+    lower = [1e-8, 0.0],
+    upper = [60.0, 60.0],
+    initial_parameters = [2.8, 0.3],
+    multistart = true,
+    warm_start = true,
+    adaptive_bounds = true,
+    quadrature_rtol = 1e-5,
+)
+```
+
+Trial-specific defaults live on trial constructors such as `GaussianFeynmanTrial` and `PoissonTrial`.
+
+## Continuation Sweeps
+
+Continuation helpers run forward and backward warm-started branches and select the lower-free-energy row:
+
+```julia
+continued_frohlich_coupling_sweep(0.5:0.5:5.0; temperature = 1.0)
+continued_holstein_adiabaticity_sweep([0.5, 1.0, 2.0]; coupling = 1.5, temperature = 0.5)
+```
+
+Rows are flat `NamedTuple`s intended for validation tables, CSV export, or plotting.
+
+Frequency sweeps use the same convention, but optimize once per temperature and then evaluate the requested response grid:
+
+```julia
+rows = frohlich_frequency_sweep(
+    0.0:0.25:4.0;
+    coupling = 3.0,
+    temperatures = [0.5],
+)
+
+rows_h = holstein_frequency_sweep(
+    0.0:0.25:4.0;
+    coupling = 1.5,
+    temperatures = [0.5],
+)
+
+rows_p = peierls_frequency_sweep(
+    0.0:0.25:4.0;
+    coupling = 0.5,
+    temperatures = [0.5],
+)
+```
+
+Full solve results can be flattened explicitly:
+
+```julia
+solution_rows = solution_table(result)
+mobility_rows = mobility_table(result)
+response_rows = response_table(result)
+
+write_sweep_csv("response.csv", response_rows)
+```
+
+Plot helpers are optional. Install and load `Plots.jl` to activate the package extension:
+
+```julia
+using Plots
+
+plot_frequency_sweep(response_rows)
+plot_response_components(response_rows)
+plot_coupling_sweep(continued_frohlich_coupling_sweep(0.5:0.5:5.0; temperature = 1.0))
+```
+
+The core package does not depend on a plotting backend; without `Plots.jl`, the `plot_*` helpers throw a clear error.
+
+## Examples
+
+Executable demos live in `examples/`:
+
+- `frohlich_basic.jl`: one-mode Fröhlich solve, kernels, mobility, response, and tables.
+- `frohlich_trials.jl`: Feynman, multi-Gaussian, profile Gaussian, and nonlocal Gaussian trials.
+- `material_workflows.jl`: single-mode and multimode materials, units, and all material-derived trial choices.
+- `holstein_basic.jl`: Holstein Poisson CTMC solve, return probabilities, mobility, and response.
+- `peierls_basic.jl`: Peierls Poisson solve plus Holstein+Peierls composition.
+- `full_lattice_free_energy.jl`: full periodic Holstein/Peierls free-energy kernels and bridge correlators.
+- `lattice_mobility_response.jl`: CTMC first-return sideband mobility response for Holstein, Peierls, and composites.
+- `holstein_peierls_mobility_comparison.jl`: frequency-by-frequency Holstein, Peierls, and composite mobility-factor comparison.
+- `model_limits.jl`: coded weak/strong/high-temperature/adiabaticity sanity checks.
+- `sweeps_tables_plots.jl`: continuation sweeps, frequency sweeps, CSV output, and optional plots.
+
+## Installation And Tests
+
+From the package directory:
+
+```julia
+using Pkg
+Pkg.activate(".")
+Pkg.instantiate()
+Pkg.test()
+```
+
+The test suite checks literature regressions, API shape, optimizer behavior, sweep shape, exported docstrings, and README examples.
+
+## Adding A Model
+
+To add a new model/trial pair:
+
+1. Define `struct MyModel <: AbstractPolaronModel`.
+2. Define `struct MyTrial <: AbstractTrialProcess`.
+3. Implement `parameter_names`, `initial_parameters`, and `parameter_bounds`.
+4. Implement `free_energy`, `entropy_cost`, and `interaction_free_energy`.
+5. Implement internal hooks `solution_result`, `mobility_result`, and `response_result`.
+6. Add a `solve(problem::VariationalProblem{MyModel,MyTrial}; temperatures, frequencies, options)` method that calls the shared grid solver.

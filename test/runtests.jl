@@ -1,22 +1,20 @@
-push!(LOAD_PATH, "../src/") # load module from local directory
-
 using PolaronMobility
-using Printf # used for some stdout
-using Unitful
-using QuadGK # one-dimensional numerical integration in Julia using adaptive Gauss-Kronrod quadrature
-using Optim # Julia package stuffed full of magic, does auto-differentation & etc. etc.
-
+using QuadGK
 using Test
+using Unitful
 
 @testset "PolaronMobility" begin
-
-    include("FrohlichAlpha.jl") # Simple test of Frohlich alpha vs. literature values
-    include("FeynmanAthermal.jl") # Athermal Feynman tests
-    include("HellwarthEffectiveFrequency.jl") # Test Hellwarth et al. 1999 PRB 'B' multiple branch reduction scheme
-    include("FrostPolaronMobility2017.jl") # Reproduce values published in Frost 2017 PRB 
-    include("MultipleBranches.jl") # Test explicit Oct 2019:-> explicit phonon branches
-    include("MultiplePhonons.jl") # Test 2021 work on multiple phonon modes
+    include("api.jl")
+    include("kernels.jl")
+    include("lattice_kernels.jl")
+    include("variational_solver.jl")
+    include("mobility.jl")
+    include("response.jl")
+    include("materials_units.jl")
+    include("sweeps.jl")
+    include("holstein.jl")
+    include("peierls.jl")
+    include("full_lattice_free_energy.jl")
+    include("lattice_transport.jl")
+    include("docs_smoke.jl")
 end
-
-println("\nThat's me! If I finished without interupting, all tests have passed.")
-

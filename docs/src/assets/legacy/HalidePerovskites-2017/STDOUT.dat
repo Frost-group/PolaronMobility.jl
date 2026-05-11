@@ -1,0 +1,1693 @@
+Calculating polaron mobility for MAPI-electron ...
+Polaron mobility input parameters: ε_Inf=4.500000 ε_S=24.100000 freq=2.25e+12 α=2.393991 
+Derived params in SI: ω =1.41372e+13 mb=1.09313e-31 
+T: 10.000000 β: 7.2e+21 βred: 11 ħω  = 9.3 meV	
+ VariationalParams v= 3.07 w= 2.34	 M=0.716234 k=3.921295	
+ Schultz: rf= 1.08285 (int units) = 5.49553e-09 m [SI]
+ Polaron Free Energy: A= -1.599002 B= 2.663270 C= 0.901463 F= -1.965731	 = -18.291625 meV
+	μ(FHIP)= 82.700533 m^2/Vs 	= 827005.33 cm^2/Vs
+	μ(Kadanoff)= 595.349233 m^2/Vs 	= 5953492.33 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.000020 
+	exp(Bred): 48936.754853 exp(-Bred): 0.000020 exp(Bred)-1: 48935.754853
+	μ(Kadanoff [Eqn. 25]) = 595.349233 m^2/Vs 	 = 5953492.33 cm^2/Vs
+	Gamma0 = 1.43447e+09 rad/s = 2.28303e+08 /s Tau=1/Gamma0 = 4.38014e-09 = 4380.138662 ps
+	μ(Hellwarth1999)= 82.363766 m^2/Vs 	= 823637.66 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 82.363766 m^2/Vs 	= 823637.66 cm^2/Vs
+	Error due to b=0; 0.000000
+
+T: 20.000000 β: 3.6e+21 βred: 5.4 ħω  = 9.3 meV	
+ VariationalParams v= 3.05 w= 2.19	 M=0.935773 k=4.499159	
+ Schultz: rf= 1.00852 (int units) = 5.11828e-09 m [SI]
+ Polaron Free Energy: A= -2.082654 B= 2.799734 C= 0.971774 F= -1.688854	 = -15.715208 meV
+	μ(FHIP)= 0.671492 m^2/Vs 	= 6714.92 cm^2/Vs
+	μ(Kadanoff)= 2.416987 m^2/Vs 	= 24169.87 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.004541 
+	exp(Bred): 221.216534 exp(-Bred): 0.004520 exp(Bred)-1: 220.216534
+	μ(Kadanoff [Eqn. 25]) = 2.416987 m^2/Vs 	 = 24169.87 cm^2/Vs
+	Gamma0 = 3.13265e+11 rad/s = 4.98576e+10 /s Tau=1/Gamma0 = 2.00571e-11 = 20.057113 ps
+	μ(Hellwarth1999)= 0.688152 m^2/Vs 	= 6881.52 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.688160 m^2/Vs 	= 6881.60 cm^2/Vs
+	Error due to b=0; 0.000011
+
+T: 30.000000 β: 2.4e+21 βred: 3.6 ħω  = 9.3 meV	
+ VariationalParams v= 3.39 w= 2.37	 M=1.042056 k=5.858540	
+ Schultz: rf= 0.931413 (int units) = 4.72697e-09 m [SI]
+ Polaron Free Energy: A= -2.528094 B= 2.988255 C= 1.084139 F= -1.544301	 = -14.370105 meV
+	μ(FHIP)= 0.153836 m^2/Vs 	= 1538.36 cm^2/Vs
+	μ(Kadanoff)= 0.369148 m^2/Vs 	= 3691.48 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.028108 
+	exp(Bred): 36.577307 exp(-Bred): 0.027339 exp(Bred)-1: 35.577307
+	μ(Kadanoff [Eqn. 25]) = 0.369148 m^2/Vs 	 = 3691.48 cm^2/Vs
+	Gamma0 = 1.94434e+12 rad/s = 3.09451e+11 /s Tau=1/Gamma0 = 3.23153e-12 = 3.231526 ps
+	μ(Hellwarth1999)= 0.157196 m^2/Vs 	= 1571.96 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.157220 m^2/Vs 	= 1572.20 cm^2/Vs
+	Error due to b=0; 0.000154
+
+T: 40.000000 β: 1.8e+21 βred: 2.7 ħω  = 9.3 meV	
+ VariationalParams v= 3.88 w= 2.71	 M=1.041099 k=7.665762	
+ Schultz: rf= 0.870963 (int units) = 4.42019e-09 m [SI]
+ Polaron Free Energy: A= -2.922069 B= 3.203326 C= 1.199709 F= -1.480966	 = -13.780762 meV
+	μ(FHIP)= 0.080272 m^2/Vs 	= 802.72 cm^2/Vs
+	μ(Kadanoff)= 0.144467 m^2/Vs 	= 1444.67 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.072081 
+	exp(Bred): 14.873350 exp(-Bred): 0.067234 exp(Bred)-1: 13.873350
+	μ(Kadanoff [Eqn. 25]) = 0.144467 m^2/Vs 	 = 1444.67 cm^2/Vs
+	Gamma0 = 4.97059e+12 rad/s = 7.91093e+11 /s Tau=1/Gamma0 = 1.26407e-12 = 1.264073 ps
+	μ(Hellwarth1999)= 0.078190 m^2/Vs 	= 781.90 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.078221 m^2/Vs 	= 782.21 cm^2/Vs
+	Error due to b=0; 0.000392
+
+T: 50.000000 β: 1.4e+21 βred: 2.2 ħω  = 9.3 meV	
+ VariationalParams v= 4.43 w= 3.14	 M=0.990316 k=9.783129	
+ Schultz: rf= 0.824543 (int units) = 4.1846e-09 m [SI]
+ Polaron Free Energy: A= -3.271374 B= 3.425495 C= 1.309368 F= -1.463488	 = -13.618125 meV
+	μ(FHIP)= 0.058046 m^2/Vs 	= 580.46 cm^2/Vs
+	μ(Kadanoff)= 0.083572 m^2/Vs 	= 835.72 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.130409 
+	exp(Bred): 8.668162 exp(-Bred): 0.115365 exp(Bred)-1: 7.668162
+	μ(Kadanoff [Eqn. 25]) = 0.083572 m^2/Vs 	 = 835.72 cm^2/Vs
+	Gamma0 = 8.8116e+12 rad/s = 1.40241e+12 /s Tau=1/Gamma0 = 7.13058e-13 = 0.713058 ps
+	μ(Hellwarth1999)= 0.052369 m^2/Vs 	= 523.69 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.052401 m^2/Vs 	= 524.01 cm^2/Vs
+	Error due to b=0; 0.000602
+
+T: 60.000000 β: 1.2e+21 βred: 1.8 ħω  = 9.3 meV	
+ VariationalParams v= 5.00 w= 3.60	 M=0.933171 k=12.074694	
+ Schultz: rf= 0.788232 (int units) = 4.00032e-09 m [SI]
+ Polaron Free Energy: A= -3.580961 B= 3.645592 C= 1.408813 F= -1.473443	 = -13.710757 meV
+	μ(FHIP)= 0.048938 m^2/Vs 	= 489.38 cm^2/Vs
+	μ(Kadanoff)= 0.058716 m^2/Vs 	= 587.16 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.198101 
+	exp(Bred): 6.047918 exp(-Bred): 0.165346 exp(Bred)-1: 5.047918
+	μ(Kadanoff [Eqn. 25]) = 0.058716 m^2/Vs 	 = 587.16 cm^2/Vs
+	Gamma0 = 1.29126e+13 rad/s = 2.0551e+12 /s Tau=1/Gamma0 = 4.86594e-13 = 0.486594 ps
+	μ(Hellwarth1999)= 0.040443 m^2/Vs 	= 404.43 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.040475 m^2/Vs 	= 404.75 cm^2/Vs
+	Error due to b=0; 0.000800
+
+T: 70.000000 β: 1e+21 βred: 1.5 ħω  = 9.3 meV	
+ VariationalParams v= 5.60 w= 4.09	 M=0.872218 k=14.592758	
+ Schultz: rf= 0.75848 (int units) = 3.84933e-09 m [SI]
+ Polaron Free Energy: A= -3.861636 B= 3.859821 C= 1.503220 F= -1.501405	 = -13.970950 meV
+	μ(FHIP)= 0.044922 m^2/Vs 	= 449.22 cm^2/Vs
+	μ(Kadanoff)= 0.046198 m^2/Vs 	= 461.98 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.271976 
+	exp(Bred): 4.676790 exp(-Bred): 0.213822 exp(Bred)-1: 3.676790
+	μ(Kadanoff [Eqn. 25]) = 0.046198 m^2/Vs 	 = 461.98 cm^2/Vs
+	Gamma0 = 1.69458e+13 rad/s = 2.69701e+12 /s Tau=1/Gamma0 = 3.7078e-13 = 0.370780 ps
+	μ(Hellwarth1999)= 0.033782 m^2/Vs 	= 337.82 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.033814 m^2/Vs 	= 338.14 cm^2/Vs
+	Error due to b=0; 0.000944
+
+T: 80.000000 β: 9.1e+20 βred: 1.3 ħω  = 9.3 meV	
+ VariationalParams v= 6.20 w= 4.60	 M=0.816075 k=17.283687	
+ Schultz: rf= 0.733647 (int units) = 3.7233e-09 m [SI]
+ Polaron Free Energy: A= -4.116248 B= 4.066797 C= 1.591748 F= -1.542297	 = -14.351460 meV
+	μ(FHIP)= 0.043252 m^2/Vs 	= 432.52 cm^2/Vs
+	μ(Kadanoff)= 0.038920 m^2/Vs 	= 389.20 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.350067 
+	exp(Bred): 3.856598 exp(-Bred): 0.259296 exp(Bred)-1: 2.856598
+	μ(Kadanoff [Eqn. 25]) = 0.038920 m^2/Vs 	 = 389.20 cm^2/Vs
+	Gamma0 = 2.07363e+13 rad/s = 3.30028e+12 /s Tau=1/Gamma0 = 3.03005e-13 = 0.303005 ps
+	μ(Hellwarth1999)= 0.029578 m^2/Vs 	= 295.78 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.029609 m^2/Vs 	= 296.09 cm^2/Vs
+	Error due to b=0; 0.001058
+
+T: 90.000000 β: 8e+20 βred: 1.2 ħω  = 9.3 meV	
+ VariationalParams v= 6.81 w= 5.13	 M=0.766126 k=20.140793	
+ Schultz: rf= 0.712372 (int units) = 3.61533e-09 m [SI]
+ Polaron Free Energy: A= -4.348966 B= 4.266375 C= 1.675789 F= -1.593198	 = -14.825105 meV
+	μ(FHIP)= 0.042842 m^2/Vs 	= 428.42 cm^2/Vs
+	μ(Kadanoff)= 0.034268 m^2/Vs 	= 342.68 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.431130 
+	exp(Bred): 3.319484 exp(-Bred): 0.301252 exp(Bred)-1: 2.319484
+	μ(Kadanoff [Eqn. 25]) = 0.034268 m^2/Vs 	 = 342.68 cm^2/Vs
+	Gamma0 = 2.42173e+13 rad/s = 3.8543e+12 /s Tau=1/Gamma0 = 2.5945e-13 = 0.259450 ps
+	μ(Hellwarth1999)= 0.026687 m^2/Vs 	= 266.87 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.026717 m^2/Vs 	= 267.17 cm^2/Vs
+	Error due to b=0; 0.001149
+
+T: 100.000000 β: 7.2e+20 βred: 1.1 ħω  = 9.3 meV	
+ VariationalParams v= 7.43 w= 5.66	 M=0.722116 k=23.143137	
+ Schultz: rf= 0.693911 (int units) = 3.52164e-09 m [SI]
+ Polaron Free Energy: A= -4.561823 B= 4.458697 C= 1.755440 F= -1.652314	 = -15.375199 meV
+	μ(FHIP)= 0.043186 m^2/Vs 	= 431.86 cm^2/Vs
+	μ(Kadanoff)= 0.031089 m^2/Vs 	= 310.89 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.514357 
+	exp(Bred): 2.944174 exp(-Bred): 0.339654 exp(Bred)-1: 1.944174
+	μ(Kadanoff [Eqn. 25]) = 0.031089 m^2/Vs 	 = 310.89 cm^2/Vs
+	Gamma0 = 2.73759e+13 rad/s = 4.35702e+12 /s Tau=1/Gamma0 = 2.29515e-13 = 0.229515 ps
+	μ(Hellwarth1999)= 0.024574 m^2/Vs 	= 245.74 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.024604 m^2/Vs 	= 246.04 cm^2/Vs
+	Error due to b=0; 0.001223
+
+T: 110.000000 β: 6.6e+20 βred: 0.98 ħω  = 9.3 meV	
+ VariationalParams v= 8.04 w= 6.19	 M=0.684895 k=26.244465	
+ Schultz: rf= 0.677678 (int units) = 3.43925e-09 m [SI]
+ Polaron Free Energy: A= -4.756095 B= 4.644200 C= 1.830372 F= -1.718476	 = -15.990851 meV
+	μ(FHIP)= 0.043969 m^2/Vs 	= 439.69 cm^2/Vs
+	μ(Kadanoff)= 0.028775 m^2/Vs 	= 287.75 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.599201 
+	exp(Bred): 2.668889 exp(-Bred): 0.374688 exp(Bred)-1: 1.668889
+	μ(Kadanoff [Eqn. 25]) = 0.028775 m^2/Vs 	 = 287.75 cm^2/Vs
+	Gamma0 = 3.0231e+13 rad/s = 4.81142e+12 /s Tau=1/Gamma0 = 2.07839e-13 = 0.207839 ps
+	μ(Hellwarth1999)= 0.022949 m^2/Vs 	= 229.49 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.022979 m^2/Vs 	= 229.79 cm^2/Vs
+	Error due to b=0; 0.001300
+
+T: 120.000000 β: 6e+20 βred: 0.9 ħω  = 9.3 meV	
+ VariationalParams v= 8.62 w= 6.70	 M=0.654697 k=29.395663	
+ Schultz: rf= 0.6632 (int units) = 3.36577e-09 m [SI]
+ Polaron Free Energy: A= -4.932959 B= 4.823398 C= 1.900437 F= -1.790876	 = -16.664552 meV
+	μ(FHIP)= 0.044994 m^2/Vs 	= 449.94 cm^2/Vs
+	μ(Kadanoff)= 0.026992 m^2/Vs 	= 269.92 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.685283 
+	exp(Bred): 2.459251 exp(-Bred): 0.406628 exp(Bred)-1: 1.459251
+	μ(Kadanoff [Eqn. 25]) = 0.026992 m^2/Vs 	 = 269.92 cm^2/Vs
+	Gamma0 = 3.28159e+13 rad/s = 5.22281e+12 /s Tau=1/Gamma0 = 1.91468e-13 = 0.191468 ps
+	μ(Hellwarth1999)= 0.021647 m^2/Vs 	= 216.47 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.021677 m^2/Vs 	= 216.77 cm^2/Vs
+	Error due to b=0; 0.001395
+
+T: 130.000000 β: 5.6e+20 βred: 0.83 ħω  = 9.3 meV	
+ VariationalParams v= 9.31 w= 7.32	 M=0.616523 k=33.029917	
+ Schultz: rf= 0.650095 (int units) = 3.29927e-09 m [SI]
+ Polaron Free Energy: A= -5.103236 B= 4.996610 C= 1.975556 F= -1.868930	 = -17.390860 meV
+	μ(FHIP)= 0.046649 m^2/Vs 	= 466.49 cm^2/Vs
+	μ(Kadanoff)= 0.025832 m^2/Vs 	= 258.32 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.772332 
+	exp(Bred): 2.294781 exp(-Bred): 0.435772 exp(Bred)-1: 1.294781
+	μ(Kadanoff [Eqn. 25]) = 0.025832 m^2/Vs 	 = 258.32 cm^2/Vs
+	Gamma0 = 3.50989e+13 rad/s = 5.58616e+12 /s Tau=1/Gamma0 = 1.79014e-13 = 0.179014 ps
+	μ(Hellwarth1999)= 0.020630 m^2/Vs 	= 206.30 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.020658 m^2/Vs 	= 206.58 cm^2/Vs
+	Error due to b=0; 0.001351
+
+T: 140.000000 β: 5.2e+20 βred: 0.77 ħω  = 9.3 meV	
+ VariationalParams v= 9.99 w= 7.93	 M=0.584687 k=36.804750	
+ Schultz: rf= 0.638006 (int units) = 3.23791e-09 m [SI]
+ Polaron Free Energy: A= -5.261176 B= 5.164632 C= 2.048736 F= -1.952193	 = -18.165644 meV
+	μ(FHIP)= 0.048403 m^2/Vs 	= 484.03 cm^2/Vs
+	μ(Kadanoff)= 0.024889 m^2/Vs 	= 248.89 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.860149 
+	exp(Bred): 2.162589 exp(-Bred): 0.462409 exp(Bred)-1: 1.162589
+	μ(Kadanoff [Eqn. 25]) = 0.024889 m^2/Vs 	 = 248.89 cm^2/Vs
+	Gamma0 = 3.71611e+13 rad/s = 5.91437e+12 /s Tau=1/Gamma0 = 1.6908e-13 = 0.169080 ps
+	μ(Hellwarth1999)= 0.019769 m^2/Vs 	= 197.69 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.019795 m^2/Vs 	= 197.95 cm^2/Vs
+	Error due to b=0; 0.001319
+
+T: 150.000000 β: 4.8e+20 βred: 0.72 ħω  = 9.3 meV	
+ VariationalParams v= 10.53 w= 8.41	 M=0.567171 k=40.152110	
+ Schultz: rf= 0.627291 (int units) = 3.18354e-09 m [SI]
+ Polaron Free Energy: A= -5.394984 B= 5.327484 C= 2.107820 F= -2.040321	 = -18.985696 meV
+	μ(FHIP)= 0.049855 m^2/Vs 	= 498.55 cm^2/Vs
+	μ(Kadanoff)= 0.023926 m^2/Vs 	= 239.26 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.948588 
+	exp(Bred): 2.054198 exp(-Bred): 0.486808 exp(Bred)-1: 1.054198
+	μ(Kadanoff [Eqn. 25]) = 0.023926 m^2/Vs 	 = 239.26 cm^2/Vs
+	Gamma0 = 3.90882e+13 rad/s = 6.22108e+12 /s Tau=1/Gamma0 = 1.60744e-13 = 0.160744 ps
+	μ(Hellwarth1999)= 0.018990 m^2/Vs 	= 189.90 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.019017 m^2/Vs 	= 190.17 cm^2/Vs
+	Error due to b=0; 0.001433
+
+T: 160.000000 β: 4.5e+20 βred: 0.67 ħω  = 9.3 meV	
+ VariationalParams v= 11.15 w= 8.97	 M=0.545711 k=43.883053	
+ Schultz: rf= 0.617324 (int units) = 3.13295e-09 m [SI]
+ Polaron Free Energy: A= -5.523278 B= 5.485721 C= 2.170583 F= -2.133026	 = -19.848341 meV
+	μ(FHIP)= 0.051647 m^2/Vs 	= 516.47 cm^2/Vs
+	μ(Kadanoff)= 0.023238 m^2/Vs 	= 232.38 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.037536 
+	exp(Bred): 1.963822 exp(-Bred): 0.509211 exp(Bred)-1: 0.963822
+	μ(Kadanoff [Eqn. 25]) = 0.023238 m^2/Vs 	 = 232.38 cm^2/Vs
+	Gamma0 = 4.08055e+13 rad/s = 6.4944e+12 /s Tau=1/Gamma0 = 1.53979e-13 = 0.153979 ps
+	μ(Hellwarth1999)= 0.018338 m^2/Vs 	= 183.38 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.018365 m^2/Vs 	= 183.65 cm^2/Vs
+	Error due to b=0; 0.001463
+
+T: 170.000000 β: 4.3e+20 βred: 0.64 ħω  = 9.3 meV	
+ VariationalParams v= 11.60 w= 9.35	 M=0.537579 k=47.045809	
+ Schultz: rf= 0.608155 (int units) = 3.08642e-09 m [SI]
+ Polaron Free Energy: A= -5.629570 B= 5.639684 C= 2.219956 F= -2.230070	 = -20.751367 meV
+	μ(FHIP)= 0.053020 m^2/Vs 	= 530.20 cm^2/Vs
+	μ(Kadanoff)= 0.022452 m^2/Vs 	= 224.52 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.126904 
+	exp(Bred): 1.887387 exp(-Bred): 0.529833 exp(Bred)-1: 0.887387
+	μ(Kadanoff [Eqn. 25]) = 0.022452 m^2/Vs 	 = 224.52 cm^2/Vs
+	Gamma0 = 4.24567e+13 rad/s = 6.75719e+12 /s Tau=1/Gamma0 = 1.4799e-13 = 0.147990 ps
+	μ(Hellwarth1999)= 0.017718 m^2/Vs 	= 177.18 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.017747 m^2/Vs 	= 177.47 cm^2/Vs
+	Error due to b=0; 0.001667
+
+T: 180.000000 β: 4e+20 βred: 0.6 ħω  = 9.3 meV	
+ VariationalParams v= 12.41 w= 10.11	 M=0.506865 k=51.781709	
+ Schultz: rf= 0.599511 (int units) = 3.04255e-09 m [SI]
+ Polaron Free Energy: A= -5.751078 B= 5.789630 C= 2.292709 F= -2.331260	 = -21.692961 meV
+	μ(FHIP)= 0.055552 m^2/Vs 	= 555.52 cm^2/Vs
+	μ(Kadanoff)= 0.022217 m^2/Vs 	= 222.17 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.216626 
+	exp(Bred): 1.821945 exp(-Bred): 0.548864 exp(Bred)-1: 0.821945
+	μ(Kadanoff [Eqn. 25]) = 0.022217 m^2/Vs 	 = 222.17 cm^2/Vs
+	Gamma0 = 4.37799e+13 rad/s = 6.96779e+12 /s Tau=1/Gamma0 = 1.43517e-13 = 0.143517 ps
+	μ(Hellwarth1999)= 0.017262 m^2/Vs 	= 172.62 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.017288 m^2/Vs 	= 172.88 cm^2/Vs
+	Error due to b=0; 0.001483
+
+T: 190.000000 β: 3.8e+20 βred: 0.57 ħω  = 9.3 meV	
+ VariationalParams v= 13.03 w= 10.68	 M=0.490265 k=55.869536	
+ Schultz: rf= 0.591507 (int units) = 3.00193e-09 m [SI]
+ Polaron Free Energy: A= -5.850479 B= 5.935876 C= 2.351014 F= -2.436411	 = -22.671415 meV
+	μ(FHIP)= 0.057581 m^2/Vs 	= 575.81 cm^2/Vs
+	μ(Kadanoff)= 0.021817 m^2/Vs 	= 218.17 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.306647 
+	exp(Bred): 1.765318 exp(-Bred): 0.566470 exp(Bred)-1: 0.765318
+	μ(Kadanoff [Eqn. 25]) = 0.021817 m^2/Vs 	 = 218.17 cm^2/Vs
+	Gamma0 = 4.50802e+13 rad/s = 7.17473e+12 /s Tau=1/Gamma0 = 1.39378e-13 = 0.139378 ps
+	μ(Hellwarth1999)= 0.016807 m^2/Vs 	= 168.07 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.016832 m^2/Vs 	= 168.32 cm^2/Vs
+	Error due to b=0; 0.001495
+
+T: 200.000000 β: 3.6e+20 βred: 0.54 ħω  = 9.3 meV	
+ VariationalParams v= 13.63 w= 11.22	 M=0.476179 k=59.954835	
+ Schultz: rf= 0.584026 (int units) = 2.96396e-09 m [SI]
+ Polaron Free Energy: A= -5.939577 B= 6.078644 C= 2.406302 F= -2.545369	 = -23.685300 meV
+	μ(FHIP)= 0.059598 m^2/Vs 	= 595.98 cm^2/Vs
+	μ(Kadanoff)= 0.021452 m^2/Vs 	= 214.52 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.396922 
+	exp(Bred): 1.715860 exp(-Bred): 0.582798 exp(Bred)-1: 0.715860
+	μ(Kadanoff [Eqn. 25]) = 0.021452 m^2/Vs 	 = 214.52 cm^2/Vs
+	Gamma0 = 4.62843e+13 rad/s = 7.36637e+12 /s Tau=1/Gamma0 = 1.35752e-13 = 0.135752 ps
+	μ(Hellwarth1999)= 0.016390 m^2/Vs 	= 163.90 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.016415 m^2/Vs 	= 164.15 cm^2/Vs
+	Error due to b=0; 0.001524
+
+T: 210.000000 β: 3.4e+20 βred: 0.51 ħω  = 9.3 meV	
+ VariationalParams v= 14.27 w= 11.80	 M=0.461441 k=64.294231	
+ Schultz: rf= 0.576991 (int units) = 2.92826e-09 m [SI]
+ Polaron Free Energy: A= -6.022707 B= 6.218162 C= 2.462540 F= -2.657995	 = -24.733316 meV
+	μ(FHIP)= 0.061755 m^2/Vs 	= 617.55 cm^2/Vs
+	μ(Kadanoff)= 0.021170 m^2/Vs 	= 211.70 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.487416 
+	exp(Bred): 1.672307 exp(-Bred): 0.597976 exp(Bred)-1: 0.672307
+	μ(Kadanoff [Eqn. 25]) = 0.021170 m^2/Vs 	 = 211.70 cm^2/Vs
+	Gamma0 = 4.73746e+13 rad/s = 7.53991e+12 /s Tau=1/Gamma0 = 1.32628e-13 = 0.132628 ps
+	μ(Hellwarth1999)= 0.016017 m^2/Vs 	= 160.17 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.016041 m^2/Vs 	= 160.41 cm^2/Vs
+	Error due to b=0; 0.001520
+
+T: 220.000000 β: 3.3e+20 βred: 0.49 ħω  = 9.3 meV	
+ VariationalParams v= 14.89 w= 12.37	 M=0.448440 k=68.673626	
+ Schultz: rf= 0.570357 (int units) = 2.89459e-09 m [SI]
+ Polaron Free Energy: A= -6.097216 B= 6.354643 C= 2.516737 F= -2.774163	 = -25.814287 meV
+	μ(FHIP)= 0.063911 m^2/Vs 	= 639.11 cm^2/Vs
+	μ(Kadanoff)= 0.020913 m^2/Vs 	= 209.13 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.578100 
+	exp(Bred): 1.633673 exp(-Bred): 0.612117 exp(Bred)-1: 0.633673
+	μ(Kadanoff [Eqn. 25]) = 0.020913 m^2/Vs 	 = 209.13 cm^2/Vs
+	Gamma0 = 4.83864e+13 rad/s = 7.70094e+12 /s Tau=1/Gamma0 = 1.29854e-13 = 0.129854 ps
+	μ(Hellwarth1999)= 0.015672 m^2/Vs 	= 156.72 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.015696 m^2/Vs 	= 156.96 cm^2/Vs
+	Error due to b=0; 0.001525
+
+T: 230.000000 β: 3.1e+20 βred: 0.47 ħω  = 9.3 meV	
+ VariationalParams v= 15.55 w= 12.98	 M=0.434882 k=73.309086	
+ Schultz: rf= 0.564115 (int units) = 2.86291e-09 m [SI]
+ Polaron Free Energy: A= -6.166157 B= 6.488233 C= 2.571681 F= -2.893757	 = -26.927135 meV
+	μ(FHIP)= 0.066192 m^2/Vs 	= 661.92 cm^2/Vs
+	μ(Kadanoff)= 0.020718 m^2/Vs 	= 207.18 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.668949 
+	exp(Bred): 1.599179 exp(-Bred): 0.625321 exp(Bred)-1: 0.599179
+	μ(Kadanoff [Eqn. 25]) = 0.020718 m^2/Vs 	 = 207.18 cm^2/Vs
+	Gamma0 = 4.9304e+13 rad/s = 7.84698e+12 /s Tau=1/Gamma0 = 1.27438e-13 = 0.127438 ps
+	μ(Hellwarth1999)= 0.015360 m^2/Vs 	= 153.60 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.015383 m^2/Vs 	= 153.83 cm^2/Vs
+	Error due to b=0; 0.001501
+
+T: 240.000000 β: 3e+20 βred: 0.45 ħω  = 9.3 meV	
+ VariationalParams v= 16.15 w= 13.53	 M=0.424669 k=77.760768	
+ Schultz: rf= 0.558176 (int units) = 2.83277e-09 m [SI]
+ Polaron Free Energy: A= -6.224617 B= 6.619156 C= 2.622132 F= -3.016670	 = -28.070876 meV
+	μ(FHIP)= 0.068347 m^2/Vs 	= 683.47 cm^2/Vs
+	μ(Kadanoff)= 0.020501 m^2/Vs 	= 205.01 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.759944 
+	exp(Bred): 1.568200 exp(-Bred): 0.637674 exp(Bred)-1: 0.568200
+	μ(Kadanoff [Eqn. 25]) = 0.020501 m^2/Vs 	 = 205.01 cm^2/Vs
+	Gamma0 = 5.01824e+13 rad/s = 7.98678e+12 /s Tau=1/Gamma0 = 1.25207e-13 = 0.125207 ps
+	μ(Hellwarth1999)= 0.015061 m^2/Vs 	= 150.61 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.015084 m^2/Vs 	= 150.84 cm^2/Vs
+	Error due to b=0; 0.001523
+
+T: 250.000000 β: 2.9e+20 βred: 0.43 ħω  = 9.3 meV	
+ VariationalParams v= 16.80 w= 14.13	 M=0.413433 k=82.523098	
+ Schultz: rf= 0.552547 (int units) = 2.80421e-09 m [SI]
+ Polaron Free Energy: A= -6.278934 B= 6.747523 C= 2.674216 F= -3.142805	 = -29.244589 meV
+	μ(FHIP)= 0.070642 m^2/Vs 	= 706.42 cm^2/Vs
+	μ(Kadanoff)= 0.020342 m^2/Vs 	= 203.42 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.851066 
+	exp(Bred): 1.540229 exp(-Bred): 0.649254 exp(Bred)-1: 0.540229
+	μ(Kadanoff [Eqn. 25]) = 0.020342 m^2/Vs 	 = 203.42 cm^2/Vs
+	Gamma0 = 5.09774e+13 rad/s = 8.1133e+12 /s Tau=1/Gamma0 = 1.23254e-13 = 0.123254 ps
+	μ(Hellwarth1999)= 0.014790 m^2/Vs 	= 147.90 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.014812 m^2/Vs 	= 148.12 cm^2/Vs
+	Error due to b=0; 0.001509
+
+T: 260.000000 β: 2.8e+20 βred: 0.42 ħω  = 9.3 meV	
+ VariationalParams v= 17.39 w= 14.67	 M=0.404804 k=87.101201	
+ Schultz: rf= 0.547183 (int units) = 2.77698e-09 m [SI]
+ Polaron Free Energy: A= -6.323591 B= 6.873489 C= 2.722171 F= -3.272069	 = -30.447426 meV
+	μ(FHIP)= 0.072827 m^2/Vs 	= 728.27 cm^2/Vs
+	μ(Kadanoff)= 0.020164 m^2/Vs 	= 201.64 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.942301 
+	exp(Bred): 1.514853 exp(-Bred): 0.660130 exp(Bred)-1: 0.514853
+	μ(Kadanoff [Eqn. 25]) = 0.020164 m^2/Vs 	 = 201.64 cm^2/Vs
+	Gamma0 = 5.17417e+13 rad/s = 8.23494e+12 /s Tau=1/Gamma0 = 1.21434e-13 = 0.121434 ps
+	μ(Hellwarth1999)= 0.014528 m^2/Vs 	= 145.28 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.014550 m^2/Vs 	= 145.50 cm^2/Vs
+	Error due to b=0; 0.001534
+
+T: 270.000000 β: 2.7e+20 βred: 0.4 ħω  = 9.3 meV	
+ VariationalParams v= 17.42 w= 14.64	 M=0.414990 k=88.998263	
+ Schultz: rf= 0.54185 (int units) = 2.74992e-09 m [SI]
+ Polaron Free Energy: A= -6.331809 B= 6.997199 C= 2.738974 F= -3.404365	 = -31.678469 meV
+	μ(FHIP)= 0.073711 m^2/Vs 	= 737.11 cm^2/Vs
+	μ(Kadanoff)= 0.019653 m^2/Vs 	= 196.53 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.033637 
+	exp(Bred): 1.491730 exp(-Bred): 0.670363 exp(Bred)-1: 0.491730
+	μ(Kadanoff [Eqn. 25]) = 0.019653 m^2/Vs 	 = 196.53 cm^2/Vs
+	Gamma0 = 5.27054e+13 rad/s = 8.38833e+12 /s Tau=1/Gamma0 = 1.19213e-13 = 0.119213 ps
+	μ(Hellwarth1999)= 0.014211 m^2/Vs 	= 142.11 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.014240 m^2/Vs 	= 142.40 cm^2/Vs
+	Error due to b=0; 0.001990
+
+T: 280.000000 β: 2.6e+20 βred: 0.39 ħω  = 9.3 meV	
+ VariationalParams v= 18.57 w= 15.76	 M=0.388765 k=96.515480	
+ Schultz: rf= 0.537195 (int units) = 2.72629e-09 m [SI]
+ Polaron Free Energy: A= -6.394697 B= 7.118677 C= 2.815669 F= -3.539650	 = -32.937331 meV
+	μ(FHIP)= 0.077278 m^2/Vs 	= 772.78 cm^2/Vs
+	μ(Kadanoff)= 0.019868 m^2/Vs 	= 198.68 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.125063 
+	exp(Bred): 1.470574 exp(-Bred): 0.680006 exp(Bred)-1: 0.470574
+	μ(Kadanoff [Eqn. 25]) = 0.019868 m^2/Vs 	 = 198.68 cm^2/Vs
+	Gamma0 = 5.3119e+13 rad/s = 8.45414e+12 /s Tau=1/Gamma0 = 1.18285e-13 = 0.118285 ps
+	μ(Hellwarth1999)= 0.014053 m^2/Vs 	= 140.53 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.014075 m^2/Vs 	= 140.75 cm^2/Vs
+	Error due to b=0; 0.001575
+
+T: 290.000000 β: 2.5e+20 βred: 0.37 ħω  = 9.3 meV	
+ VariationalParams v= 19.30 w= 16.44	 M=0.377570 k=102.083878	
+ Schultz: rf= 0.532519 (int units) = 2.70256e-09 m [SI]
+ Polaron Free Energy: A= -6.429420 B= 7.238165 C= 2.869065 F= -3.677810	 = -34.222951 meV
+	μ(FHIP)= 0.079836 m^2/Vs 	= 798.36 cm^2/Vs
+	μ(Kadanoff)= 0.019818 m^2/Vs 	= 198.18 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.216570 
+	exp(Bred): 1.451147 exp(-Bred): 0.689110 exp(Bred)-1: 0.451147
+	μ(Kadanoff [Eqn. 25]) = 0.019818 m^2/Vs 	 = 198.18 cm^2/Vs
+	Gamma0 = 5.36863e+13 rad/s = 8.54444e+12 /s Tau=1/Gamma0 = 1.17035e-13 = 0.117035 ps
+	μ(Hellwarth1999)= 0.013850 m^2/Vs 	= 138.50 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.013871 m^2/Vs 	= 138.71 cm^2/Vs
+	Error due to b=0; 0.001504
+
+T: 300.000000 β: 2.4e+20 βred: 0.36 ħω  = 9.3 meV	
+ VariationalParams v= 19.92 w= 17.02	 M=0.369798 k=107.161240	
+ Schultz: rf= 0.528091 (int units) = 2.68009e-09 m [SI]
+ Polaron Free Energy: A= -6.451986 B= 7.355620 C= 2.915154 F= -3.818788	 = -35.534785 meV
+	μ(FHIP)= 0.082183 m^2/Vs 	= 821.83 cm^2/Vs
+	μ(Kadanoff)= 0.019721 m^2/Vs 	= 197.21 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.308150 
+	exp(Bred): 1.433247 exp(-Bred): 0.697716 exp(Bred)-1: 0.433247
+	μ(Kadanoff [Eqn. 25]) = 0.019721 m^2/Vs 	 = 197.21 cm^2/Vs
+	Gamma0 = 5.42577e+13 rad/s = 8.63538e+12 /s Tau=1/Gamma0 = 1.15803e-13 = 0.115803 ps
+	μ(Hellwarth1999)= 0.013648 m^2/Vs 	= 136.48 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.013669 m^2/Vs 	= 136.69 cm^2/Vs
+	Error due to b=0; 0.001502
+
+T: 310.000000 β: 2.3e+20 βred: 0.35 ħω  = 9.3 meV	
+ VariationalParams v= 20.51 w= 17.56	 M=0.363551 k=112.106506	
+ Schultz: rf= 0.523799 (int units) = 2.65831e-09 m [SI]
+ Polaron Free Energy: A= -6.467465 B= 7.471249 C= 2.958731 F= -3.962516	 = -36.872207 meV
+	μ(FHIP)= 0.084449 m^2/Vs 	= 844.49 cm^2/Vs
+	μ(Kadanoff)= 0.019611 m^2/Vs 	= 196.11 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.399796 
+	exp(Bred): 1.416702 exp(-Bred): 0.705865 exp(Bred)-1: 0.416702
+	μ(Kadanoff [Eqn. 25]) = 0.019611 m^2/Vs 	 = 196.11 cm^2/Vs
+	Gamma0 = 5.48116e+13 rad/s = 8.72353e+12 /s Tau=1/Gamma0 = 1.14632e-13 = 0.114632 ps
+	μ(Hellwarth1999)= 0.013452 m^2/Vs 	= 134.52 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.013472 m^2/Vs 	= 134.72 cm^2/Vs
+	Error due to b=0; 0.001524
+
+T: 320.000000 β: 2.3e+20 βred: 0.34 ħω  = 9.3 meV	
+ VariationalParams v= 21.15 w= 18.16	 M=0.356234 k=117.453842	
+ Schultz: rf= 0.519671 (int units) = 2.63736e-09 m [SI]
+ Polaron Free Energy: A= -6.481006 B= 7.585110 C= 3.004826 F= -4.108929	 = -38.234621 meV
+	μ(FHIP)= 0.086851 m^2/Vs 	= 868.51 cm^2/Vs
+	μ(Kadanoff)= 0.019538 m^2/Vs 	= 195.38 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.491501 
+	exp(Bred): 1.401364 exp(-Bred): 0.713590 exp(Bred)-1: 0.401364
+	μ(Kadanoff [Eqn. 25]) = 0.019538 m^2/Vs 	 = 195.38 cm^2/Vs
+	Gamma0 = 5.53114e+13 rad/s = 8.80309e+12 /s Tau=1/Gamma0 = 1.13596e-13 = 0.113596 ps
+	μ(Hellwarth1999)= 0.013271 m^2/Vs 	= 132.71 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.013291 m^2/Vs 	= 132.91 cm^2/Vs
+	Error due to b=0; 0.001510
+
+T: 330.000000 β: 2.2e+20 βred: 0.33 ħω  = 9.3 meV	
+ VariationalParams v= 21.72 w= 18.68	 M=0.350811 k=122.477177	
+ Schultz: rf= 0.515718 (int units) = 2.6173e-09 m [SI]
+ Polaron Free Energy: A= -6.485589 B= 7.697231 C= 3.046327 F= -4.257968	 = -39.621463 meV
+	μ(FHIP)= 0.089127 m^2/Vs 	= 891.27 cm^2/Vs
+	μ(Kadanoff)= 0.019443 m^2/Vs 	= 194.43 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.583261 
+	exp(Bred): 1.387108 exp(-Bred): 0.720925 exp(Bred)-1: 0.387108
+	μ(Kadanoff [Eqn. 25]) = 0.019443 m^2/Vs 	 = 194.43 cm^2/Vs
+	Gamma0 = 5.58067e+13 rad/s = 8.88192e+12 /s Tau=1/Gamma0 = 1.12588e-13 = 0.112588 ps
+	μ(Hellwarth1999)= 0.013092 m^2/Vs 	= 130.92 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.013112 m^2/Vs 	= 131.12 cm^2/Vs
+	Error due to b=0; 0.001536
+
+T: 340.000000 β: 2.1e+20 βred: 0.32 ħω  = 9.3 meV	
+ VariationalParams v= 22.44 w= 19.37	 M=0.342432 k=128.431398	
+ Schultz: rf= 0.511926 (int units) = 2.59805e-09 m [SI]
+ Polaron Free Energy: A= -6.493092 B= 7.807739 C= 3.094927 F= -4.409574	 = -41.032192 meV
+	μ(FHIP)= 0.091719 m^2/Vs 	= 917.19 cm^2/Vs
+	μ(Kadanoff)= 0.019420 m^2/Vs 	= 194.20 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.675070 
+	exp(Bred): 1.373822 exp(-Bred): 0.727896 exp(Bred)-1: 0.373822
+	μ(Kadanoff [Eqn. 25]) = 0.019420 m^2/Vs 	 = 194.20 cm^2/Vs
+	Gamma0 = 5.62216e+13 rad/s = 8.94794e+12 /s Tau=1/Gamma0 = 1.11758e-13 = 0.111758 ps
+	μ(Hellwarth1999)= 0.012934 m^2/Vs 	= 129.34 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.012953 m^2/Vs 	= 129.53 cm^2/Vs
+	Error due to b=0; 0.001479
+
+T: 350.000000 β: 2.1e+20 βred: 0.31 ħω  = 9.3 meV	
+ VariationalParams v= 22.96 w= 19.85	 M=0.338493 k=133.350894	
+ Schultz: rf= 0.508233 (int units) = 2.57931e-09 m [SI]
+ Polaron Free Energy: A= -6.486143 B= 7.916678 C= 3.133158 F= -4.563692	 = -42.466303 meV
+	μ(FHIP)= 0.093928 m^2/Vs 	= 939.28 cm^2/Vs
+	μ(Kadanoff)= 0.019319 m^2/Vs 	= 193.19 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.766925 
+	exp(Bred): 1.361412 exp(-Bred): 0.734531 exp(Bred)-1: 0.361412
+	μ(Kadanoff [Eqn. 25]) = 0.019319 m^2/Vs 	 = 193.19 cm^2/Vs
+	Gamma0 = 5.66802e+13 rad/s = 9.02094e+12 /s Tau=1/Gamma0 = 1.10853e-13 = 0.110853 ps
+	μ(Hellwarth1999)= 0.012767 m^2/Vs 	= 127.67 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.012787 m^2/Vs 	= 127.87 cm^2/Vs
+	Error due to b=0; 0.001526
+
+T: 360.000000 β: 2e+20 βred: 0.3 ħω  = 9.3 meV	
+ VariationalParams v= 23.63 w= 20.47	 M=0.331935 k=139.154932	
+ Schultz: rf= 0.504694 (int units) = 2.56135e-09 m [SI]
+ Polaron Free Energy: A= -6.481653 B= 8.024124 C= 3.177799 F= -4.720270	 = -43.923300 meV
+	μ(FHIP)= 0.096429 m^2/Vs 	= 964.29 cm^2/Vs
+	μ(Kadanoff)= 0.019283 m^2/Vs 	= 192.83 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.858822 
+	exp(Bred): 1.349794 exp(-Bred): 0.740854 exp(Bred)-1: 0.349794
+	μ(Kadanoff [Eqn. 25]) = 0.019283 m^2/Vs 	 = 192.83 cm^2/Vs
+	Gamma0 = 5.70674e+13 rad/s = 9.08256e+12 /s Tau=1/Gamma0 = 1.10101e-13 = 0.110101 ps
+	μ(Hellwarth1999)= 0.012618 m^2/Vs 	= 126.18 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.012637 m^2/Vs 	= 126.37 cm^2/Vs
+	Error due to b=0; 0.001499
+
+T: 370.000000 β: 2e+20 βred: 0.29 ħω  = 9.3 meV	
+ VariationalParams v= 24.28 w= 21.08	 M=0.326023 k=144.939367	
+ Schultz: rf= 0.501274 (int units) = 2.54399e-09 m [SI]
+ Polaron Free Energy: A= -6.471857 B= 8.130127 C= 3.220988 F= -4.879257	 = -45.402716 meV
+	μ(FHIP)= 0.098904 m^2/Vs 	= 989.04 cm^2/Vs
+	μ(Kadanoff)= 0.019243 m^2/Vs 	= 192.43 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.950756 
+	exp(Bred): 1.338896 exp(-Bred): 0.746884 exp(Bred)-1: 0.338896
+	μ(Kadanoff [Eqn. 25]) = 0.019243 m^2/Vs 	 = 192.43 cm^2/Vs
+	Gamma0 = 5.74397e+13 rad/s = 9.14181e+12 /s Tau=1/Gamma0 = 1.09388e-13 = 0.109388 ps
+	μ(Hellwarth1999)= 0.012474 m^2/Vs 	= 124.74 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.012493 m^2/Vs 	= 124.93 cm^2/Vs
+	Error due to b=0; 0.001482
+
+T: 380.000000 β: 1.9e+20 βred: 0.28 ħω  = 9.3 meV	
+ VariationalParams v= 24.83 w= 21.59	 M=0.322121 k=150.202257	
+ Schultz: rf= 0.497954 (int units) = 2.52715e-09 m [SI]
+ Polaron Free Energy: A= -6.452927 B= 8.234731 C= 3.258802 F= -5.040606	 = -46.904107 meV
+	μ(FHIP)= 0.101201 m^2/Vs 	= 1012.01 cm^2/Vs
+	μ(Kadanoff)= 0.019172 m^2/Vs 	= 191.72 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 3.042726 
+	exp(Bred): 1.328653 exp(-Bred): 0.752642 exp(Bred)-1: 0.328653
+	μ(Kadanoff [Eqn. 25]) = 0.019172 m^2/Vs 	 = 191.72 cm^2/Vs
+	Gamma0 = 5.78236e+13 rad/s = 9.20291e+12 /s Tau=1/Gamma0 = 1.08661e-13 = 0.108661 ps
+	μ(Hellwarth1999)= 0.012329 m^2/Vs 	= 123.29 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.012348 m^2/Vs 	= 123.48 cm^2/Vs
+	Error due to b=0; 0.001512
+
+T: 390.000000 β: 1.9e+20 βred: 0.28 ħω  = 9.3 meV	
+ VariationalParams v= 25.52 w= 22.25	 M=0.315998 k=156.373563	
+ Schultz: rf= 0.494763 (int units) = 2.51095e-09 m [SI]
+ Polaron Free Energy: A= -6.436504 B= 8.338016 C= 3.302758 F= -5.204270	 = -48.427039 meV
+	μ(FHIP)= 0.103769 m^2/Vs 	= 1037.69 cm^2/Vs
+	μ(Kadanoff)= 0.019154 m^2/Vs 	= 191.54 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 3.134729 
+	exp(Bred): 1.319007 exp(-Bred): 0.758146 exp(Bred)-1: 0.319007
+	μ(Kadanoff [Eqn. 25]) = 0.019154 m^2/Vs 	 = 191.54 cm^2/Vs
+	Gamma0 = 5.81457e+13 rad/s = 9.25418e+12 /s Tau=1/Gamma0 = 1.08059e-13 = 0.108059 ps
+	μ(Hellwarth1999)= 0.012198 m^2/Vs 	= 121.98 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.012216 m^2/Vs 	= 122.16 cm^2/Vs
+	Error due to b=0; 0.001475
+
+T: 400.000000 β: 1.8e+20 βred: 0.27 ħω  = 9.3 meV	
+ VariationalParams v= 26.09 w= 22.77	 M=0.312108 k=161.887773	
+ Schultz: rf= 0.491652 (int units) = 2.49516e-09 m [SI]
+ Polaron Free Energy: A= -6.410349 B= 8.440006 C= 3.340547 F= -5.370205	 = -49.971105 meV
+	μ(FHIP)= 0.106122 m^2/Vs 	= 1061.22 cm^2/Vs
+	μ(Kadanoff)= 0.019099 m^2/Vs 	= 190.99 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 3.226761 
+	exp(Bred): 1.309908 exp(-Bred): 0.763412 exp(Bred)-1: 0.309908
+	μ(Kadanoff [Eqn. 25]) = 0.019099 m^2/Vs 	 = 190.99 cm^2/Vs
+	Gamma0 = 5.84875e+13 rad/s = 9.30858e+12 /s Tau=1/Gamma0 = 1.07428e-13 = 0.107428 ps
+	μ(Hellwarth1999)= 0.012065 m^2/Vs 	= 120.65 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.012083 m^2/Vs 	= 120.83 cm^2/Vs
+	Error due to b=0; 0.001494
+
+OK - everything calculated and stored. Now plotting..
+Calculating polaron mobility for MAPI-hole ...
+Polaron mobility input parameters: ε_Inf=4.500000 ε_S=24.100000 freq=2.25e+12 α=2.676564 
+Derived params in SI: ω =1.41372e+13 mb=1.36641e-31 
+T: 10.000000 β: 7.2e+21 βred: 11 ħω  = 9.3 meV	
+ VariationalParams v= 3.13 w= 2.29	 M=0.865907 k=4.544195	
+ Schultz: rf= 1.01633 (int units) = 5.15795e-09 m [SI]
+ Polaron Free Energy: A= -1.756783 B= 3.014105 C= 1.024667 F= -2.281990	 = -21.234487 meV
+	μ(FHIP)= 54.497041 m^2/Vs 	= 544970.41 cm^2/Vs
+	μ(Kadanoff)= 392.316348 m^2/Vs 	= 3923163.48 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.000020 
+	exp(Bred): 48936.754853 exp(-Bred): 0.000020 exp(Bred)-1: 48935.754853
+	μ(Kadanoff [Eqn. 25]) = 392.316348 m^2/Vs 	 = 3923163.48 cm^2/Vs
+	Gamma0 = 1.60178e+09 rad/s = 2.54932e+08 /s Tau=1/Gamma0 = 3.92262e-09 = 3922.618033 ps
+	μ(Hellwarth1999)= 54.790019 m^2/Vs 	= 547900.19 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 54.790019 m^2/Vs 	= 547900.19 cm^2/Vs
+	Error due to b=0; 0.000000
+
+T: 20.000000 β: 3.6e+21 βred: 5.4 ħω  = 9.3 meV	
+ VariationalParams v= 3.14 w= 2.15	 M=1.142668 k=5.264769	
+ Schultz: rf= 0.946149 (int units) = 4.80176e-09 m [SI]
+ Polaron Free Energy: A= -2.260636 B= 3.173675 C= 1.108545 F= -2.021584	 = -18.811344 meV
+	μ(FHIP)= 0.436771 m^2/Vs 	= 4367.71 cm^2/Vs
+	μ(Kadanoff)= 1.572126 m^2/Vs 	= 15721.26 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.004541 
+	exp(Bred): 221.216534 exp(-Bred): 0.004520 exp(Bred)-1: 220.216534
+	μ(Kadanoff [Eqn. 25]) = 1.572126 m^2/Vs 	 = 15721.26 cm^2/Vs
+	Gamma0 = 3.48087e+11 rad/s = 5.53998e+10 /s Tau=1/Gamma0 = 1.80506e-11 = 18.050611 ps
+	μ(Hellwarth1999)= 0.457097 m^2/Vs 	= 4570.97 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.457101 m^2/Vs 	= 4571.01 cm^2/Vs
+	Error due to b=0; 0.000008
+
+T: 30.000000 β: 2.4e+21 βred: 3.6 ħω  = 9.3 meV	
+ VariationalParams v= 3.49 w= 2.31	 M=1.276104 k=6.838838	
+ Schultz: rf= 0.875239 (int units) = 4.44188e-09 m [SI]
+ Polaron Free Energy: A= -2.723461 B= 3.387978 C= 1.234954 F= -1.899471	 = -17.675056 meV
+	μ(FHIP)= 0.099111 m^2/Vs 	= 991.11 cm^2/Vs
+	μ(Kadanoff)= 0.237829 m^2/Vs 	= 2378.29 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.028108 
+	exp(Bred): 36.577307 exp(-Bred): 0.027339 exp(Bred)-1: 35.577307
+	μ(Kadanoff [Eqn. 25]) = 0.237829 m^2/Vs 	 = 2378.29 cm^2/Vs
+	Gamma0 = 2.16607e+12 rad/s = 3.44741e+11 /s Tau=1/Gamma0 = 2.90073e-12 = 2.900728 ps
+	μ(Hellwarth1999)= 0.104312 m^2/Vs 	= 1043.12 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.104324 m^2/Vs 	= 1043.24 cm^2/Vs
+	Error due to b=0; 0.000116
+
+T: 40.000000 β: 1.8e+21 βred: 2.7 ħω  = 9.3 meV	
+ VariationalParams v= 3.99 w= 2.65	 M=1.269839 k=8.921858	
+ Schultz: rf= 0.819395 (int units) = 4.15847e-09 m [SI]
+ Polaron Free Energy: A= -3.132616 B= 3.629384 C= 1.364802 F= -1.861570	 = -17.322376 meV
+	μ(FHIP)= 0.051460 m^2/Vs 	= 514.60 cm^2/Vs
+	μ(Kadanoff)= 0.092613 m^2/Vs 	= 926.13 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.072081 
+	exp(Bred): 14.873350 exp(-Bred): 0.067234 exp(Bred)-1: 13.873350
+	μ(Kadanoff [Eqn. 25]) = 0.092613 m^2/Vs 	 = 926.13 cm^2/Vs
+	Gamma0 = 5.57779e+12 rad/s = 8.87733e+11 /s Tau=1/Gamma0 = 1.12646e-12 = 1.126464 ps
+	μ(Hellwarth1999)= 0.051860 m^2/Vs 	= 518.60 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.051876 m^2/Vs 	= 518.76 cm^2/Vs
+	Error due to b=0; 0.000308
+
+T: 50.000000 β: 1.4e+21 βred: 2.2 ħω  = 9.3 meV	
+ VariationalParams v= 4.56 w= 3.07	 M=1.201532 k=11.340782	
+ Schultz: rf= 0.776484 (int units) = 3.9407e-09 m [SI]
+ Polaron Free Energy: A= -3.494236 B= 3.877511 C= 1.487028 F= -1.870303	 = -17.403644 meV
+	μ(FHIP)= 0.037169 m^2/Vs 	= 371.69 cm^2/Vs
+	μ(Kadanoff)= 0.053515 m^2/Vs 	= 535.15 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.130409 
+	exp(Bred): 8.668162 exp(-Bred): 0.115365 exp(Bred)-1: 7.668162
+	μ(Kadanoff [Eqn. 25]) = 0.053515 m^2/Vs 	 = 535.15 cm^2/Vs
+	Gamma0 = 9.9525e+12 rad/s = 1.58399e+12 /s Tau=1/Gamma0 = 6.31317e-13 = 0.631317 ps
+	μ(Hellwarth1999)= 0.034770 m^2/Vs 	= 347.70 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.034787 m^2/Vs 	= 347.87 cm^2/Vs
+	Error due to b=0; 0.000491
+
+T: 60.000000 β: 1.2e+21 βred: 1.8 ħω  = 9.3 meV	
+ VariationalParams v= 5.14 w= 3.53	 M=1.123422 k=13.972017	
+ Schultz: rf= 0.74277 (int units) = 3.7696e-09 m [SI]
+ Polaron Free Energy: A= -3.815249 B= 4.122888 C= 1.598564 F= -1.906202	 = -17.737693 meV
+	μ(FHIP)= 0.031408 m^2/Vs 	= 314.08 cm^2/Vs
+	μ(Kadanoff)= 0.037684 m^2/Vs 	= 376.84 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.198101 
+	exp(Bred): 6.047918 exp(-Bred): 0.165346 exp(Bred)-1: 5.047918
+	μ(Kadanoff [Eqn. 25]) = 0.037684 m^2/Vs 	 = 376.84 cm^2/Vs
+	Gamma0 = 1.46535e+13 rad/s = 2.33218e+12 /s Tau=1/Gamma0 = 4.28783e-13 = 0.428783 ps
+	μ(Hellwarth1999)= 0.026913 m^2/Vs 	= 269.13 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.026930 m^2/Vs 	= 269.30 cm^2/Vs
+	Error due to b=0; 0.000663
+
+T: 70.000000 β: 1e+21 βred: 1.5 ħω  = 9.3 meV	
+ VariationalParams v= 5.73 w= 4.01	 M=1.047002 k=16.805844	
+ Schultz: rf= 0.715275 (int units) = 3.63006e-09 m [SI]
+ Polaron Free Energy: A= -4.104329 B= 4.361553 C= 1.702186 F= -1.959410	 = -18.232805 meV
+	μ(FHIP)= 0.028880 m^2/Vs 	= 288.80 cm^2/Vs
+	μ(Kadanoff)= 0.029700 m^2/Vs 	= 297.00 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.271976 
+	exp(Bred): 4.676790 exp(-Bred): 0.213822 exp(Bred)-1: 3.676790
+	μ(Kadanoff [Eqn. 25]) = 0.029700 m^2/Vs 	 = 297.00 cm^2/Vs
+	Gamma0 = 1.92866e+13 rad/s = 3.06955e+12 /s Tau=1/Gamma0 = 3.2578e-13 = 0.325780 ps
+	μ(Hellwarth1999)= 0.022535 m^2/Vs 	= 225.35 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.022554 m^2/Vs 	= 225.54 cm^2/Vs
+	Error due to b=0; 0.000814
+
+T: 80.000000 β: 9.1e+20 βred: 1.3 ħω  = 9.3 meV	
+ VariationalParams v= 6.35 w= 4.52	 M=0.974116 k=19.883488	
+ Schultz: rf= 0.692011 (int units) = 3.51199e-09 m [SI]
+ Polaron Free Energy: A= -4.369374 B= 4.592302 C= 1.801770 F= -2.024698	 = -18.840325 meV
+	μ(FHIP)= 0.027911 m^2/Vs 	= 279.11 cm^2/Vs
+	μ(Kadanoff)= 0.025116 m^2/Vs 	= 251.16 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.350067 
+	exp(Bred): 3.856598 exp(-Bred): 0.259296 exp(Bred)-1: 2.856598
+	μ(Kadanoff [Eqn. 25]) = 0.025116 m^2/Vs 	 = 251.16 cm^2/Vs
+	Gamma0 = 2.36487e+13 rad/s = 3.7638e+12 /s Tau=1/Gamma0 = 2.65689e-13 = 0.265689 ps
+	μ(Hellwarth1999)= 0.019784 m^2/Vs 	= 197.84 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.019803 m^2/Vs 	= 198.03 cm^2/Vs
+	Error due to b=0; 0.000924
+
+T: 90.000000 β: 8e+20 βred: 1.2 ħω  = 9.3 meV	
+ VariationalParams v= 6.96 w= 5.04	 M=0.911314 k=23.114706	
+ Schultz: rf= 0.672186 (int units) = 3.41138e-09 m [SI]
+ Polaron Free Energy: A= -4.610530 B= 4.814718 C= 1.894930 F= -2.099118	 = -19.532824 meV
+	μ(FHIP)= 0.027737 m^2/Vs 	= 277.37 cm^2/Vs
+	μ(Kadanoff)= 0.022186 m^2/Vs 	= 221.86 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.431130 
+	exp(Bred): 3.319484 exp(-Bred): 0.301252 exp(Bred)-1: 2.319484
+	μ(Kadanoff [Eqn. 25]) = 0.022186 m^2/Vs 	 = 221.86 cm^2/Vs
+	Gamma0 = 2.76517e+13 rad/s = 4.40091e+12 /s Tau=1/Gamma0 = 2.27226e-13 = 0.227226 ps
+	μ(Hellwarth1999)= 0.017897 m^2/Vs 	= 178.97 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.017916 m^2/Vs 	= 179.16 cm^2/Vs
+	Error due to b=0; 0.001024
+
+T: 100.000000 β: 7.2e+20 βred: 1.1 ħω  = 9.3 meV	
+ VariationalParams v= 7.55 w= 5.53	 M=0.861873 k=26.387851	
+ Schultz: rf= 0.655121 (int units) = 3.32477e-09 m [SI]
+ Polaron Free Energy: A= -4.827866 B= 5.029030 C= 1.979741 F= -2.180904	 = -20.293864 meV
+	μ(FHIP)= 0.027958 m^2/Vs 	= 279.58 cm^2/Vs
+	μ(Kadanoff)= 0.020127 m^2/Vs 	= 201.27 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.514357 
+	exp(Bred): 2.944174 exp(-Bred): 0.339654 exp(Bred)-1: 1.944174
+	μ(Kadanoff [Eqn. 25]) = 0.020127 m^2/Vs 	 = 201.27 cm^2/Vs
+	Gamma0 = 3.129e+13 rad/s = 4.97996e+12 /s Tau=1/Gamma0 = 2.00805e-13 = 0.200805 ps
+	μ(Hellwarth1999)= 0.016509 m^2/Vs 	= 165.09 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.016528 m^2/Vs 	= 165.28 cm^2/Vs
+	Error due to b=0; 0.001148
+
+T: 110.000000 β: 6.6e+20 βred: 0.98 ħω  = 9.3 meV	
+ VariationalParams v= 8.11 w= 6.01	 M=0.822831 k=29.705275	
+ Schultz: rf= 0.640024 (int units) = 3.24816e-09 m [SI]
+ Polaron Free Energy: A= -5.025492 B= 5.235889 C= 2.058536 F= -2.268933	 = -21.112992 meV
+	μ(FHIP)= 0.028415 m^2/Vs 	= 284.15 cm^2/Vs
+	μ(Kadanoff)= 0.018596 m^2/Vs 	= 185.96 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.599201 
+	exp(Bred): 2.668889 exp(-Bred): 0.374688 exp(Bred)-1: 1.668889
+	μ(Kadanoff [Eqn. 25]) = 0.018596 m^2/Vs 	 = 185.96 cm^2/Vs
+	Gamma0 = 3.45909e+13 rad/s = 5.50531e+12 /s Tau=1/Gamma0 = 1.81643e-13 = 0.181643 ps
+	μ(Hellwarth1999)= 0.015433 m^2/Vs 	= 154.33 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.015453 m^2/Vs 	= 154.53 cm^2/Vs
+	Error due to b=0; 0.001294
+
+T: 120.000000 β: 6e+20 βred: 0.9 ħω  = 9.3 meV	
+ VariationalParams v= 8.82 w= 6.64	 M=0.765552 k=33.768665	
+ Schultz: rf= 0.6261 (int units) = 3.17749e-09 m [SI]
+ Polaron Free Energy: A= -5.222441 B= 5.435755 C= 2.149144 F= -2.362458	 = -21.983269 meV
+	μ(FHIP)= 0.029528 m^2/Vs 	= 295.28 cm^2/Vs
+	μ(Kadanoff)= 0.017714 m^2/Vs 	= 177.14 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.685283 
+	exp(Bred): 2.459251 exp(-Bred): 0.406628 exp(Bred)-1: 1.459251
+	μ(Kadanoff [Eqn. 25]) = 0.017714 m^2/Vs 	 = 177.14 cm^2/Vs
+	Gamma0 = 3.74915e+13 rad/s = 5.96696e+12 /s Tau=1/Gamma0 = 1.6759e-13 = 0.167590 ps
+	μ(Hellwarth1999)= 0.014636 m^2/Vs 	= 146.36 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.014655 m^2/Vs 	= 146.55 cm^2/Vs
+	Error due to b=0; 0.001239
+
+T: 130.000000 β: 5.6e+20 βred: 0.83 ħω  = 9.3 meV	
+ VariationalParams v= 9.41 w= 7.15	 M=0.732477 k=37.444398	
+ Schultz: rf= 0.613998 (int units) = 3.11607e-09 m [SI]
+ Polaron Free Energy: A= -5.391045 B= 5.628949 C= 2.223041 F= -2.460945	 = -22.899712 meV
+	μ(FHIP)= 0.030436 m^2/Vs 	= 304.36 cm^2/Vs
+	μ(Kadanoff)= 0.016854 m^2/Vs 	= 168.54 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.772332 
+	exp(Bred): 2.294781 exp(-Bred): 0.435772 exp(Bred)-1: 1.294781
+	μ(Kadanoff [Eqn. 25]) = 0.016854 m^2/Vs 	 = 168.54 cm^2/Vs
+	Gamma0 = 4.01569e+13 rad/s = 6.39117e+12 /s Tau=1/Gamma0 = 1.56466e-13 = 0.156466 ps
+	μ(Hellwarth1999)= 0.013944 m^2/Vs 	= 139.44 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.013963 m^2/Vs 	= 139.63 cm^2/Vs
+	Error due to b=0; 0.001333
+
+T: 140.000000 β: 5.2e+20 βred: 0.77 ħω  = 9.3 meV	
+ VariationalParams v= 10.09 w= 7.76	 M=0.692936 k=41.679517	
+ Schultz: rf= 0.602631 (int units) = 3.05839e-09 m [SI]
+ Polaron Free Energy: A= -5.556735 B= 5.816397 C= 2.304343 F= -2.564005	 = -23.858711 meV
+	μ(FHIP)= 0.031685 m^2/Vs 	= 316.85 cm^2/Vs
+	μ(Kadanoff)= 0.016293 m^2/Vs 	= 162.93 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.860149 
+	exp(Bred): 2.162589 exp(-Bred): 0.462409 exp(Bred)-1: 1.162589
+	μ(Kadanoff [Eqn. 25]) = 0.016293 m^2/Vs 	 = 162.93 cm^2/Vs
+	Gamma0 = 4.25103e+13 rad/s = 6.76572e+12 /s Tau=1/Gamma0 = 1.47804e-13 = 0.147804 ps
+	μ(Hellwarth1999)= 0.013389 m^2/Vs 	= 133.89 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.013407 m^2/Vs 	= 134.07 cm^2/Vs
+	Error due to b=0; 0.001314
+
+T: 150.000000 β: 4.8e+20 βred: 0.72 ħω  = 9.3 meV	
+ VariationalParams v= 10.70 w= 8.29	 M=0.665306 k=45.702903	
+ Schultz: rf= 0.592486 (int units) = 3.0069e-09 m [SI]
+ Polaron Free Energy: A= -5.702000 B= 5.998107 C= 2.375231 F= -2.671338	 = -24.857469 meV
+	μ(FHIP)= 0.032840 m^2/Vs 	= 328.40 cm^2/Vs
+	μ(Kadanoff)= 0.015761 m^2/Vs 	= 157.61 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.948588 
+	exp(Bred): 2.054198 exp(-Bred): 0.486808 exp(Bred)-1: 1.054198
+	μ(Kadanoff [Eqn. 25]) = 0.015761 m^2/Vs 	 = 157.61 cm^2/Vs
+	Gamma0 = 4.46745e+13 rad/s = 7.11017e+12 /s Tau=1/Gamma0 = 1.40644e-13 = 0.140644 ps
+	μ(Hellwarth1999)= 0.012897 m^2/Vs 	= 128.97 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.012915 m^2/Vs 	= 129.15 cm^2/Vs
+	Error due to b=0; 0.001373
+
+T: 160.000000 β: 4.5e+20 βred: 0.67 ħω  = 9.3 meV	
+ VariationalParams v= 11.38 w= 8.90	 M=0.633458 k=50.206870	
+ Schultz: rf= 0.583045 (int units) = 2.95899e-09 m [SI]
+ Polaron Free Energy: A= -5.842512 B= 6.174683 C= 2.450532 F= -2.782703	 = -25.893754 meV
+	μ(FHIP)= 0.034248 m^2/Vs 	= 342.48 cm^2/Vs
+	μ(Kadanoff)= 0.015409 m^2/Vs 	= 154.09 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.037536 
+	exp(Bred): 1.963822 exp(-Bred): 0.509211 exp(Bred)-1: 0.963822
+	μ(Kadanoff [Eqn. 25]) = 0.015409 m^2/Vs 	 = 154.09 cm^2/Vs
+	Gamma0 = 4.65847e+13 rad/s = 7.41419e+12 /s Tau=1/Gamma0 = 1.34877e-13 = 0.134877 ps
+	μ(Hellwarth1999)= 0.012490 m^2/Vs 	= 124.90 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.012507 m^2/Vs 	= 125.07 cm^2/Vs
+	Error due to b=0; 0.001348
+
+T: 170.000000 β: 4.3e+20 βred: 0.64 ħω  = 9.3 meV	
+ VariationalParams v= 11.98 w= 9.44	 M=0.611543 k=54.468930	
+ Schultz: rf= 0.574397 (int units) = 2.9151e-09 m [SI]
+ Polaron Free Energy: A= -5.965636 B= 6.346496 C= 2.517046 F= -2.897906	 = -26.965747 meV
+	μ(FHIP)= 0.035523 m^2/Vs 	= 355.23 cm^2/Vs
+	μ(Kadanoff)= 0.015043 m^2/Vs 	= 150.43 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.126904 
+	exp(Bred): 1.887387 exp(-Bred): 0.529833 exp(Bred)-1: 0.887387
+	μ(Kadanoff [Eqn. 25]) = 0.015043 m^2/Vs 	 = 150.43 cm^2/Vs
+	Gamma0 = 4.83684e+13 rad/s = 7.69807e+12 /s Tau=1/Gamma0 = 1.29903e-13 = 0.129903 ps
+	μ(Hellwarth1999)= 0.012113 m^2/Vs 	= 121.13 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.012130 m^2/Vs 	= 121.30 cm^2/Vs
+	Error due to b=0; 0.001398
+
+T: 180.000000 β: 4e+20 βred: 0.6 ħω  = 9.3 meV	
+ VariationalParams v= 12.64 w= 10.03	 M=0.587443 k=59.109369	
+ Schultz: rf= 0.566324 (int units) = 2.87412e-09 m [SI]
+ Polaron Free Energy: A= -6.083070 B= 6.513853 C= 2.585996 F= -3.016779	 = -28.071884 meV
+	μ(FHIP)= 0.036969 m^2/Vs 	= 369.69 cm^2/Vs
+	μ(Kadanoff)= 0.014785 m^2/Vs 	= 147.85 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.216626 
+	exp(Bred): 1.821945 exp(-Bred): 0.548864 exp(Bred)-1: 0.821945
+	μ(Kadanoff [Eqn. 25]) = 0.014785 m^2/Vs 	 = 147.85 cm^2/Vs
+	Gamma0 = 4.99571e+13 rad/s = 7.95093e+12 /s Tau=1/Gamma0 = 1.25772e-13 = 0.125772 ps
+	μ(Hellwarth1999)= 0.011789 m^2/Vs 	= 117.89 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.011806 m^2/Vs 	= 118.06 cm^2/Vs
+	Error due to b=0; 0.001393
+
+T: 190.000000 β: 3.8e+20 βred: 0.57 ħω  = 9.3 meV	
+ VariationalParams v= 13.23 w= 10.56	 M=0.569777 k=63.565387	
+ Schultz: rf= 0.558822 (int units) = 2.83605e-09 m [SI]
+ Polaron Free Energy: A= -6.186349 B= 6.677095 C= 2.648432 F= -3.139177	 = -29.210836 meV
+	μ(FHIP)= 0.038319 m^2/Vs 	= 383.19 cm^2/Vs
+	μ(Kadanoff)= 0.014519 m^2/Vs 	= 145.19 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.306647 
+	exp(Bred): 1.765318 exp(-Bred): 0.566470 exp(Bred)-1: 0.765318
+	μ(Kadanoff [Eqn. 25]) = 0.014519 m^2/Vs 	 = 145.19 cm^2/Vs
+	Gamma0 = 5.14479e+13 rad/s = 8.18818e+12 /s Tau=1/Gamma0 = 1.22127e-13 = 0.122127 ps
+	μ(Hellwarth1999)= 0.011486 m^2/Vs 	= 114.86 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.011503 m^2/Vs 	= 115.03 cm^2/Vs
+	Error due to b=0; 0.001442
+
+T: 200.000000 β: 3.6e+20 βred: 0.54 ħω  = 9.3 meV	
+ VariationalParams v= 13.83 w= 11.10	 M=0.553107 k=68.156159	
+ Schultz: rf= 0.551782 (int units) = 2.80032e-09 m [SI]
+ Polaron Free Energy: A= -6.281348 B= 6.836483 C= 2.709840 F= -3.264975	 = -30.381414 meV
+	μ(FHIP)= 0.039716 m^2/Vs 	= 397.16 cm^2/Vs
+	μ(Kadanoff)= 0.014296 m^2/Vs 	= 142.96 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.396922 
+	exp(Bred): 1.715860 exp(-Bred): 0.582798 exp(Bred)-1: 0.715860
+	μ(Kadanoff [Eqn. 25]) = 0.014296 m^2/Vs 	 = 142.96 cm^2/Vs
+	Gamma0 = 5.28111e+13 rad/s = 8.40515e+12 /s Tau=1/Gamma0 = 1.18975e-13 = 0.118975 ps
+	μ(Hellwarth1999)= 0.011213 m^2/Vs 	= 112.13 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.011230 m^2/Vs 	= 112.30 cm^2/Vs
+	Error due to b=0; 0.001481
+
+T: 210.000000 β: 3.4e+20 βred: 0.51 ħω  = 9.3 meV	
+ VariationalParams v= 14.49 w= 11.70	 M=0.534524 k=73.136799	
+ Schultz: rf= 0.545147 (int units) = 2.76665e-09 m [SI]
+ Polaron Free Energy: A= -6.371985 B= 6.992249 C= 2.773794 F= -3.394058	 = -31.582563 meV
+	μ(FHIP)= 0.041256 m^2/Vs 	= 412.56 cm^2/Vs
+	μ(Kadanoff)= 0.014143 m^2/Vs 	= 141.43 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.487416 
+	exp(Bred): 1.672307 exp(-Bred): 0.597976 exp(Bred)-1: 0.672307
+	μ(Kadanoff [Eqn. 25]) = 0.014143 m^2/Vs 	 = 141.43 cm^2/Vs
+	Gamma0 = 5.40282e+13 rad/s = 8.59885e+12 /s Tau=1/Gamma0 = 1.16295e-13 = 0.116295 ps
+	μ(Hellwarth1999)= 0.010973 m^2/Vs 	= 109.73 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.010989 m^2/Vs 	= 109.89 cm^2/Vs
+	Error due to b=0; 0.001470
+
+T: 220.000000 β: 3.3e+20 βred: 0.49 ħω  = 9.3 meV	
+ VariationalParams v= 15.10 w= 12.25	 M=0.519785 k=78.000676	
+ Schultz: rf= 0.538903 (int units) = 2.73496e-09 m [SI]
+ Polaron Free Energy: A= -6.451535 B= 7.144635 C= 2.833224 F= -3.526324	 = -32.813329 meV
+	μ(FHIP)= 0.042733 m^2/Vs 	= 427.33 cm^2/Vs
+	μ(Kadanoff)= 0.013983 m^2/Vs 	= 139.83 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.578100 
+	exp(Bred): 1.633673 exp(-Bred): 0.612117 exp(Bred)-1: 0.633673
+	μ(Kadanoff [Eqn. 25]) = 0.013983 m^2/Vs 	 = 139.83 cm^2/Vs
+	Gamma0 = 5.51757e+13 rad/s = 8.78149e+12 /s Tau=1/Gamma0 = 1.13876e-13 = 0.113876 ps
+	μ(Hellwarth1999)= 0.010746 m^2/Vs 	= 107.46 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.010762 m^2/Vs 	= 107.62 cm^2/Vs
+	Error due to b=0; 0.001494
+
+T: 230.000000 β: 3.1e+20 βred: 0.47 ħω  = 9.3 meV	
+ VariationalParams v= 15.73 w= 12.82	 M=0.505070 k=83.073327	
+ Schultz: rf= 0.533005 (int units) = 2.70503e-09 m [SI]
+ Polaron Free Energy: A= -6.524839 B= 7.293820 C= 2.892697 F= -3.661678	 = -34.072835 meV
+	μ(FHIP)= 0.044272 m^2/Vs 	= 442.72 cm^2/Vs
+	μ(Kadanoff)= 0.013857 m^2/Vs 	= 138.57 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.668949 
+	exp(Bred): 1.599179 exp(-Bred): 0.625321 exp(Bred)-1: 0.599179
+	μ(Kadanoff [Eqn. 25]) = 0.013857 m^2/Vs 	 = 138.57 cm^2/Vs
+	Gamma0 = 5.62225e+13 rad/s = 8.94808e+12 /s Tau=1/Gamma0 = 1.11756e-13 = 0.111756 ps
+	μ(Hellwarth1999)= 0.010539 m^2/Vs 	= 105.39 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.010555 m^2/Vs 	= 105.55 cm^2/Vs
+	Error due to b=0; 0.001499
+
+T: 240.000000 β: 3e+20 βred: 0.45 ħω  = 9.3 meV	
+ VariationalParams v= 16.37 w= 13.40	 M=0.491416 k=88.247927	
+ Schultz: rf= 0.52742 (int units) = 2.67669e-09 m [SI]
+ Polaron Free Energy: A= -6.590859 B= 7.439999 C= 2.950894 F= -3.800034	 = -35.360274 meV
+	μ(FHIP)= 0.045830 m^2/Vs 	= 458.30 cm^2/Vs
+	μ(Kadanoff)= 0.013747 m^2/Vs 	= 137.47 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.759944 
+	exp(Bred): 1.568200 exp(-Bred): 0.637674 exp(Bred)-1: 0.568200
+	μ(Kadanoff [Eqn. 25]) = 0.013747 m^2/Vs 	 = 137.47 cm^2/Vs
+	Gamma0 = 5.71909e+13 rad/s = 9.10222e+12 /s Tau=1/Gamma0 = 1.09863e-13 = 0.109863 ps
+	μ(Hellwarth1999)= 0.010347 m^2/Vs 	= 103.47 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.010362 m^2/Vs 	= 103.62 cm^2/Vs
+	Error due to b=0; 0.001504
+
+T: 250.000000 β: 2.9e+20 βred: 0.43 ħω  = 9.3 meV	
+ VariationalParams v= 16.96 w= 13.94	 M=0.480253 k=93.305274	
+ Schultz: rf= 0.522138 (int units) = 2.64988e-09 m [SI]
+ Polaron Free Energy: A= -6.647240 B= 7.583320 C= 3.005232 F= -3.941312	 = -36.674896 meV
+	μ(FHIP)= 0.047339 m^2/Vs 	= 473.39 cm^2/Vs
+	μ(Kadanoff)= 0.013631 m^2/Vs 	= 136.31 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.851066 
+	exp(Bred): 1.540229 exp(-Bred): 0.649254 exp(Bred)-1: 0.540229
+	μ(Kadanoff [Eqn. 25]) = 0.013631 m^2/Vs 	 = 136.31 cm^2/Vs
+	Gamma0 = 5.81104e+13 rad/s = 9.24855e+12 /s Tau=1/Gamma0 = 1.08125e-13 = 0.108125 ps
+	μ(Hellwarth1999)= 0.010164 m^2/Vs 	= 101.64 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.010179 m^2/Vs 	= 101.79 cm^2/Vs
+	Error due to b=0; 0.001534
+
+T: 260.000000 β: 2.8e+20 βred: 0.42 ħω  = 9.3 meV	
+ VariationalParams v= 17.63 w= 14.55	 M=0.466934 k=98.906260	
+ Schultz: rf= 0.517045 (int units) = 2.62403e-09 m [SI]
+ Polaron Free Energy: A= -6.702753 B= 7.724046 C= 3.064143 F= -4.085435	 = -38.016000 meV
+	μ(FHIP)= 0.048992 m^2/Vs 	= 489.92 cm^2/Vs
+	μ(Kadanoff)= 0.013565 m^2/Vs 	= 135.65 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.942301 
+	exp(Bred): 1.514853 exp(-Bred): 0.660130 exp(Bred)-1: 0.514853
+	μ(Kadanoff [Eqn. 25]) = 0.013565 m^2/Vs 	 = 135.65 cm^2/Vs
+	Gamma0 = 5.89251e+13 rad/s = 9.37823e+12 /s Tau=1/Gamma0 = 1.0663e-13 = 0.106630 ps
+	μ(Hellwarth1999)= 0.009999 m^2/Vs 	= 99.99 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.010014 m^2/Vs 	= 100.14 cm^2/Vs
+	Error due to b=0; 0.001510
+
+T: 270.000000 β: 2.7e+20 βred: 0.4 ħω  = 9.3 meV	
+ VariationalParams v= 18.24 w= 15.11	 M=0.456412 k=104.260097	
+ Schultz: rf= 0.512269 (int units) = 2.59979e-09 m [SI]
+ Polaron Free Energy: A= -6.747281 B= 7.862122 C= 3.117493 F= -4.232334	 = -39.382930 meV
+	μ(FHIP)= 0.050570 m^2/Vs 	= 505.70 cm^2/Vs
+	μ(Kadanoff)= 0.013483 m^2/Vs 	= 134.83 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.033637 
+	exp(Bred): 1.491730 exp(-Bred): 0.670363 exp(Bred)-1: 0.491730
+	μ(Kadanoff [Eqn. 25]) = 0.013483 m^2/Vs 	 = 134.83 cm^2/Vs
+	Gamma0 = 5.97111e+13 rad/s = 9.50331e+12 /s Tau=1/Gamma0 = 1.05227e-13 = 0.105227 ps
+	μ(Hellwarth1999)= 0.009840 m^2/Vs 	= 98.40 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.009855 m^2/Vs 	= 98.55 cm^2/Vs
+	Error due to b=0; 0.001523
+
+T: 280.000000 β: 2.6e+20 βred: 0.39 ħω  = 9.3 meV	
+ VariationalParams v= 18.81 w= 15.64	 M=0.447846 k=109.493887	
+ Schultz: rf= 0.507688 (int units) = 2.57654e-09 m [SI]
+ Polaron Free Energy: A= -6.783692 B= 7.997814 C= 3.167819 F= -4.381941	 = -40.775065 meV
+	μ(FHIP)= 0.052095 m^2/Vs 	= 520.95 cm^2/Vs
+	μ(Kadanoff)= 0.013394 m^2/Vs 	= 133.94 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.125063 
+	exp(Bred): 1.470574 exp(-Bred): 0.680006 exp(Bred)-1: 0.470574
+	μ(Kadanoff [Eqn. 25]) = 0.013394 m^2/Vs 	 = 133.94 cm^2/Vs
+	Gamma0 = 6.04653e+13 rad/s = 9.62336e+12 /s Tau=1/Gamma0 = 1.03914e-13 = 0.103914 ps
+	μ(Hellwarth1999)= 0.009687 m^2/Vs 	= 96.87 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.009702 m^2/Vs 	= 97.02 cm^2/Vs
+	Error due to b=0; 0.001560
+
+T: 290.000000 β: 2.5e+20 βred: 0.37 ħω  = 9.3 meV	
+ VariationalParams v= 19.46 w= 16.24	 M=0.437301 k=115.265959	
+ Schultz: rf= 0.503283 (int units) = 2.55419e-09 m [SI]
+ Polaron Free Energy: A= -6.819212 B= 8.131246 C= 3.222161 F= -4.534195	 = -42.191820 meV
+	μ(FHIP)= 0.053758 m^2/Vs 	= 537.58 cm^2/Vs
+	μ(Kadanoff)= 0.013345 m^2/Vs 	= 133.45 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.216570 
+	exp(Bred): 1.451147 exp(-Bred): 0.689110 exp(Bred)-1: 0.451147
+	μ(Kadanoff [Eqn. 25]) = 0.013345 m^2/Vs 	 = 133.45 cm^2/Vs
+	Gamma0 = 6.11329e+13 rad/s = 9.7296e+12 /s Tau=1/Gamma0 = 1.02779e-13 = 0.102779 ps
+	μ(Hellwarth1999)= 0.009548 m^2/Vs 	= 95.48 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.009563 m^2/Vs 	= 95.63 cm^2/Vs
+	Error due to b=0; 0.001546
+
+T: 300.000000 β: 2.4e+20 βred: 0.36 ħω  = 9.3 meV	
+ VariationalParams v= 20.12 w= 16.84	 M=0.427196 k=121.148955	
+ Schultz: rf= 0.499091 (int units) = 2.53291e-09 m [SI]
+ Polaron Free Energy: A= -6.848912 B= 8.262455 C= 3.275492 F= -4.689034	 = -43.632641 meV
+	μ(FHIP)= 0.055442 m^2/Vs 	= 554.42 cm^2/Vs
+	μ(Kadanoff)= 0.013304 m^2/Vs 	= 133.04 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.308150 
+	exp(Bred): 1.433247 exp(-Bred): 0.697716 exp(Bred)-1: 0.433247
+	μ(Kadanoff [Eqn. 25]) = 0.013304 m^2/Vs 	 = 133.04 cm^2/Vs
+	Gamma0 = 6.17545e+13 rad/s = 9.82853e+12 /s Tau=1/Gamma0 = 1.01745e-13 = 0.101745 ps
+	μ(Hellwarth1999)= 0.009417 m^2/Vs 	= 94.17 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.009432 m^2/Vs 	= 94.32 cm^2/Vs
+	Error due to b=0; 0.001530
+
+T: 310.000000 β: 2.3e+20 βred: 0.35 ħω  = 9.3 meV	
+ VariationalParams v= 20.72 w= 17.39	 M=0.419304 k=126.817130	
+ Schultz: rf= 0.495037 (int units) = 2.51234e-09 m [SI]
+ Polaron Free Energy: A= -6.870458 B= 8.391626 C= 3.325234 F= -4.846403	 = -45.097000 meV
+	μ(FHIP)= 0.057044 m^2/Vs 	= 570.44 cm^2/Vs
+	μ(Kadanoff)= 0.013247 m^2/Vs 	= 132.47 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.399796 
+	exp(Bred): 1.416702 exp(-Bred): 0.705865 exp(Bred)-1: 0.416702
+	μ(Kadanoff [Eqn. 25]) = 0.013247 m^2/Vs 	 = 132.47 cm^2/Vs
+	Gamma0 = 6.23649e+13 rad/s = 9.92567e+12 /s Tau=1/Gamma0 = 1.00749e-13 = 0.100749 ps
+	μ(Hellwarth1999)= 0.009288 m^2/Vs 	= 92.88 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.009303 m^2/Vs 	= 93.03 cm^2/Vs
+	Error due to b=0; 0.001545
+
+T: 320.000000 β: 2.3e+20 βred: 0.34 ħω  = 9.3 meV	
+ VariationalParams v= 21.33 w= 17.95	 M=0.411556 k=132.608840	
+ Schultz: rf= 0.491156 (int units) = 2.49265e-09 m [SI]
+ Polaron Free Energy: A= -6.887005 B= 8.518788 C= 3.374465 F= -5.006248	 = -46.584395 meV
+	μ(FHIP)= 0.058672 m^2/Vs 	= 586.72 cm^2/Vs
+	μ(Kadanoff)= 0.013199 m^2/Vs 	= 131.99 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.491501 
+	exp(Bred): 1.401364 exp(-Bred): 0.713590 exp(Bred)-1: 0.401364
+	μ(Kadanoff [Eqn. 25]) = 0.013199 m^2/Vs 	 = 131.99 cm^2/Vs
+	Gamma0 = 6.29342e+13 rad/s = 1.00163e+13 /s Tau=1/Gamma0 = 9.98373e-14 = 0.099837 ps
+	μ(Hellwarth1999)= 0.009166 m^2/Vs 	= 91.66 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.009181 m^2/Vs 	= 91.81 cm^2/Vs
+	Error due to b=0; 0.001555
+
+T: 330.000000 β: 2.2e+20 βred: 0.33 ħω  = 9.3 meV	
+ VariationalParams v= 22.00 w= 18.58	 M=0.402463 k=138.907583	
+ Schultz: rf= 0.487423 (int units) = 2.4737e-09 m [SI]
+ Polaron Free Energy: A= -6.902376 B= 8.644060 C= 3.426833 F= -5.168517	 = -48.094348 meV
+	μ(FHIP)= 0.060413 m^2/Vs 	= 604.13 cm^2/Vs
+	μ(Kadanoff)= 0.013179 m^2/Vs 	= 131.79 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.583261 
+	exp(Bred): 1.387108 exp(-Bred): 0.720925 exp(Bred)-1: 0.387108
+	μ(Kadanoff [Eqn. 25]) = 0.013179 m^2/Vs 	 = 131.79 cm^2/Vs
+	Gamma0 = 6.34397e+13 rad/s = 1.00967e+13 /s Tau=1/Gamma0 = 9.90419e-14 = 0.099042 ps
+	μ(Hellwarth1999)= 0.009055 m^2/Vs 	= 90.55 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.009069 m^2/Vs 	= 90.69 cm^2/Vs
+	Error due to b=0; 0.001527
+
+T: 340.000000 β: 2.1e+20 βred: 0.32 ħω  = 9.3 meV	
+ VariationalParams v= 22.65 w= 19.18	 M=0.394532 k=145.128103	
+ Schultz: rf= 0.483832 (int units) = 2.45547e-09 m [SI]
+ Polaron Free Energy: A= -6.911159 B= 8.767502 C= 3.476817 F= -5.333160	 = -49.626400 meV
+	μ(FHIP)= 0.062120 m^2/Vs 	= 621.20 cm^2/Vs
+	μ(Kadanoff)= 0.013153 m^2/Vs 	= 131.53 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.675070 
+	exp(Bred): 1.373822 exp(-Bred): 0.727896 exp(Bred)-1: 0.373822
+	μ(Kadanoff [Eqn. 25]) = 0.013153 m^2/Vs 	 = 131.53 cm^2/Vs
+	Gamma0 = 6.39276e+13 rad/s = 1.01744e+13 /s Tau=1/Gamma0 = 9.82859e-14 = 0.098286 ps
+	μ(Hellwarth1999)= 0.008946 m^2/Vs 	= 89.46 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.008960 m^2/Vs 	= 89.60 cm^2/Vs
+	Error due to b=0; 0.001514
+
+T: 350.000000 β: 2.1e+20 βred: 0.31 ħω  = 9.3 meV	
+ VariationalParams v= 23.27 w= 19.76	 M=0.387493 k=151.281106	
+ Schultz: rf= 0.480387 (int units) = 2.43799e-09 m [SI]
+ Polaron Free Energy: A= -6.913611 B= 8.889172 C= 3.524571 F= -5.500132	 = -51.180114 meV
+	μ(FHIP)= 0.063803 m^2/Vs 	= 638.03 cm^2/Vs
+	μ(Kadanoff)= 0.013123 m^2/Vs 	= 131.23 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.766925 
+	exp(Bred): 1.361412 exp(-Bred): 0.734531 exp(Bred)-1: 0.361412
+	μ(Kadanoff [Eqn. 25]) = 0.013123 m^2/Vs 	 = 131.23 cm^2/Vs
+	Gamma0 = 6.43969e+13 rad/s = 1.02491e+13 /s Tau=1/Gamma0 = 9.75696e-14 = 0.097570 ps
+	μ(Hellwarth1999)= 0.008841 m^2/Vs 	= 88.41 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.008854 m^2/Vs 	= 88.54 cm^2/Vs
+	Error due to b=0; 0.001513
+
+T: 360.000000 β: 2e+20 βred: 0.3 ħω  = 9.3 meV	
+ VariationalParams v= 23.93 w= 20.37	 M=0.380274 k=157.713418	
+ Schultz: rf= 0.47703 (int units) = 2.42095e-09 m [SI]
+ Polaron Free Energy: A= -6.913454 B= 9.009223 C= 3.573617 F= -5.669387	 = -52.755069 meV
+	μ(FHIP)= 0.065527 m^2/Vs 	= 655.27 cm^2/Vs
+	μ(Kadanoff)= 0.013103 m^2/Vs 	= 131.03 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.858822 
+	exp(Bred): 1.349794 exp(-Bred): 0.740854 exp(Bred)-1: 0.349794
+	μ(Kadanoff [Eqn. 25]) = 0.013103 m^2/Vs 	 = 131.03 cm^2/Vs
+	Gamma0 = 6.4831e+13 rad/s = 1.03182e+13 /s Tau=1/Gamma0 = 9.69164e-14 = 0.096916 ps
+	μ(Hellwarth1999)= 0.008741 m^2/Vs 	= 87.41 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.008754 m^2/Vs 	= 87.54 cm^2/Vs
+	Error due to b=0; 0.001499
+
+T: 370.000000 β: 2e+20 βred: 0.29 ħω  = 9.3 meV	
+ VariationalParams v= 24.49 w= 20.88	 M=0.375310 k=163.613302	
+ Schultz: rf= 0.473798 (int units) = 2.40455e-09 m [SI]
+ Polaron Free Energy: A= -6.903547 B= 9.127632 C= 3.616796 F= -5.840881	 = -54.350866 meV
+	μ(FHIP)= 0.067128 m^2/Vs 	= 671.28 cm^2/Vs
+	μ(Kadanoff)= 0.013061 m^2/Vs 	= 130.61 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.950756 
+	exp(Bred): 1.338896 exp(-Bred): 0.746884 exp(Bred)-1: 0.338896
+	μ(Kadanoff [Eqn. 25]) = 0.013061 m^2/Vs 	 = 130.61 cm^2/Vs
+	Gamma0 = 6.5278e+13 rad/s = 1.03893e+13 /s Tau=1/Gamma0 = 9.62528e-14 = 0.096253 ps
+	μ(Hellwarth1999)= 0.008641 m^2/Vs 	= 86.41 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.008654 m^2/Vs 	= 86.54 cm^2/Vs
+	Error due to b=0; 0.001529
+
+T: 380.000000 β: 1.9e+20 βred: 0.28 ħω  = 9.3 meV	
+ VariationalParams v= 25.12 w= 21.47	 M=0.368937 k=170.101763	
+ Schultz: rf= 0.47068 (int units) = 2.38873e-09 m [SI]
+ Polaron Free Energy: A= -6.893459 B= 9.244500 C= 3.663532 F= -6.014573	 = -55.967114 meV
+	μ(FHIP)= 0.068848 m^2/Vs 	= 688.48 cm^2/Vs
+	μ(Kadanoff)= 0.013043 m^2/Vs 	= 130.43 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 3.042726 
+	exp(Bred): 1.328653 exp(-Bred): 0.752642 exp(Bred)-1: 0.328653
+	μ(Kadanoff [Eqn. 25]) = 0.013043 m^2/Vs 	 = 130.43 cm^2/Vs
+	Gamma0 = 6.56708e+13 rad/s = 1.04518e+13 /s Tau=1/Gamma0 = 9.56769e-14 = 0.095677 ps
+	μ(Hellwarth1999)= 0.008548 m^2/Vs 	= 85.48 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.008561 m^2/Vs 	= 85.61 cm^2/Vs
+	Error due to b=0; 0.001521
+
+T: 390.000000 β: 1.9e+20 βred: 0.28 ħω  = 9.3 meV	
+ VariationalParams v= 25.72 w= 22.03	 M=0.363605 k=176.444522	
+ Schultz: rf= 0.467636 (int units) = 2.37328e-09 m [SI]
+ Polaron Free Energy: A= -6.877632 B= 9.359913 C= 3.708142 F= -6.190423	 = -57.603443 meV
+	μ(FHIP)= 0.070520 m^2/Vs 	= 705.20 cm^2/Vs
+	μ(Kadanoff)= 0.013017 m^2/Vs 	= 130.17 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 3.134729 
+	exp(Bred): 1.319007 exp(-Bred): 0.758146 exp(Bred)-1: 0.319007
+	μ(Kadanoff [Eqn. 25]) = 0.013017 m^2/Vs 	 = 130.17 cm^2/Vs
+	Gamma0 = 6.60585e+13 rad/s = 1.05135e+13 /s Tau=1/Gamma0 = 9.51155e-14 = 0.095116 ps
+	μ(Hellwarth1999)= 0.008457 m^2/Vs 	= 84.57 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.008470 m^2/Vs 	= 84.70 cm^2/Vs
+	Error due to b=0; 0.001530
+
+T: 400.000000 β: 1.8e+20 βred: 0.27 ħω  = 9.3 meV	
+ VariationalParams v= 26.36 w= 22.63	 M=0.357688 k=183.098115	
+ Schultz: rf= 0.464728 (int units) = 2.35852e-09 m [SI]
+ Polaron Free Energy: A= -6.859057 B= 9.473841 C= 3.753608 F= -6.368393	 = -59.259494 meV
+	μ(FHIP)= 0.072259 m^2/Vs 	= 722.59 cm^2/Vs
+	μ(Kadanoff)= 0.013004 m^2/Vs 	= 130.04 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 3.226761 
+	exp(Bred): 1.309908 exp(-Bred): 0.763412 exp(Bred)-1: 0.309908
+	μ(Kadanoff [Eqn. 25]) = 0.013004 m^2/Vs 	 = 130.04 cm^2/Vs
+	Gamma0 = 6.64105e+13 rad/s = 1.05696e+13 /s Tau=1/Gamma0 = 9.46113e-14 = 0.094611 ps
+	μ(Hellwarth1999)= 0.008371 m^2/Vs 	= 83.71 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.008384 m^2/Vs 	= 83.84 cm^2/Vs
+	Error due to b=0; 0.001520
+
+OK - everything calculated and stored. Now plotting..
+Calculating polaron mobility for CsPbI3-electron ...
+Polaron mobility input parameters: ε_Inf=6.100000 ε_S=18.100000 freq=2.57e+12 α=1.347081 
+Derived params in SI: ω =1.61478e+13 mb=1.09313e-31 
+T: 10.000000 β: 7.2e+21 βred: 12 ħω  = 11 meV	
+ VariationalParams v= 2.91 w= 2.55	 M=0.303673 k=1.967752	
+ Schultz: rf= 1.48848 (int units) = 8.07346e-09 m [SI]
+ Polaron Free Energy: A= -1.038185 B= 1.434467 C= 0.479440 F= -0.875722	 = -9.307759 meV
+	μ(FHIP)= 694.572603 m^2/Vs 	= 6945726.03 cm^2/Vs
+	μ(Kadanoff)= 5711.257499 m^2/Vs 	= 57112574.99 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.000004 
+	exp(Bred): 227303.174644 exp(-Bred): 0.000004 exp(Bred)-1: 227302.174644
+	μ(Kadanoff [Eqn. 25]) = 5711.257499 m^2/Vs 	 = 57112574.99 cm^2/Vs
+	Gamma0 = 1.96852e+08 rad/s = 3.133e+07 /s Tau=1/Gamma0 = 3.19183e-08 = 31918.333745 ps
+	μ(Hellwarth1999)= 673.051804 m^2/Vs 	= 6730518.04 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 673.051804 m^2/Vs 	= 6730518.04 cm^2/Vs
+	Error due to b=0; 0.000000
+
+T: 20.000000 β: 3.6e+21 βred: 6.2 ħω  = 11 meV	
+ VariationalParams v= 2.79 w= 2.38	 M=0.375375 k=2.119397	
+ Schultz: rf= 1.40437 (int units) = 7.61724e-09 m [SI]
+ Polaron Free Energy: A= -1.427757 B= 1.486975 C= 0.504029 F= -0.563247	 = -5.986569 meV
+	μ(FHIP)= 2.771354 m^2/Vs 	= 27713.54 cm^2/Vs
+	μ(Kadanoff)= 11.393997 m^2/Vs 	= 113939.97 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.002102 
+	exp(Bred): 476.763227 exp(-Bred): 0.002097 exp(Bred)-1: 475.763227
+	μ(Kadanoff [Eqn. 25]) = 11.393997 m^2/Vs 	 = 113939.97 cm^2/Vs
+	Gamma0 = 9.35283e+10 rad/s = 1.48855e+10 /s Tau=1/Gamma0 = 6.71795e-11 = 67.179496 ps
+	μ(Hellwarth1999)= 2.651496 m^2/Vs 	= 26514.96 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 2.651511 m^2/Vs 	= 26515.11 cm^2/Vs
+	Error due to b=0; 0.000006
+
+T: 30.000000 β: 2.4e+21 βred: 4.1 ħω  = 11 meV	
+ VariationalParams v= 2.96 w= 2.48	 M=0.424497 k=2.603712	
+ Schultz: rf= 1.30495 (int units) = 7.07799e-09 m [SI]
+ Polaron Free Energy: A= -1.776196 B= 1.566091 C= 0.551923 F= -0.341819	 = -3.633075 meV
+	μ(FHIP)= 0.509357 m^2/Vs 	= 5093.57 cm^2/Vs
+	μ(Kadanoff)= 1.396096 m^2/Vs 	= 13960.96 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.016659 
+	exp(Bred): 61.028847 exp(-Bred): 0.016386 exp(Bred)-1: 60.028847
+	μ(Kadanoff [Eqn. 25]) = 1.396096 m^2/Vs 	 = 13960.96 cm^2/Vs
+	Gamma0 = 7.36993e+11 rad/s = 1.17296e+11 /s Tau=1/Gamma0 = 8.52544e-12 = 8.525438 ps
+	μ(Hellwarth1999)= 0.477104 m^2/Vs 	= 4771.04 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.477169 m^2/Vs 	= 4771.69 cm^2/Vs
+	Error due to b=0; 0.000137
+
+T: 40.000000 β: 1.8e+21 βred: 3.1 ħω  = 11 meV	
+ VariationalParams v= 3.29 w= 2.74	 M=0.441272 k=3.316187	
+ Schultz: rf= 1.2201 (int units) = 6.61777e-09 m [SI]
+ Polaron Free Energy: A= -2.088780 B= 1.664692 C= 0.606841 F= -0.182753	 = -1.942418 meV
+	μ(FHIP)= 0.236490 m^2/Vs 	= 2364.90 cm^2/Vs
+	μ(Kadanoff)= 0.486146 m^2/Vs 	= 4861.46 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.047996 
+	exp(Bred): 21.834908 exp(-Bred): 0.045798 exp(Bred)-1: 20.834908
+	μ(Kadanoff [Eqn. 25]) = 0.486146 m^2/Vs 	 = 4861.46 cm^2/Vs
+	Gamma0 = 2.09184e+12 rad/s = 3.32926e+11 /s Tau=1/Gamma0 = 3.00367e-12 = 3.003670 ps
+	μ(Hellwarth1999)= 0.211693 m^2/Vs 	= 2116.93 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.211785 m^2/Vs 	= 2117.85 cm^2/Vs
+	Error due to b=0; 0.000434
+
+T: 50.000000 β: 1.4e+21 βred: 2.5 ħω  = 11 meV	
+ VariationalParams v= 3.71 w= 3.09	 M=0.437658 k=4.181754	
+ Schultz: rf= 1.15302 (int units) = 6.25392e-09 m [SI]
+ Polaron Free Energy: A= -2.369133 B= 1.771935 C= 0.661283 F= -0.064084	 = -0.681132 meV
+	μ(FHIP)= 0.157609 m^2/Vs 	= 1576.09 cm^2/Vs
+	μ(Kadanoff)= 0.259194 m^2/Vs 	= 2591.94 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.092723 
+	exp(Bred): 11.784770 exp(-Bred): 0.084855 exp(Bred)-1: 10.784770
+	μ(Kadanoff [Eqn. 25]) = 0.259194 m^2/Vs 	 = 2591.94 cm^2/Vs
+	Gamma0 = 3.93332e+12 rad/s = 6.26008e+11 /s Tau=1/Gamma0 = 1.59742e-12 = 1.597424 ps
+	μ(Hellwarth1999)= 0.132279 m^2/Vs 	= 1322.79 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.132376 m^2/Vs 	= 1323.76 cm^2/Vs
+	Error due to b=0; 0.000729
+
+T: 60.000000 β: 1.2e+21 βred: 2.1 ħω  = 11 meV	
+ VariationalParams v= 4.18 w= 3.50	 M=0.422331 k=5.183992	
+ Schultz: rf= 1.09955 (int units) = 5.96393e-09 m [SI]
+ Polaron Free Energy: A= -2.622891 B= 1.881311 C= 0.714188 F= 0.027392	 = 0.291142 meV
+	μ(FHIP)= 0.125258 m^2/Vs 	= 1252.58 cm^2/Vs
+	μ(Kadanoff)= 0.171659 m^2/Vs 	= 1716.59 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.146798 
+	exp(Bred): 7.812096 exp(-Bred): 0.128007 exp(Bred)-1: 6.812096
+	μ(Kadanoff [Eqn. 25]) = 0.171659 m^2/Vs 	 = 1716.59 cm^2/Vs
+	Gamma0 = 6.00306e+12 rad/s = 9.55417e+11 /s Tau=1/Gamma0 = 1.04666e-12 = 1.046664 ps
+	μ(Hellwarth1999)= 0.097393 m^2/Vs 	= 973.93 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.097483 m^2/Vs 	= 974.83 cm^2/Vs
+	Error due to b=0; 0.000923
+
+T: 70.000000 β: 1e+21 βred: 1.8 ħω  = 11 meV	
+ VariationalParams v= 4.66 w= 3.93	 M=0.405046 k=6.270297	
+ Schultz: rf= 1.05626 (int units) = 5.7291e-09 m [SI]
+ Polaron Free Energy: A= -2.852386 B= 1.989653 C= 0.763483 F= 0.099249	 = 1.054881 meV
+	μ(FHIP)= 0.109395 m^2/Vs 	= 1093.95 cm^2/Vs
+	μ(Kadanoff)= 0.128504 m^2/Vs 	= 1285.04 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.207292 
+	exp(Bred): 5.824107 exp(-Bred): 0.171700 exp(Bred)-1: 4.824107
+	μ(Kadanoff [Eqn. 25]) = 0.128504 m^2/Vs 	 = 1285.04 cm^2/Vs
+	Gamma0 = 8.11772e+12 rad/s = 1.29198e+12 /s Tau=1/Gamma0 = 7.74008e-13 = 0.774008 ps
+	μ(Hellwarth1999)= 0.078472 m^2/Vs 	= 784.72 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.078556 m^2/Vs 	= 785.56 cm^2/Vs
+	Error due to b=0; 0.001073
+
+T: 80.000000 β: 9.1e+20 βred: 1.5 ħω  = 11 meV	
+ VariationalParams v= 5.13 w= 4.35	 M=0.390293 k=7.389954	
+ Schultz: rf= 1.0205 (int units) = 5.53516e-09 m [SI]
+ Polaron Free Energy: A= -3.059409 B= 2.095501 C= 0.807919 F= 0.155990	 = 1.657962 meV
+	μ(FHIP)= 0.100817 m^2/Vs 	= 1008.17 cm^2/Vs
+	μ(Kadanoff)= 0.103623 m^2/Vs 	= 1036.23 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.272273 
+	exp(Bred): 4.672784 exp(-Bred): 0.214005 exp(Bred)-1: 3.672784
+	μ(Kadanoff [Eqn. 25]) = 0.103623 m^2/Vs 	 = 1036.23 cm^2/Vs
+	Gamma0 = 1.01737e+13 rad/s = 1.61919e+12 /s Tau=1/Gamma0 = 6.17593e-13 = 0.617593 ps
+	μ(Hellwarth1999)= 0.066749 m^2/Vs 	= 667.49 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.066832 m^2/Vs 	= 668.32 cm^2/Vs
+	Error due to b=0; 0.001243
+
+T: 90.000000 β: 8e+20 βred: 1.4 ħω  = 11 meV	
+ VariationalParams v= 5.65 w= 4.82	 M=0.371648 k=8.651458	
+ Schultz: rf= 0.989808 (int units) = 5.36867e-09 m [SI]
+ Polaron Free Energy: A= -3.251470 B= 2.198295 C= 0.852719 F= 0.200456	 = 2.130577 meV
+	μ(FHIP)= 0.096518 m^2/Vs 	= 965.18 cm^2/Vs
+	μ(Kadanoff)= 0.088182 m^2/Vs 	= 881.82 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.340470 
+	exp(Bred): 3.937118 exp(-Bred): 0.253993 exp(Bred)-1: 2.937118
+	μ(Kadanoff [Eqn. 25]) = 0.088182 m^2/Vs 	 = 881.82 cm^2/Vs
+	Gamma0 = 1.21176e+13 rad/s = 1.92857e+12 /s Tau=1/Gamma0 = 5.18518e-13 = 0.518518 ps
+	μ(Hellwarth1999)= 0.058862 m^2/Vs 	= 588.62 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.058938 m^2/Vs 	= 589.38 cm^2/Vs
+	Error due to b=0; 0.001290
+
+T: 100.000000 β: 7.2e+20 βred: 1.2 ħω  = 11 meV	
+ VariationalParams v= 6.19 w= 5.32	 M=0.353912 k=10.000917	
+ Schultz: rf= 0.963184 (int units) = 5.22427e-09 m [SI]
+ Polaron Free Energy: A= -3.428361 B= 2.297889 C= 0.895924 F= 0.234547	 = 2.492922 meV
+	μ(FHIP)= 0.094540 m^2/Vs 	= 945.40 cm^2/Vs
+	μ(Kadanoff)= 0.077737 m^2/Vs 	= 777.37 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.411033 
+	exp(Bred): 3.432895 exp(-Bred): 0.291299 exp(Bred)-1: 2.432895
+	μ(Kadanoff [Eqn. 25]) = 0.077737 m^2/Vs 	 = 777.37 cm^2/Vs
+	Gamma0 = 1.39259e+13 rad/s = 2.21637e+12 /s Tau=1/Gamma0 = 4.51188e-13 = 0.451188 ps
+	μ(Hellwarth1999)= 0.053185 m^2/Vs 	= 531.85 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.053255 m^2/Vs 	= 532.55 cm^2/Vs
+	Error due to b=0; 0.001302
+
+T: 110.000000 β: 6.6e+20 βred: 1.1 ħω  = 11 meV	
+ VariationalParams v= 6.70 w= 5.78	 M=0.339727 k=11.369221	
+ Schultz: rf= 0.939906 (int units) = 5.09801e-09 m [SI]
+ Polaron Free Energy: A= -3.589532 B= 2.394304 C= 0.935624 F= 0.259604	 = 2.759249 meV
+	μ(FHIP)= 0.093833 m^2/Vs 	= 938.33 cm^2/Vs
+	μ(Kadanoff)= 0.070142 m^2/Vs 	= 701.42 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.483379 
+	exp(Bred): 3.068769 exp(-Bred): 0.325864 exp(Bred)-1: 2.068769
+	μ(Kadanoff [Eqn. 25]) = 0.070142 m^2/Vs 	 = 701.42 cm^2/Vs
+	Gamma0 = 1.55972e+13 rad/s = 2.48237e+12 /s Tau=1/Gamma0 = 4.02841e-13 = 0.402841 ps
+	μ(Hellwarth1999)= 0.048877 m^2/Vs 	= 488.77 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.048943 m^2/Vs 	= 489.43 cm^2/Vs
+	Error due to b=0; 0.001351
+
+T: 120.000000 β: 6e+20 βred: 1 ħω  = 11 meV	
+ VariationalParams v= 7.23 w= 6.28	 M=0.325187 k=12.842955	
+ Schultz: rf= 0.919212 (int units) = 4.98576e-09 m [SI]
+ Polaron Free Energy: A= -3.739185 B= 2.487670 C= 0.974896 F= 0.276620	 = 2.940098 meV
+	μ(FHIP)= 0.094224 m^2/Vs 	= 942.24 cm^2/Vs
+	μ(Kadanoff)= 0.064564 m^2/Vs 	= 645.64 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.557099 
+	exp(Bred): 2.795013 exp(-Bred): 0.357780 exp(Bred)-1: 1.795013
+	μ(Kadanoff [Eqn. 25]) = 0.064564 m^2/Vs 	 = 645.64 cm^2/Vs
+	Gamma0 = 1.71305e+13 rad/s = 2.7264e+12 /s Tau=1/Gamma0 = 3.66784e-13 = 0.366784 ps
+	μ(Hellwarth1999)= 0.045512 m^2/Vs 	= 455.12 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.045573 m^2/Vs 	= 455.73 cm^2/Vs
+	Error due to b=0; 0.001348
+
+T: 130.000000 β: 5.6e+20 βred: 0.95 ħω  = 11 meV	
+ VariationalParams v= 7.76 w= 6.77	 M=0.312826 k=14.349856	
+ Schultz: rf= 0.900658 (int units) = 4.88513e-09 m [SI]
+ Polaron Free Energy: A= -3.876412 B= 2.578161 C= 1.011896 F= 0.286355	 = 3.043572 meV
+	μ(FHIP)= 0.095208 m^2/Vs 	= 952.08 cm^2/Vs
+	μ(Kadanoff)= 0.060221 m^2/Vs 	= 602.21 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.631897 
+	exp(Bred): 2.582537 exp(-Bred): 0.387216 exp(Bred)-1: 1.582537
+	μ(Kadanoff [Eqn. 25]) = 0.060221 m^2/Vs 	 = 602.21 cm^2/Vs
+	Gamma0 = 1.8539e+13 rad/s = 2.95058e+12 /s Tau=1/Gamma0 = 3.38917e-13 = 0.338917 ps
+	μ(Hellwarth1999)= 0.042785 m^2/Vs 	= 427.85 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.042844 m^2/Vs 	= 428.44 cm^2/Vs
+	Error due to b=0; 0.001362
+
+T: 140.000000 β: 5.2e+20 βred: 0.88 ħω  = 11 meV	
+ VariationalParams v= 8.28 w= 7.26	 M=0.301906 k=15.900970	
+ Schultz: rf= 0.883826 (int units) = 4.79383e-09 m [SI]
+ Polaron Free Energy: A= -4.002699 B= 2.665965 C= 1.047318 F= 0.289416	 = 3.076107 meV
+	μ(FHIP)= 0.096649 m^2/Vs 	= 966.49 cm^2/Vs
+	μ(Kadanoff)= 0.056765 m^2/Vs 	= 567.65 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.707554 
+	exp(Bred): 2.413319 exp(-Bred): 0.414367 exp(Bred)-1: 1.413319
+	μ(Kadanoff [Eqn. 25]) = 0.056765 m^2/Vs 	 = 567.65 cm^2/Vs
+	Gamma0 = 1.98325e+13 rad/s = 3.15644e+12 /s Tau=1/Gamma0 = 3.16812e-13 = 0.316812 ps
+	μ(Hellwarth1999)= 0.040525 m^2/Vs 	= 405.25 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.040581 m^2/Vs 	= 405.81 cm^2/Vs
+	Error due to b=0; 0.001380
+
+T: 150.000000 β: 4.8e+20 βred: 0.82 ħω  = 11 meV	
+ VariationalParams v= 8.77 w= 7.72	 M=0.293100 k=17.448263	
+ Schultz: rf= 0.868484 (int units) = 4.71062e-09 m [SI]
+ Polaron Free Energy: A= -4.117777 B= 2.751248 C= 1.080231 F= 0.286298	 = 3.042961 meV
+	μ(FHIP)= 0.098344 m^2/Vs 	= 983.44 cm^2/Vs
+	μ(Kadanoff)= 0.053910 m^2/Vs 	= 539.10 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.783909 
+	exp(Bred): 2.275658 exp(-Bred): 0.439433 exp(Bred)-1: 1.275658
+	μ(Kadanoff [Eqn. 25]) = 0.053910 m^2/Vs 	 = 539.10 cm^2/Vs
+	Gamma0 = 2.10251e+13 rad/s = 3.34624e+12 /s Tau=1/Gamma0 = 2.98843e-13 = 0.298843 ps
+	μ(Hellwarth1999)= 0.038606 m^2/Vs 	= 386.06 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.038662 m^2/Vs 	= 386.62 cm^2/Vs
+	Error due to b=0; 0.001429
+
+T: 160.000000 β: 4.5e+20 βred: 0.77 ħω  = 11 meV	
+ VariationalParams v= 9.36 w= 8.27	 M=0.281178 k=19.236503	
+ Schultz: rf= 0.85442 (int units) = 4.63433e-09 m [SI]
+ Polaron Free Energy: A= -4.227844 B= 2.834190 C= 1.116241 F= 0.277413	 = 2.948526 meV
+	μ(FHIP)= 0.100699 m^2/Vs 	= 1006.99 cm^2/Vs
+	μ(Kadanoff)= 0.051751 m^2/Vs 	= 517.51 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.860835 
+	exp(Bred): 2.161662 exp(-Bred): 0.462607 exp(Bred)-1: 1.161662
+	μ(Kadanoff [Eqn. 25]) = 0.051751 m^2/Vs 	 = 517.51 cm^2/Vs
+	Gamma0 = 2.2106e+13 rad/s = 3.51828e+12 /s Tau=1/Gamma0 = 2.8423e-13 = 0.284230 ps
+	μ(Hellwarth1999)= 0.036996 m^2/Vs 	= 369.96 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.037046 m^2/Vs 	= 370.46 cm^2/Vs
+	Error due to b=0; 0.001357
+
+T: 170.000000 β: 4.3e+20 βred: 0.73 ħω  = 11 meV	
+ VariationalParams v= 9.86 w= 8.73	 M=0.273769 k=20.887290	
+ Schultz: rf= 0.841398 (int units) = 4.56371e-09 m [SI]
+ Polaron Free Energy: A= -4.325283 B= 2.914942 C= 1.147229 F= 0.263112	 = 2.796530 meV
+	μ(FHIP)= 0.102910 m^2/Vs 	= 1029.10 cm^2/Vs
+	μ(Kadanoff)= 0.049776 m^2/Vs 	= 497.76 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 0.938237 
+	exp(Bred): 2.065829 exp(-Bred): 0.484067 exp(Bred)-1: 1.065829
+	μ(Kadanoff [Eqn. 25]) = 0.049776 m^2/Vs 	 = 497.76 cm^2/Vs
+	Gamma0 = 2.31167e+13 rad/s = 3.67914e+12 /s Tau=1/Gamma0 = 2.71802e-13 = 0.271802 ps
+	μ(Hellwarth1999)= 0.035562 m^2/Vs 	= 355.62 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.035612 m^2/Vs 	= 356.12 cm^2/Vs
+	Error due to b=0; 0.001395
+
+T: 180.000000 β: 4e+20 βred: 0.69 ħω  = 11 meV	
+ VariationalParams v= 10.39 w= 9.23	 M=0.265753 k=22.652917	
+ Schultz: rf= 0.829339 (int units) = 4.4983e-09 m [SI]
+ Polaron Free Energy: A= -4.416036 B= 2.993649 C= 1.178687 F= 0.243700	 = 2.590205 meV
+	μ(FHIP)= 0.105424 m^2/Vs 	= 1054.24 cm^2/Vs
+	μ(Kadanoff)= 0.048159 m^2/Vs 	= 481.59 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.016036 
+	exp(Bred): 1.984217 exp(-Bred): 0.503977 exp(Bred)-1: 0.984217
+	μ(Kadanoff [Eqn. 25]) = 0.048159 m^2/Vs 	 = 481.59 cm^2/Vs
+	Gamma0 = 2.40442e+13 rad/s = 3.82676e+12 /s Tau=1/Gamma0 = 2.61318e-13 = 0.261318 ps
+	μ(Hellwarth1999)= 0.034312 m^2/Vs 	= 343.12 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.034360 m^2/Vs 	= 343.60 cm^2/Vs
+	Error due to b=0; 0.001392
+
+T: 190.000000 β: 3.8e+20 βred: 0.65 ħω  = 11 meV	
+ VariationalParams v= 10.95 w= 9.76	 M=0.257405 k=24.533885	
+ Schultz: rf= 0.818123 (int units) = 4.43746e-09 m [SI]
+ Polaron Free Energy: A= -4.500422 B= 3.070448 C= 1.210533 F= 0.219442	 = 2.332374 meV
+	μ(FHIP)= 0.108185 m^2/Vs 	= 1081.85 cm^2/Vs
+	μ(Kadanoff)= 0.046820 m^2/Vs 	= 468.20 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.094173 
+	exp(Bred): 1.913932 exp(-Bred): 0.522484 exp(Bred)-1: 0.913932
+	μ(Kadanoff [Eqn. 25]) = 0.046820 m^2/Vs 	 = 468.20 cm^2/Vs
+	Gamma0 = 2.48964e+13 rad/s = 3.96238e+12 /s Tau=1/Gamma0 = 2.52374e-13 = 0.252374 ps
+	μ(Hellwarth1999)= 0.033208 m^2/Vs 	= 332.08 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.033253 m^2/Vs 	= 332.53 cm^2/Vs
+	Error due to b=0; 0.001358
+
+T: 200.000000 β: 3.6e+20 βred: 0.62 ħω  = 11 meV	
+ VariationalParams v= 11.44 w= 10.22	 M=0.251750 k=26.301924	
+ Schultz: rf= 0.80758 (int units) = 4.38028e-09 m [SI]
+ Polaron Free Energy: A= -4.574803 B= 3.145454 C= 1.238776 F= 0.190573	 = 2.025536 meV
+	μ(FHIP)= 0.110824 m^2/Vs 	= 1108.24 cm^2/Vs
+	μ(Kadanoff)= 0.045564 m^2/Vs 	= 455.64 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.172598 
+	exp(Bred): 1.852807 exp(-Bred): 0.539722 exp(Bred)-1: 0.852807
+	μ(Kadanoff [Eqn. 25]) = 0.045564 m^2/Vs 	 = 455.64 cm^2/Vs
+	Gamma0 = 2.56983e+13 rad/s = 4.09001e+12 /s Tau=1/Gamma0 = 2.44498e-13 = 0.244498 ps
+	μ(Hellwarth1999)= 0.032200 m^2/Vs 	= 322.00 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.032245 m^2/Vs 	= 322.45 cm^2/Vs
+	Error due to b=0; 0.001394
+
+T: 210.000000 β: 3.4e+20 βred: 0.59 ħω  = 11 meV	
+ VariationalParams v= 12.05 w= 10.81	 M=0.243021 k=28.409041	
+ Schultz: rf= 0.797793 (int units) = 4.32719e-09 m [SI]
+ Polaron Free Energy: A= -4.647307 B= 3.218783 C= 1.271220 F= 0.157304	 = 1.671928 meV
+	μ(FHIP)= 0.113979 m^2/Vs 	= 1139.79 cm^2/Vs
+	μ(Kadanoff)= 0.044629 m^2/Vs 	= 446.29 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.251271 
+	exp(Bred): 1.799188 exp(-Bred): 0.555806 exp(Bred)-1: 0.799188
+	μ(Kadanoff [Eqn. 25]) = 0.044629 m^2/Vs 	 = 446.29 cm^2/Vs
+	Gamma0 = 2.64207e+13 rad/s = 4.20498e+12 /s Tau=1/Gamma0 = 2.37813e-13 = 0.237813 ps
+	μ(Hellwarth1999)= 0.031319 m^2/Vs 	= 313.19 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.031360 m^2/Vs 	= 313.60 cm^2/Vs
+	Error due to b=0; 0.001309
+
+T: 220.000000 β: 3.3e+20 βred: 0.56 ħω  = 11 meV	
+ VariationalParams v= 12.55 w= 11.28	 M=0.238067 k=30.273217	
+ Schultz: rf= 0.788483 (int units) = 4.27669e-09 m [SI]
+ Polaron Free Energy: A= -4.708609 B= 3.290530 C= 1.298257 F= 0.119823	 = 1.273555 meV
+	μ(FHIP)= 0.116820 m^2/Vs 	= 1168.20 cm^2/Vs
+	μ(Kadanoff)= 0.043663 m^2/Vs 	= 436.63 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.330159 
+	exp(Bred): 1.751790 exp(-Bred): 0.570845 exp(Bred)-1: 0.751790
+	μ(Kadanoff [Eqn. 25]) = 0.043663 m^2/Vs 	 = 436.63 cm^2/Vs
+	Gamma0 = 2.71136e+13 rad/s = 4.31526e+12 /s Tau=1/Gamma0 = 2.31736e-13 = 0.231736 ps
+	μ(Hellwarth1999)= 0.030490 m^2/Vs 	= 304.90 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.030531 m^2/Vs 	= 305.31 cm^2/Vs
+	Error due to b=0; 0.001336
+
+T: 230.000000 β: 3.1e+20 βred: 0.54 ħω  = 11 meV	
+ VariationalParams v= 12.59 w= 11.29	 M=0.244102 k=31.119672	
+ Schultz: rf= 0.779127 (int units) = 4.22595e-09 m [SI]
+ Polaron Free Energy: A= -4.747841 B= 3.360765 C= 1.308770 F= 0.078306	 = 0.832287 meV
+	μ(FHIP)= 0.118371 m^2/Vs 	= 1183.71 cm^2/Vs
+	μ(Kadanoff)= 0.042319 m^2/Vs 	= 423.19 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.409234 
+	exp(Bred): 1.709605 exp(-Bred): 0.584930 exp(Bred)-1: 0.709605
+	μ(Kadanoff [Eqn. 25]) = 0.042319 m^2/Vs 	 = 423.19 cm^2/Vs
+	Gamma0 = 2.78388e+13 rad/s = 4.43069e+12 /s Tau=1/Gamma0 = 2.25699e-13 = 0.225699 ps
+	μ(Hellwarth1999)= 0.029644 m^2/Vs 	= 296.44 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.029697 m^2/Vs 	= 296.97 cm^2/Vs
+	Error due to b=0; 0.001782
+
+T: 240.000000 β: 3e+20 βred: 0.51 ħω  = 11 meV	
+ VariationalParams v= 13.15 w= 11.82	 M=0.237547 k=33.216292	
+ Schultz: rf= 0.770745 (int units) = 4.18048e-09 m [SI]
+ Polaron Free Energy: A= -4.800484 B= 3.429657 C= 1.337926 F= 0.032901	 = 0.349698 meV
+	μ(FHIP)= 0.121588 m^2/Vs 	= 1215.88 cm^2/Vs
+	μ(Kadanoff)= 0.041658 m^2/Vs 	= 416.58 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.488474 
+	exp(Bred): 1.671829 exp(-Bred): 0.598147 exp(Bred)-1: 0.671829
+	μ(Kadanoff [Eqn. 25]) = 0.041658 m^2/Vs 	 = 416.58 cm^2/Vs
+	Gamma0 = 2.84304e+13 rad/s = 4.52484e+12 /s Tau=1/Gamma0 = 2.21002e-13 = 0.221002 ps
+	μ(Hellwarth1999)= 0.028963 m^2/Vs 	= 289.63 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.029013 m^2/Vs 	= 290.13 cm^2/Vs
+	Error due to b=0; 0.001723
+
+T: 250.000000 β: 2.9e+20 βred: 0.49 ħω  = 11 meV	
+ VariationalParams v= 14.08 w= 12.73	 M=0.223580 k=36.237802	
+ Schultz: rf= 0.763493 (int units) = 4.14115e-09 m [SI]
+ Polaron Free Energy: A= -4.859027 B= 3.497180 C= 1.378092 F= -0.016245	 = -0.172664 meV
+	μ(FHIP)= 0.125933 m^2/Vs 	= 1259.33 cm^2/Vs
+	μ(Kadanoff)= 0.041420 m^2/Vs 	= 414.20 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.567859 
+	exp(Bred): 1.637813 exp(-Bred): 0.610570 exp(Bred)-1: 0.637813
+	μ(Kadanoff [Eqn. 25]) = 0.041420 m^2/Vs 	 = 414.20 cm^2/Vs
+	Gamma0 = 2.89197e+13 rad/s = 4.60271e+12 /s Tau=1/Gamma0 = 2.17263e-13 = 0.217263 ps
+	μ(Hellwarth1999)= 0.028400 m^2/Vs 	= 284.00 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.028439 m^2/Vs 	= 284.39 cm^2/Vs
+	Error due to b=0; 0.001360
+
+T: 260.000000 β: 2.8e+20 βred: 0.47 ħω  = 11 meV	
+ VariationalParams v= 14.57 w= 13.19	 M=0.219764 k=38.236219	
+ Schultz: rf= 0.755974 (int units) = 4.10037e-09 m [SI]
+ Polaron Free Energy: A= -4.897209 B= 3.563452 C= 1.402753 F= -0.068996	 = -0.733334 meV
+	μ(FHIP)= 0.129010 m^2/Vs 	= 1290.10 cm^2/Vs
+	μ(Kadanoff)= 0.040800 m^2/Vs 	= 408.00 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.647372 
+	exp(Bred): 1.607027 exp(-Bred): 0.622267 exp(Bred)-1: 0.607027
+	μ(Kadanoff [Eqn. 25]) = 0.040800 m^2/Vs 	 = 408.00 cm^2/Vs
+	Gamma0 = 2.9451e+13 rad/s = 4.68727e+12 /s Tau=1/Gamma0 = 2.13344e-13 = 0.213344 ps
+	μ(Hellwarth1999)= 0.027801 m^2/Vs 	= 278.01 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.027839 m^2/Vs 	= 278.39 cm^2/Vs
+	Error due to b=0; 0.001385
+
+T: 270.000000 β: 2.7e+20 βred: 0.46 ħω  = 11 meV	
+ VariationalParams v= 15.13 w= 13.73	 M=0.214777 k=40.463131	
+ Schultz: rf= 0.748873 (int units) = 4.06185e-09 m [SI]
+ Polaron Free Energy: A= -4.932784 B= 3.628537 C= 1.429478 F= -0.125232	 = -1.331047 meV
+	μ(FHIP)= 0.132333 m^2/Vs 	= 1323.33 cm^2/Vs
+	μ(Kadanoff)= 0.040301 m^2/Vs 	= 403.01 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.727000 
+	exp(Bred): 1.579039 exp(-Bred): 0.633297 exp(Bred)-1: 0.579039
+	μ(Kadanoff [Eqn. 25]) = 0.040301 m^2/Vs 	 = 403.01 cm^2/Vs
+	Gamma0 = 2.99382e+13 rad/s = 4.76482e+12 /s Tau=1/Gamma0 = 2.09872e-13 = 0.209872 ps
+	μ(Hellwarth1999)= 0.027254 m^2/Vs 	= 272.54 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.027291 m^2/Vs 	= 272.91 cm^2/Vs
+	Error due to b=0; 0.001354
+
+T: 280.000000 β: 2.6e+20 βred: 0.44 ħω  = 11 meV	
+ VariationalParams v= 15.70 w= 14.27	 M=0.209877 k=42.763461	
+ Schultz: rf= 0.742116 (int units) = 4.0252e-09 m [SI]
+ Polaron Free Energy: A= -4.963727 B= 3.692489 C= 1.456077 F= -0.184839	 = -1.964595 meV
+	μ(FHIP)= 0.135721 m^2/Vs 	= 1357.21 cm^2/Vs
+	μ(Kadanoff)= 0.039857 m^2/Vs 	= 398.57 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.806730 
+	exp(Bred): 1.553486 exp(-Bred): 0.643714 exp(Bred)-1: 0.553486
+	μ(Kadanoff [Eqn. 25]) = 0.039857 m^2/Vs 	 = 398.57 cm^2/Vs
+	Gamma0 = 3.03945e+13 rad/s = 4.83743e+12 /s Tau=1/Gamma0 = 2.06721e-13 = 0.206721 ps
+	μ(Hellwarth1999)= 0.026743 m^2/Vs 	= 267.43 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.026779 m^2/Vs 	= 267.79 cm^2/Vs
+	Error due to b=0; 0.001317
+
+T: 290.000000 β: 2.5e+20 βred: 0.43 ħω  = 11 meV	
+ VariationalParams v= 16.25 w= 14.80	 M=0.205594 k=45.049781	
+ Schultz: rf= 0.735648 (int units) = 3.99012e-09 m [SI]
+ Polaron Free Energy: A= -4.989147 B= 3.755362 C= 1.481498 F= -0.247712	 = -2.632852 meV
+	μ(FHIP)= 0.139088 m^2/Vs 	= 1390.88 cm^2/Vs
+	μ(Kadanoff)= 0.039437 m^2/Vs 	= 394.37 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.886553 
+	exp(Bred): 1.530067 exp(-Bred): 0.653566 exp(Bred)-1: 0.530067
+	μ(Kadanoff [Eqn. 25]) = 0.039437 m^2/Vs 	 = 394.37 cm^2/Vs
+	Gamma0 = 3.08271e+13 rad/s = 4.90629e+12 /s Tau=1/Gamma0 = 2.0382e-13 = 0.203820 ps
+	μ(Hellwarth1999)= 0.026262 m^2/Vs 	= 262.62 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.026296 m^2/Vs 	= 262.96 cm^2/Vs
+	Error due to b=0; 0.001296
+
+T: 300.000000 β: 2.4e+20 βred: 0.41 ħω  = 11 meV	
+ VariationalParams v= 16.53 w= 15.05	 M=0.205874 k=46.653770	
+ Schultz: rf= 0.729036 (int units) = 3.95426e-09 m [SI]
+ Polaron Free Energy: A= -5.002012 B= 3.817233 C= 1.498530 F= -0.313752	 = -3.334762 meV
+	μ(FHIP)= 0.141782 m^2/Vs 	= 1417.82 cm^2/Vs
+	μ(Kadanoff)= 0.038861 m^2/Vs 	= 388.61 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 1.966458 
+	exp(Bred): 1.508528 exp(-Bred): 0.662898 exp(Bred)-1: 0.508528
+	μ(Kadanoff [Eqn. 25]) = 0.038861 m^2/Vs 	 = 388.61 cm^2/Vs
+	Gamma0 = 3.1277e+13 rad/s = 4.97789e+12 /s Tau=1/Gamma0 = 2.00888e-13 = 0.200888 ps
+	μ(Hellwarth1999)= 0.025773 m^2/Vs 	= 257.73 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.025811 m^2/Vs 	= 258.11 cm^2/Vs
+	Error due to b=0; 0.001449
+
+T: 310.000000 β: 2.3e+20 βred: 0.4 ħω  = 11 meV	
+ VariationalParams v= 16.55 w= 15.04	 M=0.210273 k=47.561010	
+ Schultz: rf= 0.722367 (int units) = 3.91809e-09 m [SI]
+ Polaron Free Energy: A= -5.002127 B= 3.878081 C= 1.506906 F= -0.382860	 = -4.069293 meV
+	μ(FHIP)= 0.143827 m^2/Vs 	= 1438.27 cm^2/Vs
+	μ(Kadanoff)= 0.038150 m^2/Vs 	= 381.50 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.046438 
+	exp(Bred): 1.488654 exp(-Bred): 0.671748 exp(Bred)-1: 0.488654
+	μ(Kadanoff [Eqn. 25]) = 0.038150 m^2/Vs 	 = 381.50 cm^2/Vs
+	Gamma0 = 3.17443e+13 rad/s = 5.05225e+12 /s Tau=1/Gamma0 = 1.97931e-13 = 0.197931 ps
+	μ(Hellwarth1999)= 0.025284 m^2/Vs 	= 252.84 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.025330 m^2/Vs 	= 253.30 cm^2/Vs
+	Error due to b=0; 0.001812
+
+T: 320.000000 β: 2.3e+20 βred: 0.39 ħω  = 11 meV	
+ VariationalParams v= 16.56 w= 15.03	 M=0.214715 k=48.476807	
+ Schultz: rf= 0.715839 (int units) = 3.88268e-09 m [SI]
+ Polaron Free Energy: A= -4.997986 B= 3.937958 C= 1.514979 F= -0.454951	 = -4.835523 meV
+	μ(FHIP)= 0.145866 m^2/Vs 	= 1458.66 cm^2/Vs
+	μ(Kadanoff)= 0.037481 m^2/Vs 	= 374.81 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.126487 
+	exp(Bred): 1.470259 exp(-Bred): 0.680152 exp(Bred)-1: 0.470259
+	μ(Kadanoff [Eqn. 25]) = 0.037481 m^2/Vs 	 = 374.81 cm^2/Vs
+	Gamma0 = 3.21921e+13 rad/s = 5.12353e+12 /s Tau=1/Gamma0 = 1.95178e-13 = 0.195178 ps
+	μ(Hellwarth1999)= 0.024824 m^2/Vs 	= 248.24 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.024880 m^2/Vs 	= 248.80 cm^2/Vs
+	Error due to b=0; 0.002235
+
+T: 330.000000 β: 2.2e+20 βred: 0.37 ħω  = 11 meV	
+ VariationalParams v= 16.58 w= 15.02	 M=0.219292 k=49.456005	
+ Schultz: rf= 0.709189 (int units) = 3.84661e-09 m [SI]
+ Polaron Free Energy: A= -4.991157 B= 3.996974 C= 1.524127 F= -0.529944	 = -5.632595 meV
+	μ(FHIP)= 0.147879 m^2/Vs 	= 1478.79 cm^2/Vs
+	μ(Kadanoff)= 0.036847 m^2/Vs 	= 368.47 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.206597 
+	exp(Bred): 1.453187 exp(-Bred): 0.688143 exp(Bred)-1: 0.453187
+	μ(Kadanoff [Eqn. 25]) = 0.036847 m^2/Vs 	 = 368.47 cm^2/Vs
+	Gamma0 = 3.26232e+13 rad/s = 5.19214e+12 /s Tau=1/Gamma0 = 1.92599e-13 = 0.192599 ps
+	μ(Hellwarth1999)= 0.024388 m^2/Vs 	= 243.88 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.024455 m^2/Vs 	= 244.55 cm^2/Vs
+	Error due to b=0; 0.002719
+
+T: 340.000000 β: 2.1e+20 βred: 0.36 ħω  = 11 meV	
+ VariationalParams v= 16.85 w= 15.25	 M=0.219754 k=51.137113	
+ Schultz: rf= 0.702984 (int units) = 3.81295e-09 m [SI]
+ Polaron Free Energy: A= -4.989079 B= 4.055220 C= 1.541630 F= -0.607771	 = -6.459797 meV
+	μ(FHIP)= 0.150582 m^2/Vs 	= 1505.82 cm^2/Vs
+	μ(Kadanoff)= 0.036417 m^2/Vs 	= 364.17 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.286763 
+	exp(Bred): 1.437299 exp(-Bred): 0.695749 exp(Bred)-1: 0.437299
+	μ(Kadanoff [Eqn. 25]) = 0.036417 m^2/Vs 	 = 364.17 cm^2/Vs
+	Gamma0 = 3.2996e+13 rad/s = 5.25147e+12 /s Tau=1/Gamma0 = 1.90423e-13 = 0.190423 ps
+	μ(Hellwarth1999)= 0.024000 m^2/Vs 	= 240.00 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.024071 m^2/Vs 	= 240.71 cm^2/Vs
+	Error due to b=0; 0.002958
+
+T: 350.000000 β: 2.1e+20 βred: 0.35 ħω  = 11 meV	
+ VariationalParams v= 16.89 w= 15.26	 M=0.223890 k=52.168826	
+ Schultz: rf= 0.696819 (int units) = 3.77951e-09 m [SI]
+ Polaron Free Energy: A= -4.974518 B= 4.112496 C= 1.550367 F= -0.688344	 = -7.316181 meV
+	μ(FHIP)= 0.152668 m^2/Vs 	= 1526.68 cm^2/Vs
+	μ(Kadanoff)= 0.035867 m^2/Vs 	= 358.67 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.366981 
+	exp(Bred): 1.422479 exp(-Bred): 0.702998 exp(Bred)-1: 0.422479
+	μ(Kadanoff [Eqn. 25]) = 0.035867 m^2/Vs 	 = 358.67 cm^2/Vs
+	Gamma0 = 3.33891e+13 rad/s = 5.31403e+12 /s Tau=1/Gamma0 = 1.88181e-13 = 0.188181 ps
+	μ(Hellwarth1999)= 0.023612 m^2/Vs 	= 236.12 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.023695 m^2/Vs 	= 236.95 cm^2/Vs
+	Error due to b=0; 0.003508
+
+T: 360.000000 β: 2e+20 βred: 0.34 ħω  = 11 meV	
+ VariationalParams v= 17.06 w= 15.41	 M=0.225683 k=53.578076	
+ Schultz: rf= 0.691065 (int units) = 3.7483e-09 m [SI]
+ Polaron Free Energy: A= -4.960631 B= 4.169018 C= 1.563221 F= -0.771608	 = -8.201162 meV
+	μ(FHIP)= 0.155155 m^2/Vs 	= 1551.55 cm^2/Vs
+	μ(Kadanoff)= 0.035439 m^2/Vs 	= 354.39 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.447247 
+	exp(Bred): 1.408622 exp(-Bred): 0.709913 exp(Bred)-1: 0.408622
+	μ(Kadanoff [Eqn. 25]) = 0.035439 m^2/Vs 	 = 354.39 cm^2/Vs
+	Gamma0 = 3.37431e+13 rad/s = 5.37039e+12 /s Tau=1/Gamma0 = 1.86206e-13 = 0.186206 ps
+	μ(Hellwarth1999)= 0.023256 m^2/Vs 	= 232.56 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.023348 m^2/Vs 	= 233.48 cm^2/Vs
+	Error due to b=0; 0.003913
+
+T: 370.000000 β: 2e+20 βred: 0.33 ħω  = 11 meV	
+ VariationalParams v= 18.91 w= 17.26	 M=0.200010 k=59.573880	
+ Schultz: rf= 0.689946 (int units) = 3.74223e-09 m [SI]
+ Polaron Free Energy: A= -4.989389 B= 4.224935 C= 1.622008 F= -0.857554	 = -9.114658 meV
+	μ(FHIP)= 0.162660 m^2/Vs 	= 1626.60 cm^2/Vs
+	μ(Kadanoff)= 0.036149 m^2/Vs 	= 361.49 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.527556 
+	exp(Bred): 1.395639 exp(-Bred): 0.716518 exp(Bred)-1: 0.395639
+	μ(Kadanoff [Eqn. 25]) = 0.036149 m^2/Vs 	 = 361.49 cm^2/Vs
+	Gamma0 = 3.37879e+13 rad/s = 5.37751e+12 /s Tau=1/Gamma0 = 1.8596e-13 = 0.185960 ps
+	μ(Hellwarth1999)= 0.023082 m^2/Vs 	= 230.82 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.023134 m^2/Vs 	= 231.34 cm^2/Vs
+	Error due to b=0; 0.002264
+
+T: 380.000000 β: 1.9e+20 βred: 0.32 ħω  = 11 meV	
+ VariationalParams v= 18.92 w= 17.24	 M=0.203869 k=60.625731	
+ Schultz: rf= 0.684208 (int units) = 3.71111e-09 m [SI]
+ Polaron Free Energy: A= -4.964913 B= 4.280026 C= 1.630884 F= -0.945997	 = -10.054681 meV
+	μ(FHIP)= 0.164834 m^2/Vs 	= 1648.34 cm^2/Vs
+	μ(Kadanoff)= 0.035668 m^2/Vs 	= 356.68 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.607906 
+	exp(Bred): 1.383449 exp(-Bred): 0.722831 exp(Bred)-1: 0.383449
+	μ(Kadanoff [Eqn. 25]) = 0.035668 m^2/Vs 	 = 356.68 cm^2/Vs
+	Gamma0 = 3.41337e+13 rad/s = 5.43255e+12 /s Tau=1/Gamma0 = 1.84076e-13 = 0.184076 ps
+	μ(Hellwarth1999)= 0.022739 m^2/Vs 	= 227.39 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.022800 m^2/Vs 	= 228.00 cm^2/Vs
+	Error due to b=0; 0.002688
+
+T: 390.000000 β: 1.9e+20 βred: 0.32 ħω  = 11 meV	
+ VariationalParams v= 19.16 w= 17.46	 M=0.204444 k=62.309793	
+ Schultz: rf= 0.67914 (int units) = 3.68363e-09 m [SI]
+ Polaron Free Energy: A= -4.942933 B= 4.334412 C= 1.645465 F= -1.036944	 = -11.021325 meV
+	μ(FHIP)= 0.167632 m^2/Vs 	= 1676.32 cm^2/Vs
+	μ(Kadanoff)= 0.035343 m^2/Vs 	= 353.43 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.688292 
+	exp(Bred): 1.371983 exp(-Bred): 0.728872 exp(Bred)-1: 0.371983
+	μ(Kadanoff [Eqn. 25]) = 0.035343 m^2/Vs 	 = 353.43 cm^2/Vs
+	Gamma0 = 3.44308e+13 rad/s = 5.47983e+12 /s Tau=1/Gamma0 = 1.82487e-13 = 0.182487 ps
+	μ(Hellwarth1999)= 0.022431 m^2/Vs 	= 224.31 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.022497 m^2/Vs 	= 224.97 cm^2/Vs
+	Error due to b=0; 0.002916
+
+T: 400.000000 β: 1.8e+20 βred: 0.31 ħω  = 11 meV	
+ VariationalParams v= 19.17 w= 17.44	 M=0.208256 k=63.366401	
+ Schultz: rf= 0.673707 (int units) = 3.65416e-09 m [SI]
+ Polaron Free Energy: A= -4.911362 B= 4.388079 C= 1.653607 F= -1.130325	 = -12.013842 meV
+	μ(FHIP)= 0.169802 m^2/Vs 	= 1698.02 cm^2/Vs
+	μ(Kadanoff)= 0.034906 m^2/Vs 	= 349.06 cm^2/Vs
+	 Eqm. Phonon. pop. Nbar: 2.768713 
+	exp(Bred): 1.361179 exp(-Bred): 0.734657 exp(Bred)-1: 0.361179
+	μ(Kadanoff [Eqn. 25]) = 0.034906 m^2/Vs 	 = 349.06 cm^2/Vs
+	Gamma0 = 3.47523e+13 rad/s = 5.531e+12 /s Tau=1/Gamma0 = 1.80799e-13 = 0.180799 ps
+	μ(Hellwarth1999)= 0.022119 m^2/Vs 	= 221.19 cm^2/Vs
+	μ(Hellwarth1999,b=0)= 0.022194 m^2/Vs 	= 221.94 cm^2/Vs
+	Error due to b=0; 0.003415
+
+OK - everything calculated and stored. Now plotting..
+That's me!
