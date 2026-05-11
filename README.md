@@ -7,12 +7,12 @@ Implemented pipelines:
 - `FrohlichModel + GaussianFeynmanTrial` for continuum Fröhlich polarons.
 - `FrohlichModel + MultiGaussianTrial` for finite-mode Martin/Frost-style Gaussian variational trials.
 - `FrohlichModel + ProfileGaussianTrial` for general profile-function Gaussian variational trials.
-- `FrohlichModel + NonlocalGaussianTrial` for experimental finite-basis nonlocal Gaussian kernels that are not validated energy bounds.
+- `FrohlichModel + NonlocalGaussianTrial` for experimental finite-basis nonlocal Gaussian kernels that do not validate energy bounds.
 - `HolsteinModel + PoissonTrial` for lattice Holstein polarons with a continuous-time hopping-rate CTMC trial.
 - `PeierlsModel + PoissonTrial` for bond-coupled Peierls lattice polarons.
 - `CompositePolaronModel + PoissonTrial` for compatible lattice influence functionals, currently Holstein plus Peierls.
 
-For continuum Fröhlich models, the production path follows the Feynman/FHIP/Hellwarth Gaussian-trial literature. For lattice Holstein, Peierls, and Holstein-Peierls models, the production path uses a CTMC variational bridge free energy and a CTMC first-return transport kernel dressed by exact phonon sidebands.
+For continuum Fröhlich models, the production path follows the Feynman/FHIP/Hellwarth Gaussian-trial literature. For lattice Holstein, Peierls, and Holstein-Peierls models, the production path uses a CTMC variational bridge free energy and a CTMC first-return transport kernel, both dressed with exact phonon sidebands.
 
 ## Core Pipeline
 
@@ -42,7 +42,7 @@ result.mobilities
 result.responses
 ```
 
-Fröhlich results also expose `result.zero_temperature`, even if zero temperature was not included in the requested grid.
+Fröhlich's results also expose `result.zero_temperature`, even if zero temperature was not included in the requested grid.
 
 The generic variational objective is decomposed as:
 
@@ -53,7 +53,7 @@ objective(problem, parameters, beta) =
     interaction_free_energy(problem.model, problem.trial, parameters, beta)
 ```
 
-Use `solve_variational(problem, beta)` for a single inverse-temperature optimization.
+Use `solve_variational(problem, beta)` for a single inverse-temperature optimisation.
 
 ## Fröhlich
 
@@ -160,7 +160,7 @@ problem = frohlich_profile_gaussian_problem(
 result = solve(problem; temperatures = [0.0, 0.5], frequencies = [0.0, 1.0])
 ```
 
-The optimized parameters are amplitudes in a positive profile
+The optimised parameters are amplitudes in a positive profile
 
 ```math
 \Gamma(\omega) = \sum_i \frac{a_i\nu_i^2}{\omega^2+\nu_i^2}.
@@ -174,7 +174,7 @@ The profile family contains Feynman's trial exactly. If the one-mode Feynman sol
 \Gamma_F(\omega) = \frac{v^2-w^2}{\omega^2+w^2}
 ```
 
-is represented by `basis_frequencies = [w]` and `a1 = (v^2-w^2)/w^2`. The test suite checks that this embedding reproduces the Feynman displacement kernel, entropy correction, interaction, and total objective. General profile calculations should improve energies only modestly unless the basis has been carefully validated.
+is represented by `basis_frequencies = [w]` and `a1 = (v^2-w^2)/w^2`. The test suite verifies that this embedding reproduces the Feynman displacement kernel, the entropy correction, the interaction, and the total objective. General profile calculations should improve energies only modestly unless the basis has been carefully validated.
 
 ### Experimental Nonlocal Gaussian Kernels
 
@@ -194,11 +194,11 @@ result = solve(
 )
 ```
 
-The optimized parameters are amplitudes `a1, a2, ...` in a positive nonlocal memory-kernel basis. This path is explicitly experimental: the interaction and response use the generic Gaussian mean-square-displacement kernel, while the entropy contribution is a configurable quadratic regularizer rather than the profile-functional log-determinant action. A lower nonlocal pseudo-objective is not evidence of a better variational upper bound; use `ProfileGaussianTrial` for energy comparisons.
+The optimised parameters are amplitudes `a1, a2, ...` in a positive nonlocal memory-kernel basis. This path is explicitly experimental: the interaction and response use the generic Gaussian mean-square-displacement kernel, while the entropy contribution is a configurable quadratic regularizer rather than the profile-functional log-determinant action. A lower nonlocal pseudo-objective is not evidence of a better variational upper bound; use `ProfileGaussianTrial` for energy comparisons.
 
 ## Holstein, Peierls, And Composite Lattice Models
 
-The lattice implementation follows the same public solve pipeline as the continuum Fröhlich implementation, but the underlying theory is different. The lattice trial is a continuous-time Markov chain (CTMC) with variational nearest-neighbor hopping rate `κ`. The free-energy side uses a Feynman-Jensen/relative-entropy CTMC bridge objective. The transport side uses the optimized `κ` in a first-return current-blip kernel dressed by exact Holstein and/or Peierls phonon sidebands.
+The lattice implementation follows the same pipeline as the continuum Fröhlich implementation, but the underlying theory differs. The lattice trial is a continuous-time Markov chain (CTMC) with variational nearest-neighbour hopping rate `κ`. The free-energy side uses a Feynman-Jensen/relative-entropy CTMC bridge objective. The transport side uses the optimised `κ` in a first-return current-blip kernel dressed by exact Holstein and/or Peierls phonon sidebands.
 
 ```julia
 problem = holstein_poisson_problem(
@@ -221,7 +221,7 @@ complex_mobility = result.responses[2, 1].mobility
 
 ### CTMC Trial And General Dimension Kernels
 
-For a \(d\)-dimensional hypercubic lattice, the CTMC propagator factorizes as
+For a \(d\)-dimensional hypercubic lattice, the CTMC propagator factorises as
 
 ```math
 P_{\mathbf r}^{(d)}(t)
@@ -239,15 +239,15 @@ P_0^{(d)}(t)
 e^{-2d\kappa t} I_0(2\kappa t)^d.
 ```
 
-For numerical work the package uses scaled modified Bessel functions, `ive(n, x) = exp(-x) I_n(x)`, so the return factor is evaluated as
+For numerical work, the package uses scaled modified Bessel functions, `ive(n, x) = exp(-x) I_n(x)`, so the return factor is evaluated as
 
 ```math
 P_0^{(d)}(t)
 =
-\operatorname{ive}_0(2\kappa t)^d.
+\text{ive}_0(2\kappa t)^d.
 ```
 
-The nearest-neighbor first-return kernel used for lattice transport is
+The nearest-neighbour first-return kernel used for lattice transport is
 
 ```math
 \widehat f_{a\to0}^{(d)}(s)
@@ -273,7 +273,7 @@ with
 G_0^{(d)}(s)
 =
 \int_0^\infty
-e^{-st}\operatorname{ive}_0(2\kappa t)^d\,dt.
+e^{-st}\text{ive}_0(2\kappa t)^d\,dt.
 ```
 
 For \(d=1\), this reduces to the closed form
@@ -322,8 +322,7 @@ E_H^{(d)}(\kappa)
 -
 g^2
 \int_0^\infty
-e^{-\omega_H t}
-\operatorname{ive}_0(2\kappa t)^d
+e^{-\omega_H t}\text{ive}_0(2\kappa t)^d
 \,dt.
 ```
 
@@ -366,12 +365,9 @@ The Peierls influence is a retarded bond-order self-interaction. The general-`d`
 C_B^{(d)}(t)
 =
 2d
-\left[
-\operatorname{ive}_0(2\kappa t)
-+
-\operatorname{ive}_1(2\kappa t)
-\right]
-\operatorname{ive}_0(2\kappa t)^{d-1}.
+\left[\text{ive}_0(2\kappa t)
++\text{ive}_1(2\kappa t)
+\right]\text{ive}_0(2\kappa t)^{d-1}.
 ```
 
 The zero-temperature Peierls CTMC energy is
@@ -390,7 +386,7 @@ C_B^{(d)}(t)
 \,dt.
 ```
 
-At finite \(\beta\), the package uses the corresponding periodic bond-order bridge. In one dimension this is equivalent to the bridge expression in terms of \(q_0,q_1\):
+At finite \(\beta\), the package uses the corresponding periodic bond-order bridge. In one dimension, this is equivalent to the bridge expression in terms of \(q_0,q_1\):
 
 ```math
 F_P(\kappa,\beta)=
@@ -405,7 +401,7 @@ D_\beta(u;\omega_P)
 
 ### Holstein-Peierls Free Energy
 
-Compatible lattice models can be combined on one Poisson/CTMC path space. For independent site and bond phonons, the influence functionals add:
+Compatible lattice models can be combined into a single Poisson/CTMC path space. For independent site and bond phonons, the influence functionals add:
 
 ```math
 E_{HP}^{(d)}(\kappa)
@@ -415,8 +411,7 @@ E_{HP}^{(d)}(\kappa)
 2d\kappa\log\frac{\kappa}{J}
 -
 g_H^2
-\int_0^\infty e^{-\omega_Ht}
-\operatorname{ive}_0(2\kappa t)^d\,dt
+\int_0^\infty e^{-\omega_Ht}\text{ive}_0(2\kappa t)^d\,dt
 -
 g_P^2
 \int_0^\infty e^{-\omega_Pt}
@@ -432,8 +427,7 @@ Lattice transport is computed from the CTMC first-return kernel and exact sideba
 ```math
 \mu_{\rm dc}^{(d)}(T)
 =
-\beta\kappa_\star
-\operatorname{Re}
+\beta\kappa_\star\text{Re}
 \sum_m
 w_m(T)
 \widehat f_{a\to0}^{(d)}
@@ -442,7 +436,7 @@ w_m(T)
 
 Here:
 
-- `κ_star` is the optimized CTMC hopping rate.
+- `κ_star` is the optimised CTMC hopping rate.
 - `w_m(T), ν_m` are Holstein, Peierls, or Holstein-Peierls sideband weights and frequencies.
 - `epsilon` is a small positive broadening used to evaluate the retarded kernel.
 - for finite temperature, `mobility_factor = μ / μ_E`, with `μ_E = βκ_star`,
@@ -455,19 +449,19 @@ At finite temperature, the package reports reduced per-carrier response as
 ```
 
 At zero temperature, the DC mobility still diverges, but the finite-frequency
-optical response is reported in the reduced current-current normalization
+optical response is reported in the reduced current-current normalisation
 
 ```math
 \mu(\Omega)=\sigma(\Omega)=K(\Omega), \qquad \Omega \neq 0,\; T=0,
 ```
 
-so the response remains finite and no artificial `NaN` values appear in the
+so the response remains finite, and no artificial `NaN` values appear in the
 Holstein or Peierls optical spectra.
 
-This response is not a continuum FHIP formula and it is not the older lattice
+This response is not a continuum FHIP formula, and it is not the older lattice
 "memory-function" wording that appeared in earlier iterations of the package.
 It is a lattice CTMC first-return sideband ansatz. The analogy to FHIP is only
-organizational: an optimized trial dynamics supplies the effective motion,
+Organisational: an optimised trial dynamics supplies the effective motion,
 while the current blip or current vertex is dressed by the appropriate exact
 Holstein cloud and/or Peierls vertex factor.
 
@@ -509,7 +503,7 @@ At finite temperature, the sideband integer is the difference of two Poisson var
 
 ### Peierls Sidebands
 
-For linear Peierls coupling, the phonon coordinate appears directly in the current/hopping vertex. The normalized Peierls vertex factor is
+For linear Peierls coupling, the phonon coordinate appears directly in the current/hopping vertex. The normalised Peierls vertex factor is
 
 ```math
 \mathcal C_P(t)
@@ -531,7 +525,7 @@ with
 N_P=\frac{1}{e^{\beta\omega_P}-1}.
 ```
 
-Thus Peierls coupling produces a zero-phonon current channel and phonon-assisted channels at \(\pm\omega_P\), rather than an exponentiated Franck-Condon ladder at leading vertex level.
+Thus, Peierls coupling produces a zero-phonon current channel and phonon-assisted channels at \(\pm\omega_P\), rather than an exponentiated Franck-Condon ladder at the leading vertex level.
 
 ### Holstein-Peierls Sidebands
 
@@ -543,7 +537,7 @@ C_{HP}(t)=C_H(t)\mathcal C_P(t).
 
 The sideband list is therefore the convolution of the Holstein Franck-Condon sidebands with the Peierls vertex sidebands.
 
-For transport-focused studies, the package also provides dedicated guide-style
+For transport-focused studies, the package also provides a dedicated guide-style
 sweeps:
 
 ```julia
@@ -555,8 +549,8 @@ rows = holstein_peierls_transport_sweep(
 )
 ```
 
-These helpers reuse one frozen `T = 0` optimized rate by default, cache
-repeated first-return evaluations over reused frequency shifts, and return flat
+These helpers reuse one frozen `T = 0` optimised rate by default, cache
+Repeated first-return evaluations over reused frequency shifts, and return flat
 rows containing `mobility`, `mobility_einstein`, `mobility_factor`,
 `conductivity_real`, `conductivity_imag`, and sideband normalization
 diagnostics.
@@ -623,7 +617,7 @@ unitful_hp = material_units(result_hp)
 unitful_hp.mobility[1]
 ```
 
-Composing incompatible path spaces, such as Fröhlich Gaussian plus Holstein Poisson, throws `ArgumentError`.
+Composing incompatible path spaces, such as Fröhlich Gaussian plus Holstein Poisson, results in an `ArgumentError`.
 
 ## Limiting Regimes
 
@@ -631,17 +625,17 @@ The examples and tests include coded checks for simple limits:
 
 - Fröhlich weak coupling has `E ≈ -α`, while strong coupling drives `w -> ω` and `v ∼ 4α²/(9π)`.
 - Fröhlich high-temperature Hellwarth mobility decreases as thermal phonon occupation grows; adiabaticity is interpreted through the reduced phonon scale.
-- Holstein zero coupling returns `κ = J`; weak coupling gives the bare-rate interaction correction; stronger coupling suppresses `κ` and approaches a localized shift `-g²/ω0` plus exponentially narrowed transport.
+- Holstein zero coupling returns `κ = J`; weak coupling gives the bare-rate interaction correction; stronger coupling suppresses `κ` and approaches a localised shift `-g²/ω0` plus exponentially narrowed transport.
 - Holstein high temperature broadens the finite-temperature sideband distribution and modifies the CTMC-projected mobility through the \(\beta\kappa_\star\) prefactor and thermal sideband weights.
 - Peierls zero coupling recovers the bare Poisson walk or the other composite component; weak Peierls corrections scale as `-g_P²`.
-- Peierls antiadiabatic phonons produce short bond memory, while adiabatic phonons produce long-lived bond modulation and dynamic-disorder-like behavior.
+- Peierls antiadiabatic phonons produce short bond memory, while adiabatic phonons produce long-lived bond modulation and dynamic-disorder-like behaviour.
 - Holstein-Peierls sidebands are a convolution of the Holstein Franck-Condon ladder and the Peierls current-vertex channels.
 
 ## Theory And Literature Guide
 
 The Fröhlich implementation follows the historical path-integral arc: Fröhlich's continuum Hamiltonian, Feynman's all-coupling Gaussian variational solution, Schultz's early self-energy/mass/mobility comparisons, Osaka's finite-temperature free energy, FHIP mobility, Devreese optical absorption and memory-function work, Hellwarth and Biaggio's multimode effective-frequency treatment, Frost's 2017 first-principles halide-perovskite workflow, and Martin and Frost's 2022 multimode extension.
 
-The general Gaussian profile trial follows the broader functional-integral viewpoint associated with Adamowski, Gerlach, and Leschke. In the current package this is implemented as a finite positive profile basis with an analytic rational-kernel displacement decomposition.
+The general Gaussian profile trial follows the broader functional-integral viewpoint associated with Adamowski, Gerlach, and Leschke. In the current package, this is implemented as a finite positive profile basis with an analytic rational-kernel displacement decomposition.
 
 The Holstein and Peierls implementations follow the lattice-polaron worldline tradition of Holstein, De Raedt, Lagendijk, Kornilovitch, and collaborators. In this package, the lattice free energy is approximated by lightweight CTMC bridge variational kernels, while lattice mobility and optical response are approximated by CTMC first-return kernels dressed by exact Holstein clouds and/or Peierls current-vertex sidebands. This is a compact deterministic alternative to continuous-time quantum Monte Carlo, not a replacement for full numerically exact lattice-polaron simulation.
 
@@ -665,7 +659,7 @@ Trial-specific defaults live on trial constructors such as `GaussianFeynmanTrial
 
 ## Continuation Sweeps
 
-Continuation helpers run forward and backward warm-started branches and select the lower-free-energy row:
+Continuation helpers run forward and backwards warm-started branches and select the lower-free-energy row:
 
 ```julia
 continued_frohlich_coupling_sweep(0.5:0.5:5.0; temperature = 1.0)
@@ -674,7 +668,7 @@ continued_holstein_adiabaticity_sweep([0.5, 1.0, 2.0]; coupling = 1.5, temperatu
 
 Rows are flat `NamedTuple`s intended for validation tables, CSV export, or plotting.
 
-Frequency sweeps use the same convention, but optimize once per temperature and then evaluate the requested response grid:
+Frequency sweeps use the same convention, but optimise once per temperature and then evaluate the requested response grid:
 
 ```julia
 rows = frohlich_frequency_sweep(
@@ -744,7 +738,7 @@ Pkg.instantiate()
 Pkg.test()
 ```
 
-The test suite checks literature regressions, API shape, optimizer behavior, sweep shape, exported docstrings, and README examples.
+The test suite checks literature regressions, API shape, optimiser behaviour, sweep shape, exported docstrings, and README examples.
 
 ## Adding A Model
 
