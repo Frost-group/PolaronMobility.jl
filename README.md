@@ -219,342 +219,6 @@ complex_mobility = result.responses[2, 1].mobility
 
 `solve_holstein(...)` is the convenience wrapper.
 
-### CTMC Trial And General Dimension Kernels
-
-For a \(d\)-dimensional hypercubic lattice, the CTMC propagator factorises as
-
-```math
-P_{\mathbf r}^{(d)}(t)
-=
-e^{-2d\kappa t}
-\prod_{\mu=1}^{d}
-I_{r_\mu}(2\kappa t).
-```
-
-The return probability is
-
-```math
-P_0^{(d)}(t)
-=
-e^{-2d\kappa t} I_0(2\kappa t)^d.
-```
-
-For numerical work, the package uses scaled modified Bessel functions, `ive(n, x) = exp(-x) I_n(x)`, so the return factor is evaluated as
-
-```math
-P_0^{(d)}(t)
-=
-\text{ive}_0(2\kappa t)^d.
-```
-
-The nearest-neighbour first-return kernel used for lattice transport is
-
-```math
-\widehat f_{a\to0}^{(d)}(s)
-=
-\frac{G_a^{(d)}(s)}{G_0^{(d)}(s)}.
-```
-
-Equivalently, using the lattice resolvent identity,
-
-```math
-\widehat f_{a\to0}^{(d)}(s)
-=
-\frac{
-s+2d\kappa-\frac{1}{G_0^{(d)}(s)}
-}{
-2d\kappa
-},
-```
-
-with
-
-```math
-G_0^{(d)}(s)
-=
-\int_0^\infty
-e^{-st}\text{ive}_0(2\kappa t)^d\,dt.
-```
-
-For \(d=1\), this reduces to the closed form
-
-```math
-\widehat f_{1\to0}^{(1)}(s)
-=
-\frac{s+2\kappa-\sqrt{s(s+4\kappa)}}{2\kappa}.
-```
-
-For \(d=2\), one may also use the square-lattice elliptic-integral form
-
-```math
-G_0^{(2)}(s)
-=
-\frac{2}{\pi(s+4\kappa)}
-K\!\left[\left(\frac{4\kappa}{s+4\kappa}\right)^2\right].
-```
-
-For \(d=3\), the cubic-lattice Green's function is reduced to a single
-finite-interval integral over the same square-lattice kernel,
-
-```math
-G_0^{(3)}(s)
-=
-\frac{1}{\pi}
-\int_0^\pi
-G_0^{(2)}\!\left(s+2\kappa(1-\cos q)\right)\,dq.
-```
-
-The package uses these `d = 2, 3` reductions directly. So higher-dimensional
-Holstein and Peierls calculations do not evaluate the retarded Green's
-function by repeated `0..∞` oscillatory quadrature unless a user goes beyond
-the standard hypercubic `d = 1, 2, 3` kernels.
-
-### Holstein Free Energy
-
-The Holstein influence is a retarded site-occupation self-interaction. The zero-temperature CTMC variational energy in general dimension is
-
-```math
-E_H^{(d)}(\kappa)
-=
--2d\kappa
-+
-2d\kappa\log\frac{\kappa}{J}
--
-g^2
-\int_0^\infty
-e^{-\omega_H t}\text{ive}_0(2\kappa t)^d
-\,dt.
-```
-
-At finite \(\beta\), the package uses the corresponding periodic CTMC bridge form,
-
-```math
-F_H(\kappa,\beta)
-=
--\frac{g^2}{2}
-\int_0^\beta
-D_\beta(u;\omega_H)
-\frac{
-P_0^{(d)}(u)P_0^{(d)}(\beta-u)
-}{
-P_0^{(d)}(\beta)
-}
-\,du,
-```
-
-plus the CTMC free energy and hopping relative-entropy terms.
-
-This bridge form is the finite-temperature lattice analogue of the \(T=0\) return-probability average. It samples the full equilibrium electron path space under the CTMC trial, rather than forcing the path into closed blips.
-
-### Peierls Free Energy
-
-The reduced Peierls Hamiltonian is
-
-```math
-H_P =
--J\sum_{\langle ij\rangle} B_{ij}
-+ \omega_P\sum_b a_b^\dagger a_b
-+ g_P\sum_b B_b(a_b+a_b^\dagger),
-\qquad
-B_{ij}=c_i^\dagger c_j+c_j^\dagger c_i .
-```
-
-The Peierls influence is a retarded bond-order self-interaction. The general-`d` bond correlator is
-
-```math
-C_B^{(d)}(t)
-=
-2d
-\left[\text{ive}_0(2\kappa t)
-+\text{ive}_1(2\kappa t)
-\right]\text{ive}_0(2\kappa t)^{d-1}.
-```
-
-The zero-temperature Peierls CTMC energy is
-
-```math
-E_P^{(d)}(\kappa)
-=
--2d\kappa
-+
-2d\kappa\log\frac{\kappa}{J}
--
-g_P^2
-\int_0^\infty
-e^{-\omega_Pt}
-C_B^{(d)}(t)
-\,dt.
-```
-
-At finite \(\beta\), the package uses the corresponding periodic bond-order bridge. In one dimension, this is equivalent to the bridge expression in terms of \(q_0,q_1\):
-
-```math
-F_P(\kappa,\beta)=
--\frac{g_P^2}{2}
-\int_0^\beta
-D_\beta(u;\omega_P)
-2d
-\frac{q_0(u)q_0(\beta-u)+q_1(u)q_1(\beta-u)}
-{q_0(\beta)}
-\,du .
-```
-
-### Holstein-Peierls Free Energy
-
-Compatible lattice models can be combined into a single Poisson/CTMC path space. For independent site and bond phonons, the influence functionals add:
-
-```math
-E_{HP}^{(d)}(\kappa)
-=
--2d\kappa
-+
-2d\kappa\log\frac{\kappa}{J}
--
-g_H^2
-\int_0^\infty e^{-\omega_Ht}\text{ive}_0(2\kappa t)^d\,dt
--
-g_P^2
-\int_0^\infty e^{-\omega_Pt}
-C_B^{(d)}(t)\,dt.
-```
-
-Setting `coupling = 0` for one component recovers the other component.
-
-### Lattice Mobility And Frequency Response
-
-Lattice transport is computed from the CTMC first-return kernel and exact sideband weights. In reduced units, the DC mobility has the form
-
-```math
-\mu_{\rm dc}^{(d)}(T)
-=
-\beta\kappa_\star\text{Re}
-\sum_m
-w_m(T)
-\widehat f_{a\to0}^{(d)}
-\left(\epsilon-i\nu_m\right).
-```
-
-Here:
-
-- `κ_star` is the optimised CTMC hopping rate.
-- `w_m(T), ν_m` are Holstein, Peierls, or Holstein-Peierls sideband weights and frequencies.
-- `epsilon` is a small positive broadening used to evaluate the retarded kernel.
-- for finite temperature, `mobility_factor = μ / μ_E`, with `μ_E = βκ_star`,
-  stores the dimensionless projected transport factor.
-
-At finite temperature, the package reports reduced per-carrier response as
-
-```math
-\mu(\Omega)=\sigma(\Omega)=\beta\kappa_\star K(\Omega).
-```
-
-At zero temperature, the DC mobility still diverges, but the finite-frequency
-optical response is reported in the reduced current-current normalisation
-
-```math
-\mu(\Omega)=\sigma(\Omega)=K(\Omega), \qquad \Omega \neq 0,\; T=0,
-```
-
-so the response remains finite, and no artificial `NaN` values appear in the
-Holstein or Peierls optical spectra.
-
-This response is not a continuum FHIP formula, and it is not the older lattice
-"memory-function" wording that appeared in earlier iterations of the package.
-It is a lattice CTMC first-return sideband ansatz. The analogy to FHIP is only
-Organisational: an optimised trial dynamics supplies the effective motion,
-while the current blip or current vertex is dressed by the appropriate exact
-Holstein cloud and/or Peierls vertex factor.
-
-### Holstein Sidebands
-
-For Holstein coupling, a current blip changes the equilibrium displacement of the two local oscillators involved in a hop. The exact real-time cloud factor is
-
-```math
-C_H(t)
-=
-\exp[-S_H(2N_H+1)]
-\exp[
-S_H(N_H+1)e^{i\omega_Ht}
-+
-S_HN_He^{-i\omega_Ht}
-],
-```
-
-where
-
-```math
-S_H=2\frac{g_H^2}{\omega_H^2},
-\qquad
-N_H=\frac{1}{e^{\beta\omega_H}-1}.
-```
-
-At \(T=0\), this reduces to the Franck-Condon series
-
-```math
-C_H(t)
-=
-e^{-S_H}
-\sum_{\ell=0}^{\infty}
-\frac{S_H^\ell}{\ell!}
-e^{i\ell\omega_Ht}.
-```
-
-At finite temperature, the sideband integer is the difference of two Poisson variables with means \(S_H(N_H+1)\) and \(S_HN_H\).
-
-### Peierls Sidebands
-
-For linear Peierls coupling, the phonon coordinate appears directly in the current/hopping vertex. The normalised Peierls vertex factor is
-
-```math
-\mathcal C_P(t)
-=
-\frac{
-J^2
-+
-g_P^2(N_P+1)e^{-i\omega_Pt}
-+
-g_P^2N_Pe^{i\omega_Pt}
-}{
-J^2+g_P^2(2N_P+1)
-},
-```
-
-with
-
-```math
-N_P=\frac{1}{e^{\beta\omega_P}-1}.
-```
-
-Thus, Peierls coupling produces a zero-phonon current channel and phonon-assisted channels at \(\pm\omega_P\), rather than an exponentiated Franck-Condon ladder at the leading vertex level.
-
-### Holstein-Peierls Sidebands
-
-For independent site and bond phonons, the transport cloud is the product
-
-```math
-C_{HP}(t)=C_H(t)\mathcal C_P(t).
-```
-
-The sideband list is therefore the convolution of the Holstein Franck-Condon sidebands with the Peierls vertex sidebands.
-
-For transport-focused studies, the package also provides a dedicated guide-style
-sweeps:
-
-```julia
-rows = holstein_peierls_transport_sweep(
-    problem;
-    temperatures = 0.05:0.05:0.5,
-    frequencies = [0.0, 0.25, 0.5],
-    kappa_source = :zero_temperature,
-)
-```
-
-These helpers reuse one frozen `T = 0` optimised rate by default, cache
-Repeated first-return evaluations over reused frequency shifts, and return flat
-rows containing `mobility`, `mobility_einstein`, `mobility_factor`,
-`conductivity_real`, `conductivity_imag`, and sideband normalization
-diagnostics.
-
 ### Lattice Examples
 
 For rubrene Holstein parameters from Ordejón Table II:
@@ -618,6 +282,33 @@ unitful_hp.mobility[1]
 ```
 
 Composing incompatible path spaces, such as Fröhlich Gaussian plus Holstein Poisson, results in an `ArgumentError`.
+
+### Holstein-Peierls Sidebands
+
+For independent site and bond phonons, the transport cloud is the product
+
+```math
+C_{HP}(t)=C_H(t)\mathcal C_P(t).
+```
+
+The sideband list is therefore the convolution of the Holstein Franck-Condon sidebands with the Peierls vertex sidebands.
+
+For transport-focused studies, the package also provides a dedicated guide-style
+sweeps:
+
+```julia
+rows = holstein_peierls_transport_sweep(
+    problem;
+    temperatures = 0.05:0.05:0.5,
+    frequencies = [0.0, 0.25, 0.5],
+    kappa_source = :zero_temperature,
+)
+```
+
+These helpers reuse one frozen `T = 0` optimised rate by default, cache repeated first-return evaluations over reused frequency shifts, and return flat
+rows containing `mobility`, `mobility_einstein`, `mobility_factor`,
+`conductivity_real`, `conductivity_imag`, and sideband normalization
+diagnostics.
 
 ## Limiting Regimes
 
