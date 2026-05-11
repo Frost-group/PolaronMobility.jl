@@ -18,7 +18,7 @@ S-S_0
 \right\rangle_0 .
 ```
 
-In code the objective is decomposed as
+In code, the objective is decomposed as
 
 ```julia
 free_energy(trial, parameters, beta) +
@@ -67,7 +67,7 @@ w,\delta,
 v = w + \delta .
 ```
 
-At zero temperature the Feynman mean-square-displacement kernel is
+At zero temperature, the Feynman mean-square-displacement kernel is
 
 ```math
 D_F(\tau)
@@ -96,14 +96,14 @@ B =
 {\sqrt{\omega_j D_F(\tau)}}\,d\tau .
 ```
 
-The minimized zero-temperature energy is stored as
+The minimised zero-temperature energy is stored as
 
 ```math
 E_{\mathrm{var}} = -(A+B+C).
 ```
 
 At finite temperature, `D_F` is replaced by the corresponding periodic
-Brownian-bridge kernel and the phonon propagator becomes thermal. These are
+The Brownian-bridge kernel and the phonon propagator become thermal. These are
 the Osaka/Hellwarth finite-temperature formulas used in the original
 `PolaronMobility.jl` workflow.
 
@@ -135,11 +135,11 @@ D(\tau)
 ```
 
 with algebraic weights `h_i` obtained from the coupled fictitious oscillator
-spectrum. For one mode this reduces exactly to Feynman's kernel, and the test
+spectrum. For one mode, this reduces exactly to Feynman's kernel, and the test
 suite enforces that reduction.
 
 For more than one mode, the variational energy should be no higher than the
-one-mode value when the optimizer finds the same branch. Small improvements
+one-mode value when the optimiser finds the same branch. Small improvements
 are expected; dramatic drops at weak or intermediate coupling should be
 treated as a warning sign.
 
@@ -210,7 +210,7 @@ D_\Gamma(\tau)
 \right] .
 ```
 
-At finite temperature the same decomposition is used with the periodic
+At finite temperature, the same decomposition is used with the periodic
 oscillator kernel
 
 ```math
@@ -247,7 +247,7 @@ validated variational upper bound.
 
 If a nonlocal calculation returns an apparently much lower "energy" than the
 Feynman or profile result, do not interpret that as a physical variational
-improvement. It means the trial is outside the currently validated bound
+improvement. It means the trial is outside the currently validated bounds of
 machinery. Use `ProfileGaussianTrial` for energy comparisons.
 
 ## Fröhlich Mobility And Frequency Response
@@ -270,13 +270,13 @@ Z(\Omega) = -i[\Omega+\Sigma(\Omega)],
 ```
 
 The scalar FHIP, Kadanoff, and Hellwarth mobility formulas assume the
-two-parameter Feynman action. For profile and nonlocal Gaussian trials those
+two-parameter Feynman action. For profile and nonlocal Gaussian trials, those
 literature-reference fields are reported as `NaN`, while the direct
 memory-function response is still evaluated from the trial displacement kernel.
 
 ## Lattice Models As Poisson CTMC Variational Problems
 
-The lattice models use a different solvable path measure from the continuum Fröhlich Gaussian trials. The electron lives on a hypercubic lattice and the trial path is a symmetric continuous-time nearest-neighbor Markov chain with hopping rate `\kappa`. The same `PoissonTrial` supports Holstein site coupling, Peierls bond coupling, and compatible composites.
+The lattice models use a different solvable path measure from the continuum Fröhlich Gaussian trials. The electron lives on a hypercubic lattice, and the trial path is a symmetric continuous-time nearest-neighbour Markov chain with hopping rate `\kappa`. The same `PoissonTrial` supports Holstein site coupling, Peierls bond coupling, and compatible composites.
 
 The free CTMC contribution and relative-entropy rate for changing the bare hopping `J` to the variational rate `\kappa` are
 
@@ -286,14 +286,14 @@ F_0(\kappa)=-2d\kappa,
 S_{\rm rel}(\kappa)=2d\kappa\log\frac{\kappa}{J}.
 ```
 
-The hypercubic CTMC propagator factorizes:
+The hypercubic CTMC propagator factorises:
 
 ```math
 P_{\mathbf r}^{(d)}(t)=
 e^{-2d\kappa t}\prod_{\mu=1}^d I_{r_\mu}(2\kappa t).
 ```
 
-The package names the return and nearest-neighbor components
+The package names the return and nearest-neighbour components
 
 ```math
 q_0(t)=\left[e^{-2\kappa t}I_0(2\kappa t)\right]^d,
@@ -316,7 +316,7 @@ H_H=
 +g\sum_i n_i(b_i+b_i^\dagger).
 ```
 
-After integrating out the local Einstein phonons, the lattice path acquires a retarded attraction between times at which it occupies the same site. At finite inverse temperature the package uses
+After integrating out the local Einstein phonons, the lattice path acquires a retarded attraction at times when it occupies the same site. At a finite inverse temperature, the package uses
 
 ```math
 D_\beta(u;\omega)=
@@ -340,13 +340,13 @@ F_{\rm var}^{H}(\kappa,\beta)=
 \int_0^\beta D_\beta(u;\omega_H)C_{\rm site}(u;\beta)\,du.
 ```
 
-At zero temperature this becomes
+At zero temperature, this becomes
 
 ```math
 F_{\rm var}^{H}(\kappa,\infty)=
 -2d\kappa+2d\kappa\log\frac{\kappa}{J}
 -
-g^2\int_0^\infty e^{-\omega_Ht}\operatorname{ive}_0(2\kappa t)^d\,dt.
+g^2\int_0^\infty e^{-\omega_Ht}\text{ive}_0(2\kappa t)^d\,dt.
 ```
 
 For `d = 1`, the integral reduces to
@@ -397,8 +397,8 @@ At zero temperature,
 F_P(\kappa,\infty)=
 -\frac{g_P^2}{2}
 \int_0^\infty e^{-\omega_Pt}
-2d[\operatorname{ive}_0(2\kappa t)+\operatorname{ive}_1(2\kappa t)]
-\operatorname{ive}_0(2\kappa t)^{d-1}\,dt.
+2d[\text{ive}_0(2\kappa t)+\text{ive}_1(2\kappa t)]
+\text{ive}_0(2\kappa t)^{d-1}\,dt.
 ```
 
 The factor `1/2` is part of the Gaussian influence prefactor. The helper `peierls_integral_d` returns the full `2d[...]` bond integral; `interaction_free_energy(::PeierlsModel, ...)` multiplies it by `-g_P^2/2`.
@@ -406,8 +406,8 @@ The factor `1/2` is part of the Gaussian influence prefactor. The helper `peierl
 ## Lattice Mobility And Frequency Response
 
 The lattice response implemented in the package is a CTMC first-return
-current-blip projection. It is analogous in spirit to building response on top
-of an optimized solvable trial process, but it is not the continuum FHIP
+current-blip projection. It is analogous in spirit to building a response on top
+of an optimised solvable trial process, but it is not the continuum FHIP
 memory-function construction. Any older lattice "memory-function" wording in
 the project should therefore be read historically rather than as the active
 runtime theory.
@@ -416,14 +416,14 @@ Conceptually, the lattice calculation has two pieces:
 
 1. the variational free energy chooses the effective hopping rate `\kappa`
    from periodic CTMC bridge correlations; and
-2. the transport calculation inserts a current blip into that optimized CTMC
+2. the transport calculation inserts a current blip into that optimised CTMC
    path measure and dresses it with the exact phonon factor appropriate to the
    model.
 
-The electron dynamics is encoded in the first-return kernel, while the phonons
+The electron dynamics are encoded in the first-return kernel, while the phonons
 enter through sideband weights multiplying that kernel.
 
-Current insertions select hop-like path segments. The duration distribution is approximated by the CTMC first-return kernel from a nearest-neighbor site back to the origin:
+Current insertions select hop-like path segments. The duration distribution is approximated by the CTMC first-return kernel from a nearest-neighbour site back to the origin:
 
 ```math
 \widehat f_{a\to0}^{(d)}(s)=\frac{G_a^{(d)}(s)}{G_0^{(d)}(s)}.
@@ -439,7 +439,7 @@ Using the lattice resolvent identity, the package evaluates this as
 where
 
 ```math
-G_0^{(d)}(s)=\int_0^\infty e^{-st}\operatorname{ive}_0(2\kappa t)^d\,dt,
+G_0^{(d)}(s)=\int_0^\infty e^{-st}\text{ive}_0(2\kappa t)^d\,dt,
 \qquad \Re s>0.
 ```
 
@@ -498,22 +498,22 @@ Z(\Omega)=\sigma(\Omega)^{-1}.
 At zero frequency,
 
 ```math
-\mu_{\rm DC}=\beta\kappa\operatorname{Re}K(0).
+\mu_{\rm DC}=\beta\kappa\text{Re}K(0).
 ```
 
-At zero temperature this Einstein prefactor diverges, so the package treats DC
-and optical response separately. The DC mobility remains infinite, but for
-finite frequency the reported reduced optical response is
+At zero temperature, this Einstein prefactor diverges, so the package treats DC
+and optical response separately. The DC mobility remains infinite, but fora 
+finite frequency, the reported reduced optical response is
 
 ```math
 \mu(\Omega)=\sigma(\Omega)=K(\Omega), \qquad \Omega \neq 0,\; T=0,
 ```
 
 with `Z(\Omega)=K(\Omega)^{-1}`. This is the natural reduced current-current
-normalization of the CTMC first-return/blip ansatz and keeps the Holstein and
-Peierls optical spectra finite.
+normalisation of the CTMC first-return/blip ansatz and keeps the Holstein and
+Peierls optical spectra are finite.
 
-Thus the lattice mobility is not obtained by first defining a separate
+Thus, the lattice mobility is not obtained by first defining a separate
 force-memory function and then inverting a Drude-like impedance. Instead, the
 package evaluates the retarded CTMC first-return kernel directly at the
 phonon-shifted frequencies generated by the blip cloud or current vertex.
@@ -530,26 +530,26 @@ C_H(t)=
 S_H=2(g/\omega_H)^2,
 ```
 
-where `C_\beta = coth(\beta\omega_H/2)`. At zero temperature this is a
-Poisson ladder. At finite temperature the package evaluates the equivalent
+where `C_\beta = coth(\beta\omega_H/2)`. At zero temperature, this is a
+Poisson ladder. At finite temperature, the package evaluates the equivalent
 Bessel sideband weights, so the runtime response is a direct exact-cloud
 sideband sum over the first-return kernel rather than a separate memory
 closure.
 
-Peierls transport is different. Since the Peierls phonon modulates the current vertex itself, the normalized vertex cloud is
+Peierls transport is different. Since the Peierls phonon modulates the current vertex itself, the normalised vertex cloud is
 
 ```math
 \mathcal C_P(t)=
 \frac{J_{\rm resp}^2+g_P^2D_P^>(t)}{J_{\rm resp}^2+g_P^2D_P^>(0)}.
 ```
 
-Here `J_resp` is selected by `response_hopping`, with default `:bare`. At finite temperature,
+Here, `J_resp` is selected by `response_hopping`, with default `:bare`. At finite temperature,
 
 ```math
 D_P^>(t)=(N_P+1)e^{-i\omega_Pt}+N_Pe^{i\omega_Pt}.
 ```
 
-Thus Peierls has one zero-phonon current channel and `\pm\omega_P`
+Thus, Peierls has one zero-phonon current channel and `\pm\omega_P`
 phonon-assisted channels. It is not an exponentiated Franck-Condon ladder
 unless the hopping depends nonlinearly on displacement. In the code, this
 means the Peierls response is assembled from a small exact sideband list
@@ -572,7 +572,7 @@ included.
 
 ## Combining Lattice Influence Functionals
 
-Holstein and Peierls models live on the same lattice path space when they use the same dimension, hopping scale, and `PoissonTrial`. The composite model therefore adds independent influence functionals on the same path measure:
+Holstein and Peierls models live on the same lattice path space when they use the same dimension, hopping scale, and `PoissonTrial`. The composite model, therefore, adds independent influence functionals on the same path measure:
 
 ```math
 F_{\rm int}^{\rm composite}(\kappa,\beta)=\sum_mF_{\rm int}^{(m)}(\kappa,\beta).
@@ -606,7 +606,7 @@ rows = holstein_peierls_transport_sweep(
 ```
 
 These rows expose `mobility`, `mobility_einstein`, `mobility_factor`,
-`conductivity_real`, `conductivity_imag`, sideband normalization diagnostics,
+`conductivity_real`, `conductivity_imag`, sideband normalisation diagnostics,
 and whether the rate came from `:zero_temperature` or
 `:per_temperature`.
 
@@ -617,28 +617,28 @@ excellent guardrails for future model additions.
 
 For Fröhlich polarons, weak coupling gives the perturbative energy
 `E \sim -\alpha` and the Feynman parameters remain close to the bare oscillator
-scale. In the package convention this is often summarized as `v,w -> 3ω` for
-the weak-coupling initial branch. At strong coupling, the optimized fictitious
+scale. In the package convention, this is often summarised as `v,w -> 3ω` for
+the weak-coupling initial branch. At strong coupling, the optimised fictitious
 oscillator softens toward the phonon scale, `w -> \omega`, while
 
 ```math
 v \sim \frac{4\alpha^2}{9\pi}.
 ```
 
-Hellwarth finite-temperature mobility decreases with thermal phonon
-occupation. Adiabatic versus antiadiabatic behavior is read through the
+Hellwarth's finite-temperature mobility decreases with thermal phonon
+occupation. Adiabatic versus antiadiabatic behaviour is read through the
 relative carrier and phonon time scales: slow phonons produce long memory,
 while fast phonons produce short retarded kernels.
 
 For Holstein polarons, zero coupling removes the interaction and the
-Donsker-Varadhan objective is minimized at the bare rate,
+Donsker-Varadhan objective is minimised at the bare rate,
 
 ```math
 \kappa \to J .
 ```
 
 Weak coupling is obtained by evaluating the retarded interaction at the bare
-rate. In the strong antiadiabatic/localized limit, the leading energy is the
+rate. In the strong antiadiabatic/localised limit, the leading energy is the
 Lang-Firsov shift
 
 ```math
@@ -651,7 +651,7 @@ with exponentially narrowed hopping, schematically
 -E_p - 2dJ\exp[-(g/\omega_0)^2].
 ```
 
-High temperature shrinks imaginary-time memory through
+High temperature shrinks the imaginary-time memory through
 `\coth(\beta\omega_0/2)` and the finite `\beta` integration window. The
 adiabatic limit has `J/\omega_0 >> 1`; the antiadiabatic limit has
 `J/\omega_0 << 1`.
@@ -673,7 +673,7 @@ mobility_table(result)
 response_table(result)
 ```
 
-Continuation sweeps warm-start forward and backward branches and select the
-lower-free-energy row. Frequency sweeps optimize once per model/coupling and
+Continuation sweeps warm-start forward and backward branches and selects the
+lower-free-energy row. Frequency sweeps optimise once per model/coupling and
 temperature point, then evaluate the response on the requested frequency grid
 without reoptimizing per frequency.
