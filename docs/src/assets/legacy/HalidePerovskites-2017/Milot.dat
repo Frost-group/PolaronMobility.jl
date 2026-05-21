@@ -1,0 +1,21 @@
+#####
+## Expt. data to compare against
+# Milot/Herz 2015 Time-Resolved-Microwave-Conductivity mobilities
+# Data from table in SI of: DOI: 10.1002/adfm.201502340
+# Absolute values possibly dodge due to unknown yield of charge carriers; but hopefully trend A.OK!
+8 184
+40 321
+80 143
+120 62
+140 40
+160 52
+180 44
+205 41
+230 39
+265 26
+295 35
+310 24
+320 24
+330 19
+340 16
+355 15

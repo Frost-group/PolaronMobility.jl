@@ -1,287 +1,253 @@
 # Examples
 
-Perhaps the easiest way to understand the code is to see how it can be used for
-science. 
-As an example system, we are going to look at some of the basic polaron
-properties of methylammonium lead-iodide perovskite.
+The scripts in `examples/*.jl` are executable demos and are also run by the
+test suite as smoke tests. They are intentionally compact, but together they
+exercise the package's main workflows.
 
-The 'Feynman' units used internally set the LO phonon reduced frequency
-omega=1, hbar=1 and mass-of-electron=1. 
+## Fröhlich Basic Workflow
 
-## Load the Module
+Run:
 
 ```julia
-using PolaronMobility 
+include("examples/frohlich_basic.jl")
 ```
 
-## α/alpha parameter 
+This demonstrates:
 
-The Frohlich electron-phonon interaction is fully characterised by
-the dimensionless alpha (`α`) coupling parameter. 
-This gives the long-range dielectric contribution into infrared active phonon modes (the same interaction that causes the non-analytic contribution to phonon frequencies).
+- Building `frohlich_feynman_problem`.
+- Solving zero and finite reduced temperatures.
+- Reading optimized `v,w`, mobility, memory function, impedance, and
+  conductivity.
+- Calling `solve_variational` directly for a single inverse temperature.
+- Flattening typed results with `solution_table`, `mobility_table`, and
+  `response_table`.
+
+The core pattern is:
+
+```julia
+problem = frohlich_feynman_problem(coupling = 3.0)
+result = solve(problem; temperatures = [0.0, 0.5], frequencies = [0.0, 1.0])
+```
+
+## Fröhlich Trial Families
+
+Run:
+
+```julia
+include("examples/frohlich_trials.jl")
+```
+
+This compares:
+
+- `GaussianFeynmanTrial`: the one-fictitious-oscillator production path.
+- `MultiGaussianTrial`: several fictitious oscillator modes.
+- `ProfileGaussianTrial`: a positive profile-function Gaussian trial.
+- `NonlocalGaussianTrial`: an experimental finite-basis kernel scaffold.
+
+The profile trial is useful because it contains the Feynman trial as a special
+case. If Feynman's optimized parameters are `v,w`, then
 
 ```math
-\alpha = 
-\frac{1}{2} \;
-\frac{1}{4\pi\epsilon_0} \:
-\left( \frac{1}{\epsilon_{optical}} - \frac{1}{\epsilon_{static}} \right ) \;
-\frac{e^2}{\hbar \omega} \;
-\sqrt{\frac{2m_e\omega}{\hbar}}
+\Gamma_F(\omega) = \frac{v^2-w^2}{\omega^2+w^2}
 ```
 
-This is provided as a convenience function (with correct units!). 
-Let us demonstrate by calculating α for CdTe, and compare it to literature
-values.
+is represented by a one-basis profile with `basis_frequencies = [w]` and
+`a1 = (v^2 - w^2)/w^2`. The example prints this embedding as a sanity check.
 
-The call signature is: ϵ-optical, ϵ-static, phonon-frequency (THz),
-effective-mass (in mass-of-electron units).
+A more general profile calculation looks like:
 
 ```julia
-α = frohlichalpha(7.1, 10.4, 5.08, 0.095)
-println("CdTe  α=", α, " Stone 0.39 / Devreese 0.29")
-#@test α ≈ 0.3 atol=0.1
+problem = frohlich_profile_gaussian_problem(
+    coupling = 2.0,
+    basis_frequencies = [0.75, 1.5],
+    matsubara_terms = 128,
+)
 ```
 
-We get a value of `0.351`. 
+`profile_function(trial, parameters, omega)` and
+`mean_square_displacement(trial, parameters, tau, beta)` are exported so the
+kernel itself can be inspected.
 
-## Feynman athermal polaron
+`NonlocalGaussianTrial` is intentionally not shown as a validated lower-energy
+variational improvement. It uses a regularized kernel objective rather than the
+profile log-determinant entropy, so its pseudo-objective is not directly
+comparable to Feynman or profile variational energies.
 
-Tabulated by Schultz (Phys.Rev. 116, 1959.
-https://doi.org/10.1103/PhysRev.116.526)  are some numeric solutions to the
-athermal Feynman model. These values are often reproduced in the textbooks
-(e.g. Feynman & Hibbs, Emended Edition, p. 319). 
-For instance, Schultz gets for `α=5`, `v=4.02`, `w=2.13` and `E=-5.4401`. 
+## Material Workflows
+
+Run:
 
 ```julia
-v, w = feynmanvw(5.0)
-A, B, C, F = frohlich_energy(v, w, 5.0, 1.0)  # α=5.0, ω=1.0
-println("v=", v, ", w=", w)
-println("A=", A, ", B=", B, ", C=", C, ", F=", F)
+include("examples/material_workflows.jl")
 ```
 
-## Single temperature phonon properties
+This demonstrates:
 
-Let us calculate the room-temperature (300 K) character of the electron-polaron
-in methylammonium lead iodide perovskite (MAPI). 
-The parameters we use are as in `Frost2017PRB`.
+- Single-mode material construction from dielectric constants, effective mass,
+  and phonon frequency.
+- Multimode material construction from phonon frequencies, infrared
+  activities, and cell volume.
+- `material_to_problem` for every Fröhlich trial family.
+- Rubrene `HolsteinMaterial` construction from local Holstein parameters.
+- Rubrene `PeierlsMaterial` construction from bond-coupling parameters.
+- Combined Rubrene Holstein + Peierls composition on one Poisson trial.
+- Conversion back to common units through `material_units`.
 
- Our current workflow is:
-1. Instantiate a material struct
-2. Calculate the polaron properties for that material at a given temperature
-
-For electrons in MAPI with the Frohlich Hamiltonian, the system is described ϵ=4.5/24.1, f=2.25 THz, me=0.12 electron masses (`Frost2017PRB`). 
+Material-derived problems keep Kelvin and THz at the `solve` boundary:
 
 ```julia
-MAPIe = material(4.5, 24.1, 0.12, 2.25)
-MAPIe_polaron = frohlichpolaron(MAPIe, 300; verbose = true)
+material = FrohlichMaterial(4.5, 24.1, 0.12, 2.25)
+problem = material_to_problem(material; trial = :feynman)
+result = solve(problem; temperatures = [0, 300], frequencies = [0, 3])
 ```
 
-This will think for a bit (as Julia just-in-time compiles the required
-functions), and then spits out a considerable amount of information to
-`STDOUT`. 
-
-You can access the mobility value directly:
+All Fröhlich trial families can be selected from the same material:
 
 ```julia
-println(MAPIe_polaron.μ)
+material_to_problem(material; trial = :feynman)
+material_to_problem(material; trial = :multi_gaussian, modes = 2)
+material_to_problem(material; trial = :profile_gaussian, matsubara_terms = 256)
+material_to_problem(material; trial = :nonlocal_gaussian)
 ```
 
-Or, to add units:
+For profile and nonlocal trials, default basis frequencies are the material's
+reduced phonon frequencies. This means multimode material-derived profile
+problems solve without manual basis construction.
+
+Rubrene can be mapped into the Holstein-Poisson pipeline from the Ordejón
+et al. local-coupling data:
 
 ```julia
-using Unitful
-addunits!(MAPIe_polaron)
-println(MAPIe_polaron.μ)
+rubrene = rubrene_holstein_material(lattice_constant_angstrom = 7.2)
+problem = material_to_problem(rubrene)
+result = solve(problem; temperatures = [300], frequencies = [0, 10])
+units = material_units(result)
 ```
 
-```
-Polaron mobility for system ε_Inf=4.5, ε_S=24.1, freq=2.25e12, 
-                 effectivemass=0.12; with Trange 300 ...
-Polaron mobility input parameters: ε_Inf=4.500000 ε_S=24.100000 freq=2.25e+12 α=2.393991 
-Derived params in SI: ω =1.41372e+13 mb=1.09313e-31 
-T: 300.000000 β: 2.41e+20 βred: 0.36 ħω  = 9.31 meV		Converged? : true
- Polaraon Parameters:  v= 19.8635  w= 16.9621  ||   M=0.371360  k=106.845717	
- Polaron frequency (SI) v= 4.5e+13 Hz  w= 3.8e+13 Hz
- Polaron size (rf), following Schultz1959. (s.d. of Gaussian polaron ψ )
-	 Schultz1959(2.4): rf= 0.528075 (int units) = 2.68001e-09 m [SI]
- Polaron Free Energy: A= -6.448918 B= 7.355627 C= 2.912080 F= -3.818788	 = -35.534786 meV
- Polaron Mobility theories:
-	μFHIP= 0.082053 m^2/Vs 	= 820.53 cm^2/Vs
-	μK= 0.019690 m^2/Vs 	= 196.90 cm^2/Vs
-		Eqm. Phonon. pop. Nbar: 2.308150 
-		Gamma0 = 5.42813e+13 rad/s = 8.63914e+12 /s  
-		Tau=1/Gamma0 = 1.15752e-13 = 0.115752 ps
-		Energy Loss = 1.28798e-08 J/s = 80.3893 meV/ps
-	μH= 0.013642 m^2/Vs 	= 136.42 cm^2/Vs
-```
-
-The output is a little ad-hoc, and specific values are perhaps best understood
-with comparison to the code, and to the references to the original papers!
-
-Initially the polaron state is solved for variationally.  
-This involves varying `v` and `w` to minimise the miss-match between the trial
-(analytically solvable) polaron Hamiltonian action, and the true
-temperature-dependent free-energy (as specified by Osaka).  The method uses
-automatic differentiation to get gradients for the optimisation procedure. 
-
-'Textbook' expressions that predict polaron character and mobilities make
-assumptions about `v` and `w` (usually that either `v` is small, or `v=w`), and
-rather than use the finite-temperature free-energies of Osaka, use a more
-simple athermal polaron energy function.
-
-Values that can be directly derived from these `v` and `w` variational
-parameters are then displayed.  This includes the phonon-drag mass
-renormalisation (`M`), the effective spring-constant of this drag (`k`), and
-the S.I. oscillation rates `v` and `w` in `Hz`.  
-The Schultz polaron size (rf) is outputted in various units. 
-The total polaron energy (as well as its decomposition into free-energy
-contributions) is also output (`A,B,C; and F`).  Essentially we are just using
-`Julia` as a glorified scientific calculator at this point, but with the units
-checked. 
-
-The polaron theories are constructed in reduced units. Generally this means
-that energy is in units of ħω, and frequencies in a unit of ω (of the input
-phonon frequency). For convenience, these are re-printed in SI or more standard
-units. 
-
-Beyond `Polaron Mobility theories:`, the code enters its final phase and uses
-the `v` and `w` parameters specifying the polaron as an input to theories of
-mobility, and so directly calculate a charge carrier mobility. 
-
-
-The asymptotic 'FHIP' mobility (low T) is calculated, this can be most easily
-related to textbook expressions that directly infer a mobility from an `α`
-parameter. It lacks optical phonon emission, and so shows pathological high
-temperature (kT > ħω) behaviour. 
-
-The Kadanoff mobility (see the original paper) improves on this by assuming
-a Boltzmann process (independent scattering events). 
-From this theory we can also get an average scattering time, which we relate to
-the time-scale of the polaron interacting with the phonon cloud, and so to the
-rate of polaron cooling. 
-
-Finally the Hellwarth1999 scheme is used, which goes back to the original 1962
-FHIP paper, and directly carries out the contour integral for the polaron
-impedance function. We improve on this slightly by explicitly calculating with
-`b`, though the approximation `b=0` makes very little difference for any so-far
-tested materials. 
-
-The data are also returned as a packed up in type of `struct Polaron` with fields of (`T, Kμ, Hμ, FHIPμ, k, M, A, B, C, F, Tau, v, w, βred, rfsi, rfsmallalpha, α, mb, ω`).
-
-## Hellwarth's multi-mode scheme
-
-The above examples are slightly back-to-front - in that we've specified
-a single mode frequency, as if the material were a simple tetrahedral
-semiconductor with only one infrared active mode. 
-(The Linear Optical 'LO' phonon mode.)
-
-In order to use these theories with more complex (many atoms in a unit cell)
-materials of technological relevance, we must first reduce all of these
-Infrared-active phonon responses to a single effective one. 
-
-For this we will use the averaging scheme described in Hellwarth1999. 
-Currently only the B scheme (athermal) is correctly implemented; a partial
-A scheme implementation is present.
-
-Let's test it against the Hellwarth1999 literature data. 
-The argument to the function is a table of frequencies (cm^-1) and infrared
-activities (unit does not matter, as long as it is consistent). 
+The Holstein mapping uses `J = 134.0 meV`, `E_H = 106.8 meV`, and
+`ω_H = 1208.9 cm^-1`. The Peierls mapping uses the same transfer integral
+with `E_P = 21.9 meV` and `ω_P = 117.9 cm^-1`:
 
 ```julia
-# Hellwarth et al. PRB 1999 Table II - BiSiO frequencies and activities
-HellwarthII = [
-    106.23 8.86
-    160.51 9.50
-    180.33 20.85
-    206.69 10.05
-    252.76 27.00
-    369.64 61.78
-    501.71 52.87
-    553.60 86.18
-    585.36 75.41
-    607.29 98.15
-    834.53 89.36
-]
-
-println("Attempting to reproduce Hellwarth et al.'s data.")
-println("\nB scheme: (athermal)")
-HellwarthBScheme(HellwarthII)
-println("    ... should agree with values given in Hellwarth(60) W_e=196.9 cm^-1 and Hellwarth(61) Ω_e=500 cm^-1")
+rubrene_p = rubrene_peierls_material(lattice_constant_angstrom = 7.2)
+problem_p = material_to_problem(rubrene_p)
+result_p = solve(problem_p; temperatures = [300], frequencies = [0, 10])
 ```
 
-The output agrees to within three significant figures with the literatures values;
-```
-Hellwarth (58) summation: 0.15505835776181887
-Hellwarth (59) summation (total ir activity ^2): 38777.7725
-Hellwarth (59) W_e (total ir activity ): 196.92072643579192
-Hellwarth (61) Omega (freq): 500.08501275972833
-```
-
-## Temperature-dependent behaviour
-
-Getting temperature-dependent behaviour is a matter of sending a temperature
-range to the `frohlichpolaron` function, after creating a material struct.
+To combine local and bond couplings, use the convenience builder:
 
 ```julia
-MAPIe = material(4.5, 24.1, 0.12, 2.25)
-MAPIe_polaron = frohlichpolaron(MAPIe, 10:10:1000)
+problem_hp = rubrene_holstein_peierls_problem(lattice_constant_angstrom = 7.2)
+result_hp = solve(problem_hp; temperatures = [300], frequencies = [0, 10])
 ```
 
-## Plotting
+## Peierls And Limits
 
-For publication, you can save the polaron data for post-production plotting
-using the provided save function:
+Run:
 
 ```julia
-save_frohlich_polaron(MAPIe_polaron, "MAPI-electron")
+include("examples/peierls_basic.jl")
+include("examples/model_limits.jl")
 ```
 
-Example `gnuplot` scripts can be found in
-[Examples](https://github.com/Frost-group/PolaronMobility.jl/tree/main/examples/) and
-[HalidePerovskites](http://github.com/Frost-group/PolaronMobility.jl/tree/main/HalidePerovskites/).
+These scripts demonstrate standalone Peierls variational solves, Holstein plus
+Peierls model composition, and coded limit checks: Fröhlich weak/strong
+coupling markers, Holstein zero-coupling and high-temperature behavior,
+Peierls `g_P^2` weak-coupling scaling, and adiabatic/antiadiabatic ratios.
 
-## Built in plotting
+## Holstein Basic Workflow
 
-The convenience function `plotpolaron` generates (and saves) a number of
-`Plots.jl` figures of the temperature dependent behaviour.
-
-It has been separated off into its own submodule (`PlotPolaron`), so that the
-`Plots.jl` dependency does not slow down loading of `PolaronMobility.jl`.
-
-To use it, we therefore need to inform Julia where to find PlotPolaron.
-A suitable initialisation script is:
+Run:
 
 ```julia
-using PolaronMobility, Plots
-gr()
-include(joinpath(dirname(pathof(PolaronMobility)), "..", "PlotPolaron.jl"))
-using .PlotPolaron
+include("examples/holstein_basic.jl")
 ```
 
-As with save_frohlich_polaron, the call signature is output-file-string and then the
-polaron object which you have calculated.
+This demonstrates:
+
+- Building `holstein_poisson_problem`.
+- Optimizing the CTMC hopping rate.
+- Reading Einstein and CTMC first-return projected mobilities.
+- Evaluating return probabilities.
+- Evaluating frequency-dependent complex mobility and mobility factors.
+
+The core pattern is:
 
 ```julia
-plotpolaron("MAPI-electron", MAPIe_polaron)
+problem = holstein_poisson_problem(coupling = 1.5, hopping = 1.0)
+result = solve(problem; temperatures = [0.25, 0.5], frequencies = [0.0, 1.0])
 ```
-This will attempt to make fairly sensible defaults, and plot a lot of different
-data of sufficient quality for talk slides.
 
-Much for the functionality has been unrolled into the [Jupyter Notebook
-example](https://github.com/Frost-group/PolaronMobility.jl/blob/main/JuliaBox-Example.ipynb),
-which should also be interactively-runnable from (https://juliabox.com). See
-the repository
-[README.md](https://github.com/Frost-group/PolaronMobility.jl/blob/main/README.md#juliabox)
-for the latest information.
+At zero coupling, the optimized rate returns the bare hopping. Finite coupling
+adds a full-periodic bridge free-energy correction and a CTMC first-return sideband
+response through `mobility_factor`, `impedance`, `conductivity`, and
+`mobility` fields.
 
-Here is a figure showing typical temperature-dependent behaviour of the
-three-different polaron mobility approximations, for MAPI.
+## CTMC Lattice Transport
 
-![MAPI mobility](assets/MAPI-mobility.png)
+Run:
 
-## Further examples
+```julia
+include("examples/full_lattice_free_energy.jl")
+include("examples/lattice_mobility_response.jl")
+include("examples/holstein_peierls_mobility_comparison.jl")
+include("examples/general_d_lattice_transport.jl")
+```
 
-More complete examples are provided in 
-[Examples](https://github.com/Frost-group/PolaronMobility.jl/tree/main/examples/) and
-[HalidePerovskites](http://github.com/Frost-group/PolaronMobility.jl/tree/main/HalidePerovskites/).
+These scripts demonstrate the active lattice theory: periodic phonon kernels,
+CTMC site/bond bridge correlations, the general-`d` CTMC first-return kernel,
+exact Holstein blip sidebands, Peierls current-vertex sidebands, and
+Holstein-Peierls sideband convolution.
 
+`general_d_lattice_transport.jl` also demonstrates the guide-style helpers
+
+```julia
+holstein_transport_sweep(...)
+peierls_transport_sweep(...)
+holstein_peierls_transport_sweep(...)
+```
+
+which default to `kappa_source = :zero_temperature` so one optimized
+zero-temperature rate can be reused across a temperature or frequency study.
+
+## Sweeps, Tables, CSV, And Plotting
+
+Run:
+
+```julia
+include("examples/sweeps_tables_plots.jl")
+```
+
+This demonstrates:
+
+- Fröhlich coupling sweeps.
+- Holstein temperature sweeps.
+- Fröhlich and Holstein frequency sweeps.
+- CSV export through `write_sweep_csv`.
+- Optional plots through the `Plots.jl` extension.
+
+Frequency sweeps optimize once per temperature and then evaluate every
+frequency:
+
+```julia
+rows = frohlich_frequency_sweep(
+    [0.0, 0.5, 1.0];
+    coupling = 1.0,
+    temperatures = [0.5],
+)
+
+write_sweep_csv("frequency.csv", rows)
+```
+
+If `Plots.jl` is loaded, the plotting extension activates:
+
+```julia
+using Plots
+
+plot_frequency_sweep(rows)
+plot_response_components(rows)
+```
+
+The plotting API intentionally consumes flat rows rather than result structs.
+That keeps the core solver independent from plotting choices and makes CSV,
+notebook, and batch-report workflows use the same data representation.

@@ -1,0 +1,38 @@
+set xlabel "Temperature (K)"
+set ylabel "Polaron units (omega_H)"
+
+p "MultipleBranches-MAPI.dat" u 1:2 t "ExplicitModes-v", '' u 1:3 t "ExplicitModes-w", '' u 1:5 t "EffectiveMode-v", '' u 1:6 t "EffectiveMode-w"
+
+prefix="MultipleBranches-MAPI-v_and_w"
+load "gnuplot-render.gpt"
+
+
+### MOBILITY ###
+
+set xlabel "Temperature (K)"
+set ylabel "Mobility (cm^2/V.s)"
+
+p "MultipleBranches-MAPI.dat" u 1:4 t "ExplicitModes", '' u 1:7 t "EffectiveMode"
+prefix="MultipleBranches-MAPI-mobility"
+load "gnuplot-render.gpt"
+
+set logscale y
+prefix="MultipleBranches-MAPI-mobility-logy"
+load "gnuplot-render.gpt"
+
+set logscale x 
+prefix="MultipleBranches-MAPI-mobility-loglog"
+load "gnuplot-render.gpt"
+
+reset
+### MOBILITY RATIO ###
+
+set xlabel "Temperature (K)"
+set ylabel "Mobility Ratio (ExplictModes/EffectiveMode)"
+unset key
+p "MultipleBranches-MAPI.dat" u 1:($4/$7) t ""
+
+prefix="MultipleBranches-MAPI-mobility-ratio"
+load "gnuplot-render.gpt"
+
+

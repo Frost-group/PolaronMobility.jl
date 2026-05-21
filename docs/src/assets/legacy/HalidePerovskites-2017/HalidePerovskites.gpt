@@ -1,0 +1,125 @@
+# HalidePerovskites.gpt - Jarvist Moore Frost
+# October 2017
+# Gnuplot script to replot all the figures (bar one) for the new (final!?)
+# preprint version of:
+
+# https://arxiv.org/abs/1704.05404
+# Calculating polaron mobility in halide perovskites
+# Jarvist Moore Frost
+
+set terminal dumb # Just keep it all in the terminal + output files
+
+# Datafiles (via 'savepolaron') from PolaronMobility.jl looks like this:
+# Ts, βreds, Kμs, Hμs, FHIPμs, vs, ws, ks, Ms, As, Bs, Cs, Fs, Taus rfs
+#  1    2     3    4     5     6   7    8  9   10  11  12  13  14   15
+
+# For this project we have:
+# CsPbI3-electron.dat  CsSnI3.dat           Milot.dat            Rob-MAPI.dat
+# CsSnBr3.dat          MAPI-electron.dat    Rob-MAPBr.dat        STDOUT.dat
+# CsSnCl3.dat          MAPI-hole.dat        Rob-MAPCl.dat
+
+FILE="MAPI-electron"
+prefix=FILE."-mobility"
+
+set yrange [0:500] # cut-off divergence at T=0; don't care about these values.
+set xrange [0:400] # for comparison to expt data
+set xlabel "Temperature (K)"
+set ylabel "Mobility (cm^2V^{-1}s^{-1})"
+p FILE.'.dat' u 1:4 w lp title "Hellwarth, electron",\
+  'MAPI-hole.dat' u 1:4 w lp title "Kadanoff, hole",\
+ "Milot.dat" u 1:2 w lp title "Milot/Herz 2015 TRMC",\
+ "<echo '300 115 15'" w yerrorbars title "Semonin2016" dt solid,\
+ "<echo '300 67.2'" w p title "Saidaminov2015" lt 7 pt 12 
+# # IV estimated mobilities (?!) from large single crystals, assumed ambient T
+# # Nature Communications 6, Article number: 7586 (2015)
+# # doi:10.1038/ncomms8586
+# Saidaminov = [ 300 67.2 ]
+#
+# Semonin2016, doi = {10.1021/acs.jpclett.6b01308},
+# Semonin = [ 300 115 ] # +- 15 cm^2/Vs, holes+electrons
+
+load "gnuplot-render.gpt"
+unset yrange
+
+prefix=FILE."-FreeEnergy"
+set ylabel "Free energy"
+p FILE.'.dat' u 1:13 w lp title "Free energy", \
+ '' u 1:10 w lp title "A",\
+ '' u 1:11 w lp title "B",\
+ '' u 1:12 w lp title "C"
+load "gnuplot-render.gpt"
+
+prefix=FILE."-VW"
+set yrange [0:]
+set xrange [0:400] # beyond here just boring linear. Including 300K point.
+set ylabel "Variational parameters"
+p FILE.'.dat' u 1:6 w lp title "v", '' u 1:7 w lp title "w"
+
+load "gnuplot-render.gpt"
+unset xrange
+
+prefix=FILE."-meff-tau"
+set yrange [0:1.4]
+set xrange [0:400] # beyond here just boring linear. Including 300K point.
+set ylabel "m_{eff} / relaxation time (ps)"
+
+p FILE.'.dat' u 1:9 w lp title "meff", '' u 1:14 w lp title "Tau"
+
+load "gnuplot-render.gpt"
+unset xrange
+unset yrange
+
+FILE="CsPbI3-electron"
+
+prefix=FILE."-mobility"
+set yrange [0:1200] # cut-off divergence at T=0; don't care about these values.
+set xrange [0:400] # for comparison to expt data
+set xlabel "Temperature (K)"
+set ylabel "Mobility (cm^2V^{-1}s^{-1})"
+p FILE.'.dat' u 1:4 w lp title "Hellwarth mobility",\
+ '' u 1:3 w lp title "Kadanoff mobility",\
+ '' u 1:5 w lp title "FHIP mobility"
+
+load "gnuplot-render.gpt"
+
+prefix="CsSn-halide-mobility"
+set yrange [0:1200] # cut-off divergence at T=0; don't care about these values.
+set xrange [0:400] # for comparison to expt data
+set xlabel "Temperature (K)"
+set ylabel "Hellwarth mobility (cm^2V^{-1}s^{-1})"
+p 'CsSnI3.dat' u 1:4 w lp title "CsSnI_3",\
+ 'CsSnBr3.dat' u 1:4 w lp title "CsSnBr_3",\
+ 'CsSnCl3.dat' u 1:4 w lp title "CsSnCl_3"
+
+load "gnuplot-render.gpt"
+
+prefix="Rob-comparison"
+set yrange[0:500]
+set xrange[0:400]
+set xlabel "Temperature (K)"
+set ylabel "Hellwarth mobility (cm^2V^{-1}s^{-1})"
+p 'MAPI-electron.dat' u 1:4 w lp title "MAPI-electron",\
+ 'MAPI-hole.dat' u 1:4 w lp title "MAPI-electron",\
+ 'Rob-MAPI.dat' u 1:4 w lp title "Rob-MAPI",\
+ 'Rob-MAPBr.dat' u 1:4 w lp title "Rob-MAPBr",\
+ 'Rob-MAPCl.dat' u 1:4 w lp title "Rob-MAPCl"
+load "gnuplot-render.gpt"
+
+# This one is now a bit of a mess, but leaving it here to mine the axes setup
+FILE="MAPI-electron"
+prefix=FILE."-VW-vs-rf"
+
+set y2range [0:50]
+set yrange [0:25]
+set xrange [0:400] # beyond here just boring linear. Including 300K point.
+set ylabel "Variational parameters"
+set y2label "Schultz r_f (Å)"
+#set y2label "Mass / Tau (reduced units)"
+set y2tics
+p FILE.'.dat' u 1:($15*10**10) w lp axes x1y2 title "Polaron radius", \
+ '' u 1:6 w lp  title "v", '' u 1:7 w lp  title "w"
+load "gnuplot-render.gpt"
+
+# '' u 1:6 w lp axes x1y2 title "v (variational)", '' u 1:7 w lp axes x1y2 title "w (variational)", \
+# '' u 1:9 w lp axes x1y2 title "M (Effective mass)", '' u 1:14 w lp axes x1y2 title "Scattering Tau (ps)"
+

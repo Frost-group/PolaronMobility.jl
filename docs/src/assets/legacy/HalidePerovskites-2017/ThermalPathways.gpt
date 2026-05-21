@@ -1,0 +1,19 @@
+# Thermal Pathways - vw vs rf, for MAPI-electron 
+set terminal dumb
+
+FILE="MAPI-electron"
+prefix=FILE."-VW-vs-rf"
+
+set y2range [0:50]
+set yrange [0:25]
+set xrange [0:400] # beyond here just boring linear. Including 300K point.
+
+set xlabel "Temperature (K)"
+set ylabel "Variational parameters"
+set y2label "Schultz r_f (Å)"
+set y2tics
+
+p FILE.'.dat' u 1:($15*10**10) w lp axes x1y2 title "Polaron radius", \
+ '' u 1:6 w lp  title "v", '' u 1:7 w lp  title "w"
+load "gnuplot-render.gpt"
+
