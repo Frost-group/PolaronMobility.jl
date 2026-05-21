@@ -1,139 +1,145 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Scientific discussion · PolaronMobility.jl documentation</title><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.045/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.24/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../">PolaronMobility.jl documentation</a></span></div><form class="docs-search" action="../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../">PolaronMobility.jl</a></li><li><a class="tocitem" href="../examples/">Examples</a></li><li><a class="tocitem" href="../functions/">Functions</a></li><li class="is-active"><a class="tocitem" href>Scientific discussion</a><ul class="internal"><li><a class="tocitem" href="#Overview"><span>Overview</span></a></li><li><a class="tocitem" href="#Bibliography"><span>Bibliography</span></a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Scientific discussion</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Scientific discussion</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/Frost-group/PolaronMobility.jl/blob/main/docs/src/scientific_discussion.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Scientific-discussion"><a class="docs-heading-anchor" href="#Scientific-discussion">Scientific discussion</a><a id="Scientific-discussion-1"></a><a class="docs-heading-anchor-permalink" href="#Scientific-discussion" title="Permalink"></a></h1><h2 id="Overview"><a class="docs-heading-anchor" href="#Overview">Overview</a><a id="Overview-1"></a><a class="docs-heading-anchor-permalink" href="#Overview" title="Permalink"></a></h2><p>These codes solve the Feynman polaron mode [Feynman1955] with Ōsaka&#39;s [Osaka1961] finite-temperature energies.  We use the form of these free energies, as presented in [Hellwarth1999].</p><p>For each temperature, the total free energy of the Feynman coupled phonon-electron system is minimised by optimising coefficients (<code>v</code> and <code>w</code>) which, equivalently, describe the spring-coupling coefficient (<code>k</code>) and effective-mass (<code>M</code>) of the phonon cloud (i.e. the phonon drag / phonon surfing contribution).  This integrates through the infinite quantum field of the harmonic oscillators which make up the dynamic response of the lattice, to simplify the problem back to a quasi-particle (the polaron). </p><p>The codes calculate the polaron mobility, with both the original low-temperature FHIP asymptotic approximation [Feynman1962]; Kadanoff&#39;s [Kadanoff1964] Boltzmann equation motivated phonon-emission correction to the FHIP; and Hellwarth et al.&#39;s [Hellwarth1999] method.  This last method (Hellwarth) is probably the most accurate.  This uses a more general result (Eqn. 44-47) in [Feynman1962], directly evaluating the contour integral for the polaron self-energy numerically. </p><p>Underlying all this is the simplified Fröhlich Hamiltonian [Frohlich1952] for a single electron interacting with a phonon cloud of non-interacting (harmonic) phonons. The electron-phonon interaction for a polar system is treated at the simple level of being the dielectric response.  These are the infrared-active modes present at the Gamma point in the Brillouin zone.  Along with an effective mode frequency, the dielectric constants are used to calculate the dimensionless &#39;α&#39; parameter describing the electron-phonon coupling.   (In a simple covalent semiconductor system, the only dielectric active mode is the linear-optical mode.)</p><p>The Feynman model offers a direct solution of this most simple quantum field problem.  The infinite phonon (quantum) field is &#39;integrated out&#39; by path integration.  The soluble system is one in which you have an electron interacting by a (harmonic) spring constant with a mass representing the phonon drag.  The variational method allows you to find a set of parameters for this simplified system which produces the smallest free-energy. </p><p>This is now a (renormalised) single particle system, a quasi-particle.</p><p>These Julia codes use Hellwarth&#39;s [Hellwarth1999] presentation of Ōsaka&#39;s variational free-energies for the Feynman model. We optimise the <code>v</code> and <code>w</code> parameters for these finite-temperature free energies. These can be alternatively restated the mass &#39;M&#39; and spring-constant &#39;k&#39; of the coupled phonon-electron Feynman model.</p><p>Here we apply these methods to the case of hybrid halide perovskites. The method provides the temperature dependent polaron-mobility without any free parameters. No arbitrary relaxation time is needed or used. The scattering processes are treated directly, by including an effective electron-phonon coupling in the specification of the Fröhlich α/&#39;alpha&#39; parameter, and then all other features come from solving the model. The original Feynman model is correct to all orders in alpha, and the Hellwarth direct contour-integration of the general Feynman mobility statement is suitable for high temperature.</p><p>It was necessary to return to these (rather old!) papers and resolve the models, as hybrid halide perovskites are soft materials with low energy phonons. Therefore the effective temperature in terms of a reduced thermodynamic beta (beta=hbar omega / (k<em>Boltzmann * Temperature) ; β=ħω/(k</em>B.T) ) is much smaller than previously considered.</p><p>A final note that: in [Hellwarth1999], there is a mistake in the formula for &#39;b&#39;, which is also present in their prior PRL [Biaggio1997]. It is correct in [Feynman1962], where there is no factor of b on the right-hand side. They probably didn&#39;t notice this, as they set it to zero.  This doesn&#39;t make too much difference (~0.1%, for the hybrid halide perovskites) to the calculated mobility.   Since we&#39;re integrating numerically anyway, we may as well calculate it explicitly.</p><h2 id="Bibliography"><a class="docs-heading-anchor" href="#Bibliography">Bibliography</a><a id="Bibliography-1"></a><a class="docs-heading-anchor-permalink" href="#Bibliography" title="Permalink"></a></h2><p>This bibliography is listed in vague order of utility; I recommend reading the first ones first!</p><p>Feynman also describes his Polaron model in more detail in both &#39;Statistical Mechanics&#39; [Feynman1972] and &#39;Quantum Mechanics and Path Integrals&#39; [FeynmanHibbs1965]. Note that the differing presentations of Feynman do not always agree in detail.</p><p>Schulman&#39;s &#39;Techniques and applications of path integration&#39; has a 10-page chapter on the Polaron problem. It tries to unify the Feynman prescriptions.</p><p>J.T. Devreese&#39;s &quot;Fröhlich Polarons. Lecture course including detailed theoretical derivations&quot; (6th edition, 2016) notes on the ArXiv is a very good place to start &amp; to get an overview of the area. https://arxiv.org/abs/1611.06122</p><pre><code class="nohighlight hljs">
-% This introduces two prescriptions for reducing a multi-mode polar lattice to
-% a single ~mean-field~ response.
-% It contains a modern version of the Ōsaka finite temperature free-energies
-% for use in a variational solution of the Feynman temperature problem.
-% It also includes how to (numerically) do the contour integration to get the
-% DC-response of the polaron developed in Feynman1962.
-@article{Hellwarth1999,
-  doi = {10.1103/physrevb.60.299},
-  url = {https://doi.org/10.1103%2Fphysrevb.60.299},
-  year  = {1999},
-  month = {jul},
-  publisher = {American Physical Society ({APS})},
-  volume = {60},
-  number = {1},
-  pages = {299--307},
-  author = {Robert W. Hellwarth and Ivan Biaggio},
-  title = {Mobility of an electron in a multimode polar lattice},
-  journal = {Physical Review B}
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Scientific Discussion · PolaronMobility.jl</title><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.045/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.24/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../">PolaronMobility.jl</a></span></div><form class="docs-search" action="../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../">Home</a></li><li><a class="tocitem" href="../examples/">Examples</a></li><li class="is-active"><a class="tocitem" href>Scientific Discussion</a><ul class="internal"><li><a class="tocitem" href="#Variational-Structure"><span>Variational Structure</span></a></li><li><a class="tocitem" href="#Fröhlich-Hamiltonian-And-Coupling"><span>Fröhlich Hamiltonian And Coupling</span></a></li><li><a class="tocitem" href="#Feynman-Gaussian-Process"><span>Feynman Gaussian Process</span></a></li><li><a class="tocitem" href="#Multiple-Gaussian-Modes"><span>Multiple Gaussian Modes</span></a></li><li><a class="tocitem" href="#Profile-Functional-Gaussian-Trial"><span>Profile-Functional Gaussian Trial</span></a></li><li><a class="tocitem" href="#Experimental-Nonlocal-Gaussian-Kernel"><span>Experimental Nonlocal Gaussian Kernel</span></a></li><li><a class="tocitem" href="#Fröhlich-Mobility-And-Frequency-Response"><span>Fröhlich Mobility And Frequency Response</span></a></li><li><a class="tocitem" href="#Lattice-Models-As-Poisson-CTMC-Variational-Problems"><span>Lattice Models As Poisson CTMC Variational Problems</span></a></li><li><a class="tocitem" href="#Holstein-CTMC-Free-Energy"><span>Holstein CTMC Free Energy</span></a></li><li><a class="tocitem" href="#Peierls-Bond-Coupled-Lattice-Model"><span>Peierls Bond-Coupled Lattice Model</span></a></li><li><a class="tocitem" href="#Lattice-Mobility-And-Frequency-Response"><span>Lattice Mobility And Frequency Response</span></a></li><li><a class="tocitem" href="#Holstein,-Peierls,-And-Composite-Transport-Sidebands"><span>Holstein, Peierls, And Composite Transport Sidebands</span></a></li><li><a class="tocitem" href="#Combining-Lattice-Influence-Functionals"><span>Combining Lattice Influence Functionals</span></a></li><li><a class="tocitem" href="#Limiting-Regimes"><span>Limiting Regimes</span></a></li><li><a class="tocitem" href="#Tables,-Sweeps,-And-Plots"><span>Tables, Sweeps, And Plots</span></a></li></ul></li><li><a class="tocitem" href="../lattice_transport/">Lattice Transport</a></li><li><a class="tocitem" href="../functions/">API Reference</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Scientific Discussion</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Scientific Discussion</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/Frost-group/PolaronMobility.jl/blob/main/docs/src/scientific_discussion.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Scientific-Discussion"><a class="docs-heading-anchor" href="#Scientific-Discussion">Scientific Discussion</a><a id="Scientific-Discussion-1"></a><a class="docs-heading-anchor-permalink" href="#Scientific-Discussion" title="Permalink"></a></h1><h2 id="Variational-Structure"><a class="docs-heading-anchor" href="#Variational-Structure">Variational Structure</a><a id="Variational-Structure-1"></a><a class="docs-heading-anchor-permalink" href="#Variational-Structure" title="Permalink"></a></h2><p>The package implements the Feynman-Jensen variational idea in a model-agnostic form. After any exactly solvable degrees of freedom have been integrated out, the partition function is written as a path integral over a carrier path measure. A tractable trial process with action <code>S0</code> gives</p><p class="math-container">\[\mathcal F
+\le
+\mathcal F_0
++
+\frac{1}{\beta}
+\left\langle
+S-S_0
+\right\rangle_0 .\]</p><p>In code, the objective is decomposed as</p><pre><code class="language-julia hljs">free_energy(trial, parameters, beta) +
+entropy_cost(trial, parameters, beta) +
+interaction_free_energy(model, trial, parameters, beta)</code></pre><p>This is the central abstraction. The solver only manipulates parameters and bounds; the physics lives in methods attached to each model/trial pair.</p><h2 id="Fröhlich-Hamiltonian-And-Coupling"><a class="docs-heading-anchor" href="#Fröhlich-Hamiltonian-And-Coupling">Fröhlich Hamiltonian And Coupling</a><a id="Fröhlich-Hamiltonian-And-Coupling-1"></a><a class="docs-heading-anchor-permalink" href="#Fröhlich-Hamiltonian-And-Coupling" title="Permalink"></a></h2><p>The continuum Fröhlich model describes a carrier coupled to longitudinal optical phonons through the macroscopic polar dielectric field. In the single-mode convention used by Feynman, the material enters through</p><p class="math-container">\[\alpha =
+\frac{1}{2}
+\frac{1}{4\pi\epsilon_0}
+\left(
+\frac{1}{\epsilon_\infty}
+-
+\frac{1}{\epsilon_s}
+\right)
+\frac{e^2}{\hbar\omega}
+\sqrt{\frac{2m_b\omega}{\hbar}} .\]</p><p>For multimode materials, <code>FrohlichMaterial</code> stores mode-resolved couplings <code>\alpha_j</code> and reduced phonon frequencies <code>\omega_j/\omega_{\mathrm{eff}}</code>. The Hellwarth B effective frequency is used for Kelvin, THz, mobility, and length conversions, while the variational interaction itself still sums over the individual modes.</p><h2 id="Feynman-Gaussian-Process"><a class="docs-heading-anchor" href="#Feynman-Gaussian-Process">Feynman Gaussian Process</a><a id="Feynman-Gaussian-Process-1"></a><a class="docs-heading-anchor-permalink" href="#Feynman-Gaussian-Process" title="Permalink"></a></h2><p>Feynman&#39;s 1955 insight was to integrate out the phonons exactly and replace the resulting retarded self-interacting electron path by a solvable Gaussian process: the electron is harmonically coupled to a fictitious coordinate. The public parameters are</p><p class="math-container">\[w,\delta,
+\qquad
+v = w + \delta .\]</p><p>At zero temperature, the Feynman mean-square-displacement kernel is</p><p class="math-container">\[D_F(\tau)
+=
+\frac{w^2}{v^2}\tau
++
+\frac{v^2-w^2}{v^3}\left(1-e^{-v\tau}\right).\]</p><p>The trial contribution is</p><p class="math-container">\[A = -\frac{d}{2}(v-w),
+\qquad
+C = \frac{d}{4v}(v^2-w^2),\]</p><p>and the interaction contribution is evaluated as</p><p class="math-container">\[B =
+\sum_j
+\alpha_j K_d(\omega_j)
+\int_0^\infty
+\frac{e^{-\omega_j\tau}}
+{\sqrt{\omega_j D_F(\tau)}}\,d\tau .\]</p><p>The minimised zero-temperature energy is stored as</p><p class="math-container">\[E_{\mathrm{var}} = -(A+B+C).\]</p><p>At finite temperature, <code>D_F</code> is replaced by the corresponding periodic The Brownian-bridge kernel and the phonon propagator become thermal. These are the Osaka/Hellwarth finite-temperature formulas used in the original <code>PolaronMobility.jl</code> workflow.</p><h2 id="Multiple-Gaussian-Modes"><a class="docs-heading-anchor" href="#Multiple-Gaussian-Modes">Multiple Gaussian Modes</a><a id="Multiple-Gaussian-Modes-1"></a><a class="docs-heading-anchor-permalink" href="#Multiple-Gaussian-Modes" title="Permalink"></a></h2><p><code>MultiGaussianTrial</code> is the finite-mode extension used for Martin-Frost-style multimode variational work. The parameter order is</p><p class="math-container">\[(w_1,\delta_1,w_2,\delta_2,\ldots),
+\qquad
+v_i = w_i+\delta_i .\]</p><p>The zero-temperature displacement is</p><p class="math-container">\[D(\tau)
+=
+\tau
++
+\sum_i
+\frac{h_i}{v_i^2}
+\left[
+\frac{1-e^{-v_i\tau}}{v_i}
+-
+\tau
+\right],\]</p><p>with algebraic weights <code>h_i</code> obtained from the coupled fictitious oscillator spectrum. For one mode, this reduces exactly to Feynman&#39;s kernel, and the test suite enforces that reduction.</p><p>For more than one mode, the variational energy should be no higher than the one-mode value when the optimiser finds the same branch. Small improvements are expected; dramatic drops at weak or intermediate coupling should be treated as a warning sign.</p><h2 id="Profile-Functional-Gaussian-Trial"><a class="docs-heading-anchor" href="#Profile-Functional-Gaussian-Trial">Profile-Functional Gaussian Trial</a><a id="Profile-Functional-Gaussian-Trial-1"></a><a class="docs-heading-anchor-permalink" href="#Profile-Functional-Gaussian-Trial" title="Permalink"></a></h2><p><code>ProfileGaussianTrial</code> is the package&#39;s current implementation of the older general quadratic-memory functional idea associated with Adamowski, Gerlach, and Leschke. It represents a positive profile</p><p class="math-container">\[\Gamma(\omega)
+=
+\sum_i
+a_i
+\frac{\nu_i^2}{\omega^2+\nu_i^2},
+\qquad
+a_i \ge 0 .\]</p><p>The profile defines the Gaussian displacement through</p><p class="math-container">\[D_\Gamma(\tau)
+=
+\frac{2}{\pi}
+\int_0^\infty
+\frac{1-\cos(\omega\tau)}
+{\omega^2[1+\Gamma(\omega)]}\,d\omega ,\]</p><p>and the zero-temperature entropy/log-determinant contribution through</p><p class="math-container">\[E_{\mathrm{det}}
+=
+\frac{d}{2\pi}
+\int_0^\infty
+\left[
+\log(1+\Gamma(\omega))
+-
+\frac{\Gamma(\omega)}{1+\Gamma(\omega)}
+\right]d\omega .\]</p><p>For numerical stability, the package does not evaluate the displacement integral by direct quadrature. Since <code>Γ</code> is a rational positive profile, it decomposes</p><p class="math-container">\[\frac{1}{1+\Gamma(\omega)}
+=
+1 + \sum_j \frac{c_j}{\omega^2+p_j^2},\]</p><p>so the displacement is evaluated analytically as</p><p class="math-container">\[D_\Gamma(\tau)
+=
+\tau
++
+\sum_j
+\frac{c_j}{p_j^2}
+\left[
+\tau
+-
+\frac{1-e^{-p_j\tau}}{p_j}
+\right] .\]</p><p>At finite temperature, the same decomposition is used with the periodic oscillator kernel</p><p class="math-container">\[O_p(\tau,\beta)
+=
+\frac{
+1+e^{-p\beta}-e^{-p\tau}-e^{p(\tau-\beta)}
 }
+{p(1-e^{-p\beta})}\]</p><p>and the Brownian bridge <code>\tau(1-\tau/\beta)</code>.</p><p>Feynman&#39;s one-mode trial is embedded exactly by choosing</p><p class="math-container">\[\Gamma_F(\omega)
+=
+\frac{v^2-w^2}{\omega^2+w^2}.\]</p><p>In the package basis this means <code>basis_frequencies = [w]</code> and <code>a1 = (v^2-w^2)/w^2</code>. The test suite checks that this profile reproduces the Feynman displacement, entropy correction, interaction, and total objective.</p><h2 id="Experimental-Nonlocal-Gaussian-Kernel"><a class="docs-heading-anchor" href="#Experimental-Nonlocal-Gaussian-Kernel">Experimental Nonlocal Gaussian Kernel</a><a id="Experimental-Nonlocal-Gaussian-Kernel-1"></a><a class="docs-heading-anchor-permalink" href="#Experimental-Nonlocal-Gaussian-Kernel" title="Permalink"></a></h2><p><code>NonlocalGaussianTrial</code> is deliberately more provisional than <code>ProfileGaussianTrial</code>. It uses a finite nonlocal amplitude basis for the displacement kernel and a configurable quadratic regularizer as its entropy cost. Because that regularizer is not the Gaussian profile log determinant, the returned objective is a useful kernel-exploration score but not a validated variational upper bound.</p><p>If a nonlocal calculation returns an apparently much lower &quot;energy&quot; than the Feynman or profile result, do not interpret that as a physical variational improvement. It means the trial is outside the currently validated bounds of machinery. Use <code>ProfileGaussianTrial</code> for energy comparisons.</p><h2 id="Fröhlich-Mobility-And-Frequency-Response"><a class="docs-heading-anchor" href="#Fröhlich-Mobility-And-Frequency-Response">Fröhlich Mobility And Frequency Response</a><a id="Fröhlich-Mobility-And-Frequency-Response-1"></a><a class="docs-heading-anchor-permalink" href="#Fröhlich-Mobility-And-Frequency-Response" title="Permalink"></a></h2><p>The one-mode Feynman solution feeds the historical mobility formulas:</p><ul><li>FHIP low-temperature mobility from Feynman, Hellwarth, Iddings, and Platzman.</li><li>Kadanoff/Devreese low-temperature variants.</li><li>Hellwarth finite-temperature mobility and multimode effective-frequency handling.</li></ul><p>The package also evaluates a frequency-dependent memory function <code>\Sigma(\Omega)</code>. It stores</p><p class="math-container">\[Z(\Omega) = -i[\Omega+\Sigma(\Omega)],
+\qquad
+\sigma(\Omega) = Z(\Omega)^{-1}.\]</p><p>The scalar FHIP, Kadanoff, and Hellwarth mobility formulas assume the two-parameter Feynman action. For profile and nonlocal Gaussian trials, those literature-reference fields are reported as <code>NaN</code>, while the direct memory-function response is still evaluated from the trial displacement kernel.</p><h2 id="Lattice-Models-As-Poisson-CTMC-Variational-Problems"><a class="docs-heading-anchor" href="#Lattice-Models-As-Poisson-CTMC-Variational-Problems">Lattice Models As Poisson CTMC Variational Problems</a><a id="Lattice-Models-As-Poisson-CTMC-Variational-Problems-1"></a><a class="docs-heading-anchor-permalink" href="#Lattice-Models-As-Poisson-CTMC-Variational-Problems" title="Permalink"></a></h2><p>The lattice models use a different solvable path measure from the continuum Fröhlich Gaussian trials. The electron lives on a hypercubic lattice, and the trial path is a symmetric continuous-time nearest-neighbour Markov chain with hopping rate <code>\kappa</code>. The same <code>PoissonTrial</code> supports Holstein site coupling, Peierls bond coupling, and compatible composites.</p><p>The free CTMC contribution and relative-entropy rate for changing the bare hopping <code>J</code> to the variational rate <code>\kappa</code> are</p><p class="math-container">\[F_0(\kappa)=-2d\kappa,
+\qquad
+S_{\rm rel}(\kappa)=2d\kappa\log\frac{\kappa}{J}.\]</p><p>The hypercubic CTMC propagator factorises:</p><p class="math-container">\[P_{\mathbf r}^{(d)}(t)=
+e^{-2d\kappa t}\prod_{\mu=1}^d I_{r_\mu}(2\kappa t).\]</p><p>The package names the return and nearest-neighbour components</p><p class="math-container">\[q_0(t)=\left[e^{-2\kappa t}I_0(2\kappa t)\right]^d,\]</p><p class="math-container">\[q_1(t)=e^{-2d\kappa t}I_1(2\kappa t)I_0(2\kappa t)^{d-1}.\]</p><p>In code, <code>lattice_q0</code> and <code>lattice_q1</code> evaluate these with exponentially scaled Bessel functions, so the formulas are stable for <code>d = 1, 2, 3</code> and large arguments.</p><h2 id="Holstein-CTMC-Free-Energy"><a class="docs-heading-anchor" href="#Holstein-CTMC-Free-Energy">Holstein CTMC Free Energy</a><a id="Holstein-CTMC-Free-Energy-1"></a><a class="docs-heading-anchor-permalink" href="#Holstein-CTMC-Free-Energy" title="Permalink"></a></h2><p>The reduced Holstein Hamiltonian is</p><p class="math-container">\[H_H=
+-J\sum_{\langle ij\rangle}(c_i^\dagger c_j+c_j^\dagger c_i)
++\omega_H\sum_i b_i^\dagger b_i
++g\sum_i n_i(b_i+b_i^\dagger).\]</p><p>After integrating out the local Einstein phonons, the lattice path acquires a retarded attraction at times when it occupies the same site. At a finite inverse temperature, the package uses</p><p class="math-container">\[D_\beta(u;\omega)=
+\frac{e^{-\omega u}+e^{-\omega(\beta-u)}}{1-e^{-\beta\omega}},\]</p><p>and the periodic CTMC bridge</p><p class="math-container">\[C_{\rm site}(u;\beta)=
+\frac{q_0(u)q_0(\beta-u)}{q_0(\beta)}.\]</p><p>The variational objective is</p><p class="math-container">\[F_{\rm var}^{H}(\kappa,\beta)=
+-2d\kappa+2d\kappa\log\frac{\kappa}{J}
+-
+\frac{g^2}{2}
+\int_0^\beta D_\beta(u;\omega_H)C_{\rm site}(u;\beta)\,du.\]</p><p>At zero temperature, this becomes</p><p class="math-container">\[F_{\rm var}^{H}(\kappa,\infty)=
+-2d\kappa+2d\kappa\log\frac{\kappa}{J}
+-
+g^2\int_0^\infty e^{-\omega_Ht}\text{ive}_0(2\kappa t)^d\,dt.\]</p><p>For <code>d = 1</code>, the integral reduces to</p><p class="math-container">\[\int_0^\infty e^{-\omega_Ht}e^{-2\kappa t}I_0(2\kappa t)\,dt
+=
+\frac{1}{\sqrt{\omega_H(\omega_H+4\kappa)}}.\]</p><h2 id="Peierls-Bond-Coupled-Lattice-Model"><a class="docs-heading-anchor" href="#Peierls-Bond-Coupled-Lattice-Model">Peierls Bond-Coupled Lattice Model</a><a id="Peierls-Bond-Coupled-Lattice-Model-1"></a><a class="docs-heading-anchor-permalink" href="#Peierls-Bond-Coupled-Lattice-Model" title="Permalink"></a></h2><p>The standalone Peierls model moves the electron-phonon coupling from site density to bond hopping modulation:</p><p class="math-container">\[H_P=
+-J\sum_{\langle ij\rangle}B_{ij}
++\omega_P\sum_b a_b^\dagger a_b
++g_P\sum_b B_b(a_b+a_b^\dagger),
+\qquad
+B_{ij}=c_i^\dagger c_j+c_j^\dagger c_i.\]</p><p><code>PeierlsMaterial</code> follows the same boundary convention as <code>HolsteinMaterial</code>: a relaxation energy and phonon energy define the reduced coupling,</p><p class="math-container">\[g_P=\sqrt{\frac{E_P}{h\nu_P}}.\]</p><p>The Peierls influence depends on bond-order correlations. The periodic bond bridge used in the package is</p><p class="math-container">\[C_{\rm bond}^{+}(u;\beta)=
+2d\frac{q_0(u)q_0(\beta-u)+q_1(u)q_1(\beta-u)}{q_0(\beta)}.\]</p><p>The finite-temperature Peierls interaction term is</p><p class="math-container">\[F_P(\kappa,\beta)=
+-\frac{g_P^2}{2}
+\int_0^\beta D_\beta(u;\omega_P)C_{\rm bond}^{+}(u;\beta)\,du.\]</p><p>At zero temperature,</p><p class="math-container">\[F_P(\kappa,\infty)=
+-\frac{g_P^2}{2}
+\int_0^\infty e^{-\omega_Pt}
+2d[\text{ive}_0(2\kappa t)+\text{ive}_1(2\kappa t)]
+\text{ive}_0(2\kappa t)^{d-1}\,dt.\]</p><p>The factor <code>1/2</code> is part of the Gaussian influence prefactor. The helper <code>peierls_integral_d</code> returns the full <code>2d[...]</code> bond integral; <code>interaction_free_energy(::PeierlsModel, ...)</code> multiplies it by <code>-g_P^2/2</code>.</p><h2 id="Lattice-Mobility-And-Frequency-Response"><a class="docs-heading-anchor" href="#Lattice-Mobility-And-Frequency-Response">Lattice Mobility And Frequency Response</a><a id="Lattice-Mobility-And-Frequency-Response-1"></a><a class="docs-heading-anchor-permalink" href="#Lattice-Mobility-And-Frequency-Response" title="Permalink"></a></h2><p>The lattice response implemented in the package is a CTMC first-return current-blip projection. It is analogous in spirit to building a response on top of an optimised solvable trial process, but it is not the continuum FHIP memory-function construction. Any older lattice &quot;memory-function&quot; wording in the project should therefore be read historically rather than as the active runtime theory.</p><p>Conceptually, the lattice calculation has two pieces:</p><ol><li>the variational free energy chooses the effective hopping rate <code>\kappa</code> from periodic CTMC bridge correlations; and</li><li>the transport calculation inserts a current blip into that optimised CTMC path measure and dresses it with the exact phonon factor appropriate to the model.</li></ol><p>The electron dynamics are encoded in the first-return kernel, while the phonons enter through sideband weights multiplying that kernel.</p><p>Current insertions select hop-like path segments. The duration distribution is approximated by the CTMC first-return kernel from a nearest-neighbour site back to the origin:</p><p class="math-container">\[\widehat f_{a\to0}^{(d)}(s)=\frac{G_a^{(d)}(s)}{G_0^{(d)}(s)}.\]</p><p>Using the lattice resolvent identity, the package evaluates this as</p><p class="math-container">\[\widehat f_{a\to0}^{(d)}(s)=
+\frac{s+2d\kappa-[G_0^{(d)}(s)]^{-1}}{2d\kappa},\]</p><p>where</p><p class="math-container">\[G_0^{(d)}(s)=\int_0^\infty e^{-st}\text{ive}_0(2\kappa t)^d\,dt,
+\qquad \Re s&gt;0.\]</p><p>For <code>d = 1</code>, this gives the analytic expression</p><p class="math-container">\[\widehat f_{1\to0}^{(1)}(s)=
+\frac{s+2\kappa-\sqrt{s(s+4\kappa)}}{2\kappa}.\]</p><p>For <code>d = 2</code>, the return Green&#39;s function is evaluated through the square-lattice elliptic-integral form</p><p class="math-container">\[G_0^{(2)}(s)=
+\frac{2}{\pi(s+4\kappa)}
+K\!\left[\left(\frac{4\kappa}{s+4\kappa}\right)^2\right].\]</p><p>For <code>d = 3</code>, the package uses the cubic-lattice reduction</p><p class="math-container">\[G_0^{(3)}(s)=
+\frac{1}{\pi}\int_0^\pi
+G_0^{(2)}\!\left(s+2\kappa(1-\cos q)\right)\,dq.\]</p><p>So the standard <code>d = 2, 3</code> Holstein and Peierls transport calculations do not repeatedly integrate the oscillatory <code>0..∞</code> Bessel/Laplace kernel. The small positive broadening <code>\epsilon</code> fixes the retarded sheet through <code>s = \epsilon - i\nu</code>.</p><p>The Einstein scale is retained as a diagnostic,</p><p class="math-container">\[\mu_E=\beta\kappa.\]</p><p>Given transport sidebands <code>(\nu_m,w_m)</code>, the reduced kernel is</p><p class="math-container">\[K(\Omega)=
+\sum_m w_m\widehat f_{a\to0}^{(d)}(\epsilon-i(\Omega+\nu_m)).\]</p><p>The package reports</p><p class="math-container">\[\mu(\Omega)=\mu_EK(\Omega),
+\qquad
+\sigma(\Omega)=\mu(\Omega),
+\qquad
+Z(\Omega)=\sigma(\Omega)^{-1}.\]</p><p>At zero frequency,</p><p class="math-container">\[\mu_{\rm DC}=\beta\kappa\text{Re}K(0).\]</p><p>At zero temperature, this Einstein prefactor diverges, so the package treats DC and optical response separately. The DC mobility remains infinite, but fora  finite frequency, the reported reduced optical response is</p><p class="math-container">\[\mu(\Omega)=\sigma(\Omega)=K(\Omega), \qquad \Omega \neq 0,\; T=0,\]</p><p>with <code>Z(\Omega)=K(\Omega)^{-1}</code>. This is the natural reduced current-current normalisation of the CTMC first-return/blip ansatz and keeps the Holstein and Peierls optical spectra are finite.</p><p>Thus, the lattice mobility is not obtained by first defining a separate force-memory function and then inverting a Drude-like impedance. Instead, the package evaluates the retarded CTMC first-return kernel directly at the phonon-shifted frequencies generated by the blip cloud or current vertex.</p><h2 id="Holstein,-Peierls,-And-Composite-Transport-Sidebands"><a class="docs-heading-anchor" href="#Holstein,-Peierls,-And-Composite-Transport-Sidebands">Holstein, Peierls, And Composite Transport Sidebands</a><a id="Holstein,-Peierls,-And-Composite-Transport-Sidebands-1"></a><a class="docs-heading-anchor-permalink" href="#Holstein,-Peierls,-And-Composite-Transport-Sidebands" title="Permalink"></a></h2><p>Holstein transport uses the exact current-blip cloud factor</p><p class="math-container">\[C_H(t)=
+\exp[-S_H C_\beta(1-\cos\omega_H t)]
+\exp[iS_H\sin\omega_Ht],
+\qquad
+S_H=2(g/\omega_H)^2,\]</p><p>where <code>C_\beta = coth(\beta\omega_H/2)</code>. At zero temperature, this is a Poisson ladder. At finite temperature, the package evaluates the equivalent Bessel sideband weights, so the runtime response is a direct exact-cloud sideband sum over the first-return kernel rather than a separate memory closure.</p><p>Peierls transport is different. Since the Peierls phonon modulates the current vertex itself, the normalised vertex cloud is</p><p class="math-container">\[\mathcal C_P(t)=
+\frac{J_{\rm resp}^2+g_P^2D_P^&gt;(t)}{J_{\rm resp}^2+g_P^2D_P^&gt;(0)}.\]</p><p>Here, <code>J_resp</code> is selected by <code>response_hopping</code>, with default <code>:bare</code>. At finite temperature,</p><p class="math-container">\[D_P^&gt;(t)=(N_P+1)e^{-i\omega_Pt}+N_Pe^{i\omega_Pt}.\]</p><p>Thus, Peierls has one zero-phonon current channel and <code>\pm\omega_P</code> phonon-assisted channels. It is not an exponentiated Franck-Condon ladder unless the hopping depends nonlinearly on displacement. In the code, this means the Peierls response is assembled from a small exact sideband list attached directly to the CTMC first-return kernel; it is not a fallback renewal approximation and not a lattice memory-function ansatz.</p><p>For independent Holstein and Peierls baths, the composite transport cloud is the product</p><p class="math-container">\[C_{HP}(t)=C_H(t)\mathcal C_P(t),\]</p><p>so the sideband list is the convolution of Holstein and Peierls sidebands. This is the response-side analogue of adding independent influence functionals in the free energy. If <code>\omega_H \neq \omega_P</code>, the implementation keeps the actual shifted frequencies rather than forcing the composite transport onto one integer phonon ladder. Shared-mode Holstein-Peierls cross terms are not included.</p><h2 id="Combining-Lattice-Influence-Functionals"><a class="docs-heading-anchor" href="#Combining-Lattice-Influence-Functionals">Combining Lattice Influence Functionals</a><a id="Combining-Lattice-Influence-Functionals-1"></a><a class="docs-heading-anchor-permalink" href="#Combining-Lattice-Influence-Functionals" title="Permalink"></a></h2><p>Holstein and Peierls models live on the same lattice path space when they use the same dimension, hopping scale, and <code>PoissonTrial</code>. The composite model, therefore, adds independent influence functionals on the same path measure:</p><p class="math-container">\[F_{\rm int}^{\rm composite}(\kappa,\beta)=\sum_mF_{\rm int}^{(m)}(\kappa,\beta).\]</p><p>The corresponding code is:</p><pre><code class="language-julia hljs">holstein = holstein_poisson_problem(hopping = 1.0, phonon_frequency = 1.0, coupling = 0.4)
+peierls = peierls_poisson_problem(hopping = 1.0, phonon_frequency = 0.8, coupling = 0.35)
 
-% Boltzmann / relaxation time approximation solution of mobility in the Feynman
-% polaron problem.
-% We extract a relaxation time (+ offer this method of mobility).
-@article{Kadanoff1963,
-  doi = {10.1103/physrev.130.1364},
-  url = {https://doi.org/10.1103%2Fphysrev.130.1364},
-  year  = {1963},
-  month = {may},
-  publisher = {American Physical Society ({APS})},
-  volume = {130},
-  number = {4},
-  pages = {1364--1369},
-  author = {Leo P. Kadanoff},
-  title = {Boltzmann Equation for Polarons},
-  journal = {Physical Review}
-}
-
-% A long and very useful article developing response theories for the polaron.
-% Mainly known for the FHIP mobility, which is low-temperature only.
-@article{Feynman1962,
-  doi = {10.1103/physrev.127.1004},
-  url = {https://doi.org/10.1103%2Fphysrev.127.1004},
-  year  = {1962},
-  month = {aug},
-  publisher = {American Physical Society ({APS})},
-  volume = {127},
-  number = {4},
-  pages = {1004--1017},
-  author = {R. P. Feynman and R. W. Hellwarth and C. K. Iddings and P. M. Platzman},
-  title = {Mobility of Slow Electrons in a Polar Crystal},
-  journal = {Physical Review}
-}
-
-% The original development of Feynman&#39;s solution to the polaron problem.
-% Zero temperature approximate variational solutions developed (in limits w-&gt;0,
-% or w=v).
-% Perturbative theories of phonon-drag effective-mass renormalisation given.
-% (i.e. where the &#39;me=1+alpha/6&#39; &amp; etc. limits are from. )
-@article{Feynman1955,
-  doi = {10.1103/physrev.97.660},
-  url = {https://doi.org/10.1103%2Fphysrev.97.660},
-  year  = {1955},
-  month = {feb},
-  publisher = {American Physical Society ({APS})},
-  volume = {97},
-  number = {3},
-  pages = {660--665},
-  author = {R. P. Feynman},
-  title = {Slow Electrons in a Polar Crystal},
-  journal = {Physical Review}
-}
-
-% Schultz seemed to spend his PhD solving the Feynman polaron problem with
-% a digital computer.
-% Lots of characterisation of the polaron state, and the introduction of an
-% effective polaron size, from considering the variance of the Gaussian
-% wavefunction.
-% Some work towards polaron mobility, but not as developed as in Feynman et al. 1962.
-% Schultz provides units for some of the quantities - which is useful!
-@article{Schultz1959,
-  doi = {10.1103/physrev.116.526},
-  url = {https://doi.org/10.1103%2Fphysrev.116.526},
-  year  = {1959},
-  month = {nov},
-  publisher = {American Physical Society ({APS})},
-  volume = {116},
-  number = {3},
-  pages = {526--543},
-  author = {T. D. Schultz},
-  title = {Slow Electrons in Polar Crystals: Self-Energy,  Mass,  and Mobility},
-  journal = {Physical Review}
-}
-
-% Free-energies of the finite interacting Polaron system.
-@article{Osaka1961,
-  doi = {10.1143/ptp.25.517},
-  url = {https://doi.org/10.1143%2Fptp.25.517},
-  year  = {1961},
-  month = {apr},
-  publisher = {Oxford University Press ({OUP})},
-  volume = {25},
-  number = {4},
-  pages = {517--536},
-  author = {Yukio \=Osaka},
-  title = {Theory of Polaron Mobility},
-  journal = {Progress of Theoretical Physics}
-}
-
-% Original statement of the Polaron problem + Frohlich Hamiltonian.
-@article{Frohlich1952,
-  doi = {10.1098/rspa.1952.0212},
-  url = {https://doi.org/10.1098%2Frspa.1952.0212},
-  year  = {1952},
-  month = {dec},
-  publisher = {The Royal Society},
-  volume = {215},
-  number = {1122},
-  pages = {291--298},
-  author = {H. Frohlich},
-  title = {Interaction of Electrons with Lattice Vibrations},
-  journal = {Proceedings of the Royal Society A: Mathematical,  Physical and Engineering Sciences}
-}
-
-@article{Thornber1970,
-  doi = {10.1103/physrevb.1.4099},
-  url = {https://doi.org/10.1103%2Fphysrevb.1.4099},
-  year  = {1970},
-  month = {may},
-  publisher = {American Physical Society ({APS})},
-  volume = {1},
-  number = {10},
-  pages = {4099--4114},
-  author = {K. K. Thornber and Richard P. Feynman},
-  title = {Velocity Acquired by an Electron in a Finite Electric Field in a Polar Crystal},
-  journal = {Physical Review B}
-}
-</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../functions/">« Functions</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.25 on <span class="colophon-date" title="Wednesday 4 March 2026 17:09">Wednesday 4 March 2026</span>. Using Julia version 1.11.9.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+problem = VariationalProblem(
+    combine_models(holstein.model, peierls.model),
+    PoissonTrial(dimension = 1, bare_hopping = 1.0),
+)
+result = solve(problem; temperatures = [1.0], frequencies = [0.0, 0.5])</code></pre><p>For material-derived rubrene calculations, <code>rubrene_holstein_peierls_problem</code> builds both Ordejón Table II material models and reduces them to a shared Holstein phonon reference frequency before composition.</p><p>For transport-focused studies, the package also exposes guide-style helpers that can reuse a frozen zero-temperature optimum:</p><pre><code class="language-julia hljs">rows = holstein_peierls_transport_sweep(
+    problem;
+    temperatures = 0.05:0.05:0.5,
+    frequencies = [0.0, 0.25, 0.5],
+    kappa_source = :zero_temperature,
+)</code></pre><p>These rows expose <code>mobility</code>, <code>mobility_einstein</code>, <code>mobility_factor</code>, <code>conductivity_real</code>, <code>conductivity_imag</code>, sideband normalisation diagnostics, and whether the rate came from <code>:zero_temperature</code> or <code>:per_temperature</code>.</p><h2 id="Limiting-Regimes"><a class="docs-heading-anchor" href="#Limiting-Regimes">Limiting Regimes</a><a id="Limiting-Regimes-1"></a><a class="docs-heading-anchor-permalink" href="#Limiting-Regimes" title="Permalink"></a></h2><p>Useful analytical limits are encoded in examples and tests because they are excellent guardrails for future model additions.</p><p>For Fröhlich polarons, weak coupling gives the perturbative energy <code>E \sim -\alpha</code> and the Feynman parameters remain close to the bare oscillator scale. In the package convention, this is often summarised as <code>v,w -&gt; 3ω</code> for the weak-coupling initial branch. At strong coupling, the optimised fictitious oscillator softens toward the phonon scale, <code>w -&gt; \omega</code>, while</p><p class="math-container">\[v \sim \frac{4\alpha^2}{9\pi}.\]</p><p>Hellwarth&#39;s finite-temperature mobility decreases with thermal phonon occupation. Adiabatic versus antiadiabatic behaviour is read through the relative carrier and phonon time scales: slow phonons produce long memory, while fast phonons produce short retarded kernels.</p><p>For Holstein polarons, zero coupling removes the interaction and the Donsker-Varadhan objective is minimised at the bare rate,</p><p class="math-container">\[\kappa \to J .\]</p><p>Weak coupling is obtained by evaluating the retarded interaction at the bare rate. In the strong antiadiabatic/localised limit, the leading energy is the Lang-Firsov shift</p><p class="math-container">\[-E_p = -\frac{g^2}{\omega_0},\]</p><p>with exponentially narrowed hopping, schematically</p><p class="math-container">\[-E_p - 2dJ\exp[-(g/\omega_0)^2].\]</p><p>High temperature shrinks the imaginary-time memory through <code>\coth(\beta\omega_0/2)</code> and the finite <code>\beta</code> integration window. The adiabatic limit has <code>J/\omega_0 &gt;&gt; 1</code>; the antiadiabatic limit has <code>J/\omega_0 &lt;&lt; 1</code>.</p><p>For Peierls polarons, zero Peierls coupling recovers the bare Poisson walk or, in a composite model, the remaining component. Weak Peierls corrections scale as <code>-g_P^2</code>. Antiadiabatic Peierls phonons make the bond memory short-ranged; adiabatic Peierls phonons create long-lived bond modulation, the variational analogue of dynamic disorder.</p><h2 id="Tables,-Sweeps,-And-Plots"><a class="docs-heading-anchor" href="#Tables,-Sweeps,-And-Plots">Tables, Sweeps, And Plots</a><a id="Tables,-Sweeps,-And-Plots-1"></a><a class="docs-heading-anchor-permalink" href="#Tables,-Sweeps,-And-Plots" title="Permalink"></a></h2><p><code>solve</code> returns typed result structs. Table helpers flatten those into <code>NamedTuple</code> rows:</p><pre><code class="language-julia hljs">solution_table(result)
+mobility_table(result)
+response_table(result)</code></pre><p>Continuation sweeps warm-start forward and backward branches and selects the lower-free-energy row. Frequency sweeps optimise once per model/coupling and temperature point, then evaluate the response on the requested frequency grid without reoptimizing per frequency.</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../examples/">« Examples</a><a class="docs-footer-nextpage" href="../lattice_transport/">Lattice Transport »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.25 on <span class="colophon-date" title="Thursday 21 May 2026 13:24">Thursday 21 May 2026</span>. Using Julia version 1.11.9.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

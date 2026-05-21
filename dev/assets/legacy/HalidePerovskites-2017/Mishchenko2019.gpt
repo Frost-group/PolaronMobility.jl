@@ -1,0 +1,52 @@
+set xlabel "Temperature (K)"
+set ylabel "Mobility (m^2/V.s)"
+
+set size square
+
+set logscale yx
+set xrange [:8]
+set yrange [0.05:100]
+p "MishchenkoMobility_2.4.dat" u 1:4 t "Athermal Action", '' u 1:7 t "Thermal Action"
+
+prefix="Mishchenko2019_2.4_mob"
+load "gnuplot-render.gpt"
+
+
+set xrange [0.1:14]
+set yrange [0.005:5]
+p "MishchenkoMobility_6.0.dat" u 1:4 t "Athermal Action", '' u 1:7 t "Thermal Action"
+
+prefix="Mishchenko2019_6.0_mob"
+load "gnuplot-render.gpt"
+
+
+set xrange [0.1:14]
+set yrange [0.005:5]
+p "MishchenkoMobility_8.0.dat" u 1:4 t "Athermal Action", '' u 1:7 t "Thermal Action"
+
+prefix="Mishchenko2019_8.0_mob"
+load "gnuplot-render.gpt"
+
+
+p "MishchenkoMobility_2.4.dat" u 1:7 t "alpha 2.4", "MishchenkoMobility_6.0.dat" u 1:7 t "alpha 6.0", "MishchenkoMobility_8.0.dat" u 1:7 t "alpha 8.0"
+
+prefix="Mishchenko2019_alphacomparison_mob"
+load "gnuplot-render.gpt"
+
+
+set yrange [0.0005:0.5]
+
+unset key
+p   "MishchenkoMobility_2.4.dat" u 1:7 t "alpha 2.4", \
+    "MishchenkoMobility_4.0.dat" u 1:7 t "alpha 4.0", \
+    "MishchenkoMobility_6.0.dat" u 1:7 t "alpha 6.0", \
+    "MishchenkoMobility_8.0.dat" u 1:7 t "alpha 8.0", \
+    "MishchenkoMobility_10.0.dat" u 1:7 t "alpha 10.0", \
+    "MishchenkoMobility_12.0.dat" u 1:7 t "alpha 12.0", \
+    "MishchenkoMobility_14.0.dat" u 1:7 t "alpha 14.0"
+
+prefix="Mishchenko2019_extendedalphacomparison_mob"
+load "gnuplot-render.gpt"
+
+
+
